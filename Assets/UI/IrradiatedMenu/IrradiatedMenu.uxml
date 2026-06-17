@@ -1,0 +1,94 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/IrradiatedMenu/IrradiatedMenu.uss?fileID=7433441132597879392&amp;guid=691238ba79174504c860b0367736a7fb&amp;type=3#IrradiatedMenu"/>
+    <ui:VisualElement name="root" class="irradiated-root">
+        <ui:VisualElement picking-mode="Ignore" class="background-glow"/>
+        <ui:VisualElement picking-mode="Ignore" class="scanlines"/>
+        <ui:VisualElement picking-mode="Ignore" class="vignette"/>
+        <ui:VisualElement name="mainPage" class="menu-page">
+            <ui:VisualElement class="menu-content">
+                <ui:VisualElement class="title-block">
+                    <ui:Label text="A FIRST-PERSON HORROR EXPERIENCE" class="title-subtitle"/>
+                    <ui:Label text="IRRADIATED" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/ShareTechMono-Regular.ttf?fileID=12800000&amp;guid=fe9ca33d9bc772249bfecd659208f0bb&amp;type=3#ShareTechMono-Regular&quot;);"/>
+                    <ui:VisualElement class="title-divider"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="menu-nav">
+                    <ui:Button name="playButton" text="PLAY" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/ShareTechMono-Regular.ttf?fileID=12800000&amp;guid=fe9ca33d9bc772249bfecd659208f0bb&amp;type=3#ShareTechMono-Regular&quot;);"/>
+                    <ui:Button name="controlsButton" text="CONTROLS" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/ShareTechMono-Regular.ttf?fileID=12800000&amp;guid=fe9ca33d9bc772249bfecd659208f0bb&amp;type=3#ShareTechMono-Regular&quot;);"/>
+                    <ui:Button name="settingsButton" text="SETTINGS" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/ShareTechMono-Regular.ttf?fileID=12800000&amp;guid=fe9ca33d9bc772249bfecd659208f0bb&amp;type=3#ShareTechMono-Regular&quot;);"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="menu-footer">
+                <ui:Label text="v1.0.0" class="footer-text"/>
+                <ui:Label text="·" class="footer-dot"/>
+                <ui:Label text="© 2026 INDIE HORROR STUDIOS" class="footer-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="controlsPage" class="menu-page hidden">
+            <ui:VisualElement class="menu-content">
+                <ui:VisualElement class="title-block">
+                    <ui:Label text="INPUT MAPPING" class="title-subtitle"/>
+                    <ui:Label text="CONTROLS" class="page-title"/>
+                    <ui:VisualElement class="title-divider"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="controls-list">
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="W A S D" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="MOVE" class="control-action"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="Mouse" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="LOOK AROUND" class="control-action"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="F" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="INTERACT" class="control-action"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="Shift" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="SPRINT" class="control-action"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="Esc" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="PAUSE" class="control-action"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Button name="controlsBackButton" text="BACK" class="menu-button back-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="settingsPage" class="menu-page hidden">
+            <ui:VisualElement class="menu-content">
+                <ui:VisualElement class="title-block">
+                    <ui:Label text="PREFERENCES" class="title-subtitle"/>
+                    <ui:Label text="SETTINGS" class="page-title"/>
+                    <ui:VisualElement class="title-divider"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="settings-list">
+                    <ui:VisualElement class="setting-row">
+                        <ui:Label text="MASTER VOLUME" class="setting-label"/>
+                        <ui:VisualElement class="slider-group">
+                            <ui:SliderInt name="masterSlider" low-value="0" high-value="100" value="80" show-input-field="false" class="horror-slider"/>
+                            <ui:Label name="masterValueLabel" text="80" class="slider-value"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="setting-row">
+                        <ui:Label text="MUSIC VOLUME" class="setting-label"/>
+                        <ui:VisualElement class="slider-group">
+                            <ui:SliderInt name="musicSlider" low-value="0" high-value="100" value="60" show-input-field="false" class="horror-slider"/>
+                            <ui:Label name="musicValueLabel" text="60" class="slider-value"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="setting-row">
+                        <ui:Label text="FULLSCREEN" class="setting-label"/>
+                        <ui:Button name="fullscreenButton" text="■ OFF" class="toggle-button"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Button name="settingsBackButton" text="BACK" class="menu-button back-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
