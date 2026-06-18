@@ -169,3 +169,6 @@ Packages/packages-lock.json linguist-generated
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+
+# TerrainData assets are binary Unity assets. Do not line-ending normalize them.
+Assets/Art/Environment/Terrain_Layers/Forest_TerrainData.asset binary
