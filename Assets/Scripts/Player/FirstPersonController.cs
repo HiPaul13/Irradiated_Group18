@@ -73,7 +73,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        HandleLook();
+        ApplyLookInput();
+        ApplyCameraPitch();
 
         if (jumpPressed && enableJump && IsGrounded())
         {
@@ -85,17 +86,20 @@ public class FirstPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rb.MoveRotation(Quaternion.Euler(0f, yaw, 0f));
         HandleMovement();
     }
 
-    private void HandleLook()
+    private void ApplyLookInput()
     {
         yaw += lookInput.x * mouseSensitivity;
         pitch -= lookInput.y * mouseSensitivity;
         pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+        lookInput = Vector2.zero;
+    }
 
-        transform.rotation = Quaternion.Euler(0f, yaw, 0f);
-
+    private void ApplyCameraPitch()
+    {
         if (cameraHolder != null)
         {
             cameraHolder.localRotation = Quaternion.Euler(pitch, 0f, 0f);
@@ -104,6 +108,24 @@ public class FirstPersonController : MonoBehaviour
         {
             playerCamera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         }
+    }
+
+    public void SyncRotationFromTransform()
+    {
+        yaw = transform.eulerAngles.y;
+
+        if (cameraHolder != null)
+        {
+            pitch = cameraHolder.localEulerAngles.x;
+            if (pitch > 180f)
+                pitch -= 360f;
+        }
+        else
+        {
+            pitch = 0f;
+        }
+
+        pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
     }
 
     private void HandleMovement()
@@ -118,7 +140,8 @@ public class FirstPersonController : MonoBehaviour
         Vector3 inputDirection = new Vector3(finalMoveInput.x, 0f, finalMoveInput.y);
         inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
 
-        Vector3 moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.z;
+        Quaternion flatRotation = Quaternion.Euler(0f, yaw, 0f);
+        Vector3 moveDirection = flatRotation * inputDirection;
         moveDirection.y = 0f;
         moveDirection.Normalize();
 
