@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonController : MonoBehaviour
 {
     [Header("References")]
+    public Transform cameraHolder;
     public Camera playerCamera;
 
     [Header("Look")]
@@ -18,11 +19,18 @@ public class FirstPersonController : MonoBehaviour
     public float sprintSpeed = 8f;
     public float maxVelocityChange = 10f;
 
+    [Header("Radiation Effect")]
+    public bool showInvertedDebug = false;
+    private bool isMovementInverted = false;
+
     [Header("Jump")]
     public bool enableJump = true;
     public float jumpPower = 5f;
-    public float groundCheckDistance = 0.85f;
+    public float groundCheckDistance = 1.1f;
     public LayerMask groundMask = ~0;
+
+    [Header("Radiation Sprint Block")]
+    public bool canSprint = true;
 
     private Rigidbody rb;
     private Vector2 moveInput;
@@ -44,6 +52,11 @@ public class FirstPersonController : MonoBehaviour
         {
             playerCamera = GetComponentInChildren<Camera>();
         }
+
+        if (cameraHolder == null && playerCamera != null)
+        {
+            cameraHolder = playerCamera.transform.parent;
+        }
     }
 
     private void Start()
@@ -55,6 +68,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         yaw = transform.eulerAngles.y;
+        pitch = 0f;
     }
 
     private void Update()
@@ -82,7 +96,11 @@ public class FirstPersonController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0f, yaw, 0f);
 
-        if (playerCamera != null)
+        if (cameraHolder != null)
+        {
+            cameraHolder.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+        }
+        else if (playerCamera != null)
         {
             playerCamera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         }
@@ -90,14 +108,26 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 targetVelocity = new Vector3(moveInput.x, 0f, moveInput.y);
-        targetVelocity = Vector3.ClampMagnitude(targetVelocity, 1f);
+        Vector2 finalMoveInput = moveInput;
 
-        float currentSpeed = sprintHeld ? sprintSpeed : walkSpeed;
-        targetVelocity = transform.TransformDirection(targetVelocity) * currentSpeed;
+        if (isMovementInverted)
+        {
+            finalMoveInput *= -1f;
+        }
 
-        Vector3 velocity = rb.linearVelocity;
-        Vector3 velocityChange = targetVelocity - velocity;
+        Vector3 inputDirection = new Vector3(finalMoveInput.x, 0f, finalMoveInput.y);
+        inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
+
+        Vector3 moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.z;
+        moveDirection.y = 0f;
+        moveDirection.Normalize();
+
+        float currentSpeed = (sprintHeld && canSprint) ? sprintSpeed : walkSpeed;
+        Vector3 targetVelocity = moveDirection * currentSpeed;
+
+        Vector3 currentVelocity = rb.linearVelocity;
+
+        Vector3 velocityChange = targetVelocity - currentVelocity;
 
         velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
         velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
@@ -108,13 +138,33 @@ public class FirstPersonController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Vector3 origin = transform.position + Vector3.up * 0.05f;
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
         return Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundMask);
+    }
+
+    public void SetCanSprint(bool value)
+    {
+        canSprint = value;
     }
 
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+    }
+
+    public void SetMovementInverted(bool inverted)
+    {
+        isMovementInverted = inverted;
+
+        if (showInvertedDebug)
+        {
+            Debug.Log("Movement inverted: " + inverted);
+        }
+    }
+
+    public bool IsMovementInverted()
+    {
+        return isMovementInverted;
     }
 
     public void OnMove(InputAction.CallbackContext context)
