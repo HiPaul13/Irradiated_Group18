@@ -172,3 +172,6 @@ LightingData.asset     binary
 
 # TerrainData assets are binary Unity assets. Do not line-ending normalize them.
 Assets/Art/Environment/Terrain_Layers/Forest_TerrainData.asset binary
+
+# NavMeshData assets are binary Unity assets. Do not line-ending normalize them.
+Assets/Scenes/Forest_Environment/NavMesh-Navigation.asset binary
