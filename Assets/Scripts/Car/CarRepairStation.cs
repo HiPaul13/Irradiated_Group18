@@ -7,7 +7,11 @@ public class CarRepairStation : MonoBehaviour, IInteractable
     public List<ItemData> requiredItems = new List<ItemData>();
 
     private List<string> insertedItemIDs = new List<string>();
-    private bool isRepaired = false;
+    private bool         isRepaired      = false;
+
+    // Read by SaveGameManager during save.
+    public List<string> InsertedItemIDs => insertedItemIDs;
+    public bool         IsRepaired      => isRepaired;
 
     public void Interact(PlayerInteraction playerInteraction)
     {
@@ -40,24 +44,27 @@ public class CarRepairStation : MonoBehaviour, IInteractable
 
                 Debug.Log("Inserted car part: " + requiredItem.itemName);
                 insertedSomething = true;
+
+                if (GameProgressManager.Instance != null)
+                    GameProgressManager.Instance.NotifyCarPartInserted(requiredItem.itemID);
             }
         }
 
         if (!insertedSomething)
-        {
             PrintMissingItems(inventory);
-        }
 
         CheckIfRepaired();
     }
 
     private void CheckIfRepaired()
     {
-        if (insertedItemIDs.Count >= requiredItems.Count)
-        {
-            isRepaired = true;
-            Debug.Log("Car repaired! You can escape now.");
-        }
+        if (insertedItemIDs.Count < requiredItems.Count) return;
+
+        isRepaired = true;
+        Debug.Log("Car repaired! You can escape now.");
+
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.NotifyCarRepaired();
     }
 
     private void PrintMissingItems(HotbarInventory inventory)
@@ -67,16 +74,21 @@ public class CarRepairStation : MonoBehaviour, IInteractable
         foreach (ItemData requiredItem in requiredItems)
         {
             if (requiredItem == null) continue;
-
             if (!insertedItemIDs.Contains(requiredItem.itemID))
-            {
-                Debug.Log("- " + requiredItem.itemName);
-            }
+                Debug.Log("  - " + requiredItem.itemName);
         }
     }
 
     public string GetInteractionText()
     {
-        return "Press F to repair car";
+        return isRepaired ? "Car is repaired — drive away!" : "Press F to repair car";
+    }
+
+    /// <summary>Called by SaveGameManager when loading a saved game.</summary>
+    public void LoadState(List<string> savedInsertedIDs, bool savedRepaired)
+    {
+        insertedItemIDs = new List<string>(savedInsertedIDs ?? new List<string>());
+        isRepaired      = savedRepaired;
+        Debug.Log($"[CarRepair] State loaded. Inserted parts: {insertedItemIDs.Count}  Repaired: {isRepaired}");
     }
 }

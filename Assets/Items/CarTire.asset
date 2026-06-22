@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd7cbe51a50bef4ca8570031a6204db, type: 3}
   m_Name: CarTire
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: cartilre
+  itemID: cartire
   itemName: Car Tire
   icon: {fileID: 21300000, guid: ebe7a24628a64f549a098118caa35360, type: 3}

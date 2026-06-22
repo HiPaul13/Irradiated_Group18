@@ -39,12 +39,10 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
         }
 
         if (!inventory.HasAllItems(recipe.requiredItems))
-        {
             return false;
-        }
 
         int freeSlotsAfterRemovingIngredients =
-        inventory.GetItems().Count - recipe.requiredItems.Count + 1;
+            inventory.GetItems().Count - recipe.requiredItems.Count + 1;
 
         if (freeSlotsAfterRemovingIngredients > 5)
         {
@@ -61,10 +59,10 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
         inventory.AddItem(recipe.resultItem);
 
         Debug.Log("Crafted: " + recipe.resultItem.itemName);
+
+        if (GameProgressManager.Instance != null && recipe.resultItem != null)
+            GameProgressManager.Instance.NotifyPotionBrewed(recipe.resultItem.itemID);
     }
 
-    public string GetInteractionText()
-    {
-        return "Press F to use cauldron";
-    }
+    public string GetInteractionText() => "Press F to use cauldron";
 }

@@ -443,6 +443,112 @@ Transform:
   - {fileID: 859346824}
   - {fileID: 356949604}
   - {fileID: 903319039}
+  - {fileID: 1757499559}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &227800465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227800469}
+  - component: {fileID: 227800468}
+  - component: {fileID: 227800467}
+  - component: {fileID: 227800466}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &227800466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227800465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b679df753efae84f80548ef55abc075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveGameManager
+  playerTransform: {fileID: 988656524}
+  radiationManager: {fileID: 988656519}
+  hotbarInventory: {fileID: 988656526}
+  carRepairStation: {fileID: 389388333}
+  allItemDataAssets:
+  - {fileID: 11400000, guid: bf6debdc2dc5df24e886e4829793d8dd, type: 2}
+  - {fileID: 11400000, guid: a5e80dd9da0a9024f9163e1e9aba5b0c, type: 2}
+  - {fileID: 11400000, guid: 3b997d8ba15208241b00e9e05c6db759, type: 2}
+  - {fileID: 11400000, guid: ff4a2fd28d9f12741ad3b147746d9519, type: 2}
+  - {fileID: 11400000, guid: 5ddef614fd3fb7e4ea7c6516589e4874, type: 2}
+  - {fileID: 11400000, guid: 084eef03b50ee184b863abeab12e9719, type: 2}
+--- !u!114 &227800467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227800465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9712c9d092e52184abd82ced05f7484f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportManager
+  monster: {fileID: 379340026}
+  difficultyController: {fileID: 379340030}
+  player: {fileID: 988656524}
+  playerCamera: {fileID: 351444562}
+  minSpawnDistance: 70
+  maxSpawnDistance: 90
+  spawnSideSpread: 5
+  navMeshSampleRadius: 5
+  maxSpawnAttempts: 12
+  avoidPlayerFOV: 1
+  playerFOVHalfAngle: 80
+  forbiddenZones:
+  - {fileID: 959341830}
+  - {fileID: 1587847691}
+  - {fileID: 711388042}
+  forestTeleportTime: 90
+  teleportCooldown: 45
+--- !u!114 &227800468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227800465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04373751cc1bc5c4297701a536817cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameProgressManager
+  castleMushroomID: mushroom
+  cabinFlowerID: flowerred
+  lakeFlowerID: flowerpink
+  antiRadiationPotionID: radiationpotion
+  carPartIDs:
+  - cartire
+  - cartube
+--- !u!4 &227800469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227800465}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 78.24833, y: 28.1435, z: 59.74001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255820468 stripped
@@ -974,10 +1080,12 @@ MonoBehaviour:
   - {fileID: 723797088}
   - {fileID: 1329186529}
   patrolPointReachedDistance: 2
-  patrolWaitTime: 1.5
+  patrolWaitTime: 0
+  patrolDetectionRange: 10
+  investigateDetectionRange: 14
   chaseRange: 60
   losePlayerRange: 70
-  requireLineOfSight: 1
+  requireLineOfSight: 0
   lineOfSightMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1022,6 +1130,30 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
   m_PrefabInstance: {fileID: 764166450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &379340030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379340023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ab4bccf93b7d6429c058ce7469fd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDifficultyController
+  monster: {fileID: 379340026}
+  stageSettings:
+  - stage: 0
+    patrolSpeed: 10
+    investigateSpeed: 7
+    chaseSpeed: 7
+    patrolDetectionRange: 100
+    investigateDetectionRange: 50
+    chaseRange: 70
+    losePlayerRange: 100
+    forestTeleportTime: 999
+    teleportCooldown: 60
 --- !u!1 &381854410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,6 +2760,77 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 7349bd44562262247a6401fc939d654b, type: 3}
+--- !u!1 &711388039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711388040}
+  - component: {fileID: 711388042}
+  - component: {fileID: 711388041}
+  m_Layer: 0
+  m_Name: TeleportationZone1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &711388040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711388039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29, y: -0.0000038147, z: -554}
+  m_LocalScale: {x: 231.51, y: 231.51, z: 231.51}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1983399482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711388041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711388039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f3ed7378bc47143b9c6f6beb2e2ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
+  zoneName: Dumpyard
+  PostTeleportBehavior: 1
+  investigateForwardDistance: 8
+  investigatePointOverride: {fileID: 0}
+  onlyFireOnce: 1
+--- !u!65 &711388042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711388039}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &717022126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2890311526800079562, guid: e02b4d93c719e1546b3a0ca8cf6dba6b, type: 3}
@@ -2863,7 +3066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.435
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2919,6 +3122,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       insertIndex: -1
       addedObject: {fileID: 379340026}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 379340030}
   m_SourcePrefab: {fileID: 100100000, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
 --- !u!1 &766744883
 GameObject:
@@ -3772,6 +3978,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1466980023952839615, guid: 0982c8c0228b8b44091af43b4b70732e, type: 3}
   m_PrefabInstance: {fileID: 1904285298}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &959341827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959341828}
+  - component: {fileID: 959341830}
+  - component: {fileID: 959341829}
+  m_Layer: 0
+  m_Name: TeleportationZone1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &959341828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959341827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -39.8, y: 0, z: 6.8}
+  m_LocalScale: {x: 177.45198, y: 177.45198, z: 177.45198}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1983399482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &959341829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959341827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f3ed7378bc47143b9c6f6beb2e2ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
+  zoneName: Castle
+  PostTeleportBehavior: 0
+  investigateForwardDistance: 40
+  investigatePointOverride: {fileID: 0}
+  onlyFireOnce: 0
+--- !u!65 &959341830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959341827}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &980360581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3971,7 +4248,7 @@ MonoBehaviour:
   maxLookAngle: 80
   lockCursor: 1
   walkSpeed: 5
-  sprintSpeed: 8
+  sprintSpeed: 20
   maxVelocityChange: 10
   showInvertedDebug: 0
   enableJump: 1
@@ -4134,7 +4411,7 @@ Transform:
   m_GameObject: {fileID: 988656518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 190.58, y: 47.3, z: 813.36}
+  m_LocalPosition: {x: 363.6, y: 74.7, z: 392.4}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4691,6 +4968,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
   itemData: {fileID: 11400000, guid: 5ddef614fd3fb7e4ea7c6516589e4874, type: 2}
+  saveID: carTube
+--- !u!114 &1098577766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098577761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ea0e0033dd14c40a549684f04f5729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveStation
+  stationName: CarTubeSave
 --- !u!1001 &1107573109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5361,6 +5652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
   itemData: {fileID: 11400000, guid: a5e80dd9da0a9024f9163e1e9aba5b0c, type: 2}
+  saveID: flowerRed
 --- !u!1 &1244410997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,6 +6058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
   itemData: {fileID: 11400000, guid: ff4a2fd28d9f12741ad3b147746d9519, type: 2}
+  saveID: carTire
 --- !u!65 &1328078214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5884,7 +6177,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344482824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -6561,6 +6854,77 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3163171260390484736, guid: eaf5154de97bf254c90c3c0f8fcee4bb, type: 3}
+--- !u!1 &1587847688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587847689}
+  - component: {fileID: 1587847691}
+  - component: {fileID: 1587847690}
+  m_Layer: 0
+  m_Name: TeleportationZone1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1587847689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587847688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 621.6, y: 0, z: 91}
+  m_LocalScale: {x: 177.45198, y: 177.45198, z: 177.45198}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1983399482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1587847690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587847688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f3ed7378bc47143b9c6f6beb2e2ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
+  zoneName: Lake
+  PostTeleportBehavior: 0
+  investigateForwardDistance: 8
+  investigatePointOverride: {fileID: 0}
+  onlyFireOnce: 1
+--- !u!65 &1587847691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587847688}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1614039842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6699,6 +7063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
   itemData: {fileID: 11400000, guid: 3b997d8ba15208241b00e9e05c6db759, type: 2}
+  saveID: flowerPink
 --- !u!65 &1633646103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7069,6 +7434,75 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1241483277}
   m_SourcePrefab: {fileID: 100100000, guid: 1037f45b9978e254a9342df15e265103, type: 3}
+--- !u!1 &1757499558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757499559}
+  - component: {fileID: 1757499562}
+  - component: {fileID: 1757499560}
+  m_Layer: 0
+  m_Name: SafeZoneCastle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1757499559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757499558}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6697388, y: -12.799431, z: -10.760193}
+  m_LocalScale: {x: 23, y: 45.3, z: 23}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 211737936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757499560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757499558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d4540a5ac3dc6479502390f06413e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWaitOutSafeZone
+  requiredStayTime: 20
+  showDebugLogs: 1
+  debugLogInterval: 5
+--- !u!65 &1757499562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757499558}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1782963007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7811,6 +8245,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd1e5767322fa3a46b9826f9ae66ce39, type: 3}
+--- !u!1 &1983399481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983399482}
+  m_Layer: 0
+  m_Name: EnemyTeleportationTriggerZones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983399482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983399481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 231.33162, y: 16.66634, z: 803.8935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 959341828}
+  - {fileID: 1587847689}
+  - {fileID: 711388040}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1990423922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1826384441248096524, guid: bd1e5767322fa3a46b9826f9ae66ce39, type: 3}
@@ -8071,6 +8539,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7894562863513057155, guid: b2ce13a87c432bf4eaaf0d17d10214e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1098577762}
+    - targetCorrespondingSourceObject: {fileID: 7894562863513057155, guid: b2ce13a87c432bf4eaaf0d17d10214e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1098577766}
   m_SourcePrefab: {fileID: 100100000, guid: b2ce13a87c432bf4eaaf0d17d10214e7, type: 3}
 --- !u!1 &2044849740
 GameObject:
@@ -8526,6 +8997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableItem
   itemData: {fileID: 11400000, guid: bf6debdc2dc5df24e886e4829793d8dd, type: 2}
+  saveID: mushroom
 --- !u!65 &2088541941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8894,3 +9366,5 @@ SceneRoots:
   - {fileID: 211737936}
   - {fileID: 597549889}
   - {fileID: 2033745679}
+  - {fileID: 227800469}
+  - {fileID: 1983399482}
