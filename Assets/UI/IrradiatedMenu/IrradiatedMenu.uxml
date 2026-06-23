@@ -52,6 +52,11 @@
                         <ui:Label text="SPRINT" class="control-action"/>
                     </ui:VisualElement>
                     <ui:VisualElement class="control-row">
+                        <ui:Label text="M" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="OPEN MINIMAP" class="control-action"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="control-row last-row">
                         <ui:Label text="Esc" class="control-key"/>
                         <ui:VisualElement class="control-separator"/>
                         <ui:Label text="PAUSE" class="control-action"/>
@@ -82,7 +87,7 @@
                             <ui:Label name="musicValueLabel" text="60" class="slider-value"/>
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement class="setting-row">
+                    <ui:VisualElement class="setting-row last-row">
                         <ui:Label text="FULLSCREEN" class="setting-label"/>
                         <ui:Button name="fullscreenButton" text="■ OFF" class="toggle-button"/>
                     </ui:VisualElement>

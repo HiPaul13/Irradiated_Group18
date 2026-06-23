@@ -6,6 +6,17 @@ using UnityEngine;
 /// One row in the Inspector difficulty table.
 /// Fill in one entry per GameProgressStage you want to tune.
 /// Stages with no explicit entry inherit the nearest lower stage.
+///
+/// RECOMMENDED VALUES (map ~1000x1000, player sprint = 10):
+///
+/// Stage               | PatSpd | InvSpd | ChaSpd | PatDet | InvDet | ChaRng | LoseRng | ForestT | Cooldown
+/// EarlyGame           |  3.2   |  4.8   |  9.2   |   55   |   80   |  105   |   150   |  180    |   60
+/// OneIngredient       |  3.6   |  5.3   |  9.8   |   65   |   95   |  125   |   175   |  150    |   60
+/// TwoIngredients      |  4.0   |  5.8   | 10.3   |   75   |  110   |  145   |   200   |  120    |   55
+/// AllIngredients      |  4.4   |  6.3   | 10.8   |   85   |  120   |  160   |   220   |   95    |   50
+/// PotionBrewed        |  4.7   |  6.7   | 11.2   |   95   |  130   |  175   |   235   |   75    |   45
+/// CollectingCarParts  |  5.0   |  7.1   | 11.5   |  105   |  140   |  185   |   245   |   60    |   40
+/// CarRepaired         |  5.3   |  7.5   | 11.8   |  115   |  150   |  195   |   255   |   50    |   35
 /// </summary>
 [Serializable]
 public class EnemyDifficultySettings

@@ -204,6 +204,17 @@ public class EnemyTeleportManager : MonoBehaviour
             lastTeleportTime = Time.time;
             Debug.Log($"[Teleport] Zone '{zone.zoneName}' teleport succeeded. " +
                       $"Spawn: {spawnPos:F1}  Investigate: {investigateTarget:F1}");
+
+            // If this trigger zone has a linked AreaSafeZone and the post-behavior is Investigate,
+            // override with area roaming so the monster circles the zone instead of walking
+            // to a single fixed point.
+            if (zone.linkedAreaSafeZone != null &&
+                zone.PostTeleportBehavior == Monster_Movement.PostTeleportBehavior.Investigate)
+            {
+                zone.linkedAreaSafeZone.StartMonsterAreaInvestigation();
+                Debug.Log($"[Teleport] Zone '{zone.zoneName}': starting area investigation " +
+                          $"via linked AreaSafeZone '{zone.linkedAreaSafeZone.gameObject.name}'.");
+            }
         }
         else
         {

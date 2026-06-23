@@ -33,6 +33,12 @@ public class EnemyTeleportTriggerZone : MonoBehaviour
     [Tooltip("Optional fixed investigate point. Overrides investigateForwardDistance if assigned.")]
     public Transform investigatePointOverride;
 
+    [Header("Linked Area Safe Zone (optional)")]
+    [Tooltip("If assigned and PostTeleportBehavior is Investigate, the monster will start " +
+             "area-roaming around this zone's settings immediately after teleporting. " +
+             "Use this for Castle / House / Barn zones.")]
+    public AreaSafeZone linkedAreaSafeZone;
+
     [Header("Settings")]
     [Tooltip("Only fire on the first entry during this session. " +
              "Disable for repeated teleports each time the player enters.")]

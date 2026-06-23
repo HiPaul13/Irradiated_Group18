@@ -23,6 +23,11 @@ public class FirstPersonController : MonoBehaviour
     public bool showInvertedDebug = false;
     private bool isMovementInverted = false;
 
+    [Header("Step Climbing")]
+    public float stepHeight     = 0.35f;  // max step the player can climb (metres)
+    public float stepCheckDist  = 0.45f;  // how far ahead to probe for a step
+    public float stepSmooth     = 0.12f;  // how much to lift per FixedUpdate tick
+
     [Header("Jump")]
     public bool enableJump = true;
     public float jumpPower = 5f;
@@ -88,6 +93,7 @@ public class FirstPersonController : MonoBehaviour
     {
         rb.MoveRotation(Quaternion.Euler(0f, yaw, 0f));
         HandleMovement();
+        ClimbStep();
     }
 
     private void ApplyLookInput()
@@ -157,6 +163,32 @@ public class FirstPersonController : MonoBehaviour
         velocityChange.y = 0f;
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
+
+    private void ClimbStep()
+    {
+        // Only try to step-up when the player is actually moving
+        if (moveInput.sqrMagnitude < 0.01f) return;
+
+        Vector3 moveDir = (Quaternion.Euler(0f, yaw, 0f) *
+                           new Vector3(moveInput.x, 0f, moveInput.y)).normalized;
+
+        // Lower ray — is there a low obstacle directly ahead?
+        bool blockedLow = Physics.Raycast(
+            transform.position + Vector3.up * 0.05f,
+            moveDir, stepCheckDist, groundMask, QueryTriggerInteraction.Ignore);
+
+        if (!blockedLow) return;
+
+        // Upper ray — is the space above the step clear?
+        bool blockedHigh = Physics.Raycast(
+            transform.position + Vector3.up * (stepHeight + 0.05f),
+            moveDir, stepCheckDist, groundMask, QueryTriggerInteraction.Ignore);
+
+        if (blockedHigh) return;
+
+        // Lift the rigidbody smoothly over the step
+        rb.position += Vector3.up * stepSmooth;
     }
 
     private bool IsGrounded()

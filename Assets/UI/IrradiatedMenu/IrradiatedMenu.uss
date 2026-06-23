@@ -222,6 +222,11 @@
     -unity-text-align: middle-right;
 }
 
+/* Remove bottom border on last row so it doesn't double up with the list border */
+.last-row {
+    border-bottom-width: 0;
+}
+
 /* Settings */
 
 .settings-list {
@@ -261,10 +266,39 @@
     align-items: center;
 }
 
-/* Basic slider styling */
+/* Slider — track, fill, thumb */
 .horror-slider {
     width: 220px;
     margin-right: 16px;
+}
+
+/* The grey background track */
+.horror-slider .unity-base-slider__tracker {
+    background-color: #1e261e;
+    border-width: 0;
+    height: 2px;
+    border-radius: 0;
+}
+
+/* The green filled portion */
+.horror-slider .unity-base-slider__dragger-border {
+    background-color: #39ff14;
+    border-width: 0;
+}
+
+/* The square thumb handle */
+.horror-slider .unity-base-slider__dragger {
+    width: 14px;
+    height: 14px;
+    background-color: #39ff14;
+    border-width: 0;
+    border-radius: 0;
+    top: -6px;
+    margin-top: 0;
+}
+
+.horror-slider:hover .unity-base-slider__dragger {
+    background-color: #5aff3a;
 }
 
 .slider-value {
