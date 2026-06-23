@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 6168056f2e6ae234ab7148de7608cc1d
+timeCreated: 1531133787
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130776
+  packageName: Free Hut Pack
+  packageVersion: 1.0
+  assetPath: Assets/Hut/Materials/M_Broom.mat
+  uploadId: 295516

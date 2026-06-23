@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 215cabb9b48f76442aeea11ca8606167
+timeCreated: 1531148252
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130776
+  packageName: Free Hut Pack
+  packageVersion: 1.0
+  assetPath: Assets/Hut/Materials/M_Small_Chair.mat
+  uploadId: 295516

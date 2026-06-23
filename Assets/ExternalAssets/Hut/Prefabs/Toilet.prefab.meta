@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5cab78b7f36c4860b4674677d76b79e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130776
+  packageName: Free Hut Pack
+  packageVersion: 1.0
+  assetPath: Assets/Hut/Prefabs/Toilet.prefab
+  uploadId: 295516
