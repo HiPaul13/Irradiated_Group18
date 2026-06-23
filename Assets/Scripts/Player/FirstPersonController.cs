@@ -45,6 +45,9 @@ public class FirstPersonController : MonoBehaviour
 
     private float yaw;
     private float pitch;
+    private bool controlsEnabled = true;
+
+    public bool ControlsEnabled => controlsEnabled;
 
     private void Awake()
     {
@@ -78,6 +81,12 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        if (!controlsEnabled)
+        {
+            jumpPressed = false;
+            return;
+        }
+
         ApplyLookInput();
         ApplyCameraPitch();
 
@@ -91,9 +100,33 @@ public class FirstPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!controlsEnabled)
+        {
+            return;
+        }
+
         rb.MoveRotation(Quaternion.Euler(0f, yaw, 0f));
         HandleMovement();
         ClimbStep();
+    }
+
+    public void SetControlsEnabled(bool enabled)
+    {
+        if (controlsEnabled == enabled)
+        {
+            return;
+        }
+
+        controlsEnabled = enabled;
+
+        if (!controlsEnabled)
+        {
+            moveInput = Vector2.zero;
+            lookInput = Vector2.zero;
+            sprintHeld = false;
+            jumpPressed = false;
+            rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
+        }
     }
 
     private void ApplyLookInput()
@@ -224,16 +257,33 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
+
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled)
+        {
+            lookInput = Vector2.zero;
+            return;
+        }
+
         lookInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled)
+        {
+            return;
+        }
+
         if (context.performed)
         {
             jumpPressed = true;
@@ -242,6 +292,12 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if (!controlsEnabled)
+        {
+            sprintHeld = false;
+            return;
+        }
+
         sprintHeld = context.ReadValueAsButton();
     }
 }
