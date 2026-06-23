@@ -13,6 +13,10 @@ public class ToiletHideSpot : MonoBehaviour, IInteractable
     [Tooltip("Unsichtbarer Collider vor der Kamera, der nur während des Versteckens aktiv ist.")]
     public GameObject insideExitTarget;
 
+    [Header("Player Collision")]
+    [Tooltip("Normalerweise ausschalten, damit AreaSafeZone den Player weiterhin erkennt.")]
+    [SerializeField] private bool disableCapsuleWhileHidden = false;
+
     [Header("Debug")]
     public bool showDebugMessages = true;
 
@@ -125,12 +129,10 @@ public class ToiletHideSpot : MonoBehaviour, IInteractable
         {
             previousCapsuleEnabled = playerCapsule.enabled;
 
-            /*
-             * Innerhalb der Toilette deaktivieren wir den Player-Collider.
-             * Dadurch wird der Player nicht aus dem Toilettenmodell
-             * herausgedrückt.
-             */
-            playerCapsule.enabled = false;
+            if (disableCapsuleWhileHidden)
+            {
+                playerCapsule.enabled = false;
+            }
         }
 
         if (playerRigidbody != null)
@@ -189,7 +191,7 @@ public class ToiletHideSpot : MonoBehaviour, IInteractable
         SetPlayerPose(exitPoint);
         ResetCameraPitch();
 
-        if (playerCapsule != null)
+        if (playerCapsule != null && disableCapsuleWhileHidden)
         {
             playerCapsule.enabled = previousCapsuleEnabled;
         }
