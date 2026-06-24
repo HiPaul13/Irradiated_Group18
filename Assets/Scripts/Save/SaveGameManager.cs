@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Central save / load system.
@@ -39,6 +40,9 @@ public class SaveGameManager : MonoBehaviour
 
     private HashSet<string> collectedObjectIDs = new HashSet<string>();
 
+    // Holds item IDs to restore after a scene transition. Null means no restore pending.
+    private List<string> _transitionInventory = null;
+
     private string SavePath => Path.Combine(Application.persistentDataPath, SAVE_FILE);
 
     // ── Lifecycle ────────────────────────────────────────────────────────────
@@ -50,22 +54,51 @@ public class SaveGameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
     {
-        // Auto-locate references from the scene if not wired in the Inspector.
-        if (playerTransform == null)
+        FindSceneReferences();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Re-find the player in the newly loaded scene.
+        FindSceneReferences();
+
+        // If a scene transition snapshot is waiting, restore it into the new inventory.
+        if (_transitionInventory != null)
         {
-            GameObject obj = GameObject.FindGameObjectWithTag("Player");
-            if (obj != null) playerTransform = obj.transform;
+            RestoreInventory(_transitionInventory);
+            Debug.Log($"[Save] Inventory restored after scene transition: {_transitionInventory.Count} item(s).");
+            _transitionInventory = null;
+        }
+    }
+
+    /// <summary>
+    /// Finds the Player and other scene-specific references.
+    /// Called on Start and after every scene load.
+    /// </summary>
+    private void FindSceneReferences()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform  = player.transform;
+            radiationManager = player.GetComponent<RadiationManager>();
+            hotbarInventory  = player.GetComponent<HotbarInventory>();
         }
 
-        if (playerTransform != null)
-        {
-            if (radiationManager == null)
-                radiationManager = playerTransform.GetComponent<RadiationManager>();
-            if (hotbarInventory == null)
-                hotbarInventory = playerTransform.GetComponent<HotbarInventory>();
-        }
+        if (carRepairStation == null)
+            carRepairStation = FindObjectOfType<CarRepairStation>();
     }
 
     private void Update()
@@ -105,9 +138,10 @@ public class SaveGameManager : MonoBehaviour
         if (GameProgressManager.Instance != null)
         {
             GameProgressManager gpm = GameProgressManager.Instance;
-            data.progressStage         = (int)gpm.CurrentStage;
-            data.collectedIngredientIDs = new List<string>(gpm.CollectedIngredients);
-            data.potionBrewed          = gpm.IsPotionBrewed;
+            data.progressStage          = (int)gpm.CurrentStage;
+            data.collectedIngredientIDs  = new List<string>(gpm.CollectedIngredients);
+            data.depositedIngredientIDs  = new List<string>(gpm.DepositedIngredients);
+            data.potionBrewed           = gpm.IsPotionBrewed;
             data.collectedCarPartIDs   = new List<string>(gpm.CollectedCarParts);
             data.insertedCarPartIDs    = new List<string>(gpm.InsertedCarParts);
             data.carRepaired           = gpm.IsCarRepaired;
@@ -205,6 +239,26 @@ public class SaveGameManager : MonoBehaviour
         if (!File.Exists(SavePath)) return;
         File.Delete(SavePath);
         Debug.Log("[Save] Save file deleted.");
+    }
+
+    // ── Scene-transition inventory persistence ────────────────────────────────
+
+    /// <summary>
+    /// Call this just before loading a new scene.
+    /// Snapshots the current inventory so it can be restored in the new scene.
+    /// </summary>
+    public void SaveInventoryForTransition()
+    {
+        _transitionInventory = new List<string>();
+
+        if (hotbarInventory != null)
+        {
+            foreach (ItemData item in hotbarInventory.GetItems())
+                if (item != null) _transitionInventory.Add(item.itemID);
+        }
+
+        Debug.Log($"[Save] Inventory snapshot for transition: {_transitionInventory.Count} item(s) → " +
+                  string.Join(", ", _transitionInventory));
     }
 
     // ── Collected-object tracking (called by CollectableItem) ─────────────────

@@ -119,6 +119,77 @@ public class EnemyDifficultyController : MonoBehaviour
         monster.SetLosePlayerRange(s.losePlayerRange);
     }
 
+    // ── Editor helper ─────────────────────────────────────────────────────────
+
+    [ContextMenu("Populate Recommended Values")]
+    private void PopulateRecommendedValues()
+    {
+        stageSettings = new List<EnemyDifficultySettings>
+        {
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.EarlyGame,
+                patrolSpeed = 3.2f, investigateSpeed = 4.8f, chaseSpeed = 9.2f,
+                patrolDetectionRange = 55f, investigateDetectionRange = 80f,
+                chaseRange = 105f, losePlayerRange = 150f,
+                forestTeleportTime = 180f, teleportCooldown = 60f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.OneIngredient,
+                patrolSpeed = 3.6f, investigateSpeed = 5.3f, chaseSpeed = 9.8f,
+                patrolDetectionRange = 65f, investigateDetectionRange = 95f,
+                chaseRange = 125f, losePlayerRange = 175f,
+                forestTeleportTime = 150f, teleportCooldown = 60f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.TwoIngredients,
+                patrolSpeed = 4.0f, investigateSpeed = 5.8f, chaseSpeed = 10.3f,
+                patrolDetectionRange = 75f, investigateDetectionRange = 110f,
+                chaseRange = 145f, losePlayerRange = 200f,
+                forestTeleportTime = 120f, teleportCooldown = 55f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.AllIngredients,
+                patrolSpeed = 4.4f, investigateSpeed = 6.3f, chaseSpeed = 10.8f,
+                patrolDetectionRange = 85f, investigateDetectionRange = 120f,
+                chaseRange = 160f, losePlayerRange = 220f,
+                forestTeleportTime = 95f, teleportCooldown = 50f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.PotionBrewed,
+                patrolSpeed = 4.7f, investigateSpeed = 6.7f, chaseSpeed = 11.2f,
+                patrolDetectionRange = 95f, investigateDetectionRange = 130f,
+                chaseRange = 175f, losePlayerRange = 235f,
+                forestTeleportTime = 75f, teleportCooldown = 45f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.CollectingCarParts,
+                patrolSpeed = 5.0f, investigateSpeed = 7.1f, chaseSpeed = 11.5f,
+                patrolDetectionRange = 105f, investigateDetectionRange = 140f,
+                chaseRange = 185f, losePlayerRange = 245f,
+                forestTeleportTime = 60f, teleportCooldown = 40f
+            },
+            new EnemyDifficultySettings
+            {
+                stage = GameProgressStage.CarRepaired,
+                patrolSpeed = 5.3f, investigateSpeed = 7.5f, chaseSpeed = 11.8f,
+                patrolDetectionRange = 115f, investigateDetectionRange = 150f,
+                chaseRange = 195f, losePlayerRange = 255f,
+                forestTeleportTime = 50f, teleportCooldown = 35f
+            },
+        };
+
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        Debug.Log("[Difficulty] Populated all 7 stages with recommended values.");
+    }
+
     private EnemyDifficultySettings FindSettingsForStage(GameProgressStage stage)
     {
         EnemyDifficultySettings best = null;

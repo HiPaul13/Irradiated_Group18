@@ -47,6 +47,8 @@ public class CarRepairStation : MonoBehaviour, IInteractable
 
                 if (GameProgressManager.Instance != null)
                     GameProgressManager.Instance.NotifyCarPartInserted(requiredItem.itemID);
+
+                break; // insert one part per interaction
             }
         }
 

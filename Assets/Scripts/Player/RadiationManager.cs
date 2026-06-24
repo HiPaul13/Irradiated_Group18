@@ -32,7 +32,9 @@ public class RadiationManager : MonoBehaviour
     public RadiationUI radiationUI;
     public RadiationVisionEffect visionEffect;
 
-    private bool invertRoutineRunning = false;
+    private bool  invertRoutineRunning = false;
+    private bool  isProtected          = false;
+    private float protectionEndTime    = 0f;
 
     private void Awake()
     {
@@ -51,13 +53,20 @@ public class RadiationManager : MonoBehaviour
         UpdateSprintBlock();
     }
 
-   private void UpdateRadiation()
+    private void UpdateRadiation()
     {
+        // Check if protection has expired.
+        if (isProtected && Time.time >= protectionEndTime)
+        {
+            isProtected = false;
+            Debug.Log("[Radiation] Potion protection expired — radiation is active again.");
+        }
+
         if (isInSafeZone)
         {
             currentRadiation -= safeZoneDecreasePerSecond * Time.deltaTime;
         }
-        else
+        else if (!isProtected)
         {
             float radiationGain = defaultRadiationGainPerSecond * currentZoneMultiplier * Time.deltaTime;
             currentRadiation += radiationGain;
@@ -65,6 +74,16 @@ public class RadiationManager : MonoBehaviour
 
         currentRadiation = Mathf.Clamp(currentRadiation, 0f, maxRadiation);
     }
+
+    /// <summary>Blocks radiation gain for the given number of seconds.</summary>
+    public void ActivateProtection(float duration)
+    {
+        isProtected       = true;
+        protectionEndTime = Time.time + duration;
+        Debug.Log($"[Radiation] Protection active for {duration}s. Radiation blocked until {protectionEndTime:F1}s.");
+    }
+
+    public bool IsProtected => isProtected;
 
     private void UpdateUI()
     {
