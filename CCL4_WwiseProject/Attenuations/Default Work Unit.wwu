@@ -206,9 +206,6 @@
 					</CurveUsageInfoList>
 				</Attenuation>
 				<Attenuation Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" ShortID="700172112">
-					<PropertyList>
-						<Property Name="RadiusMax" Type="Real64" Value="60"/>
-					</PropertyList>
 					<CurveUsageInfoList>
 						<VolumeDryUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
@@ -224,7 +221,7 @@
 											<SegmentShape>Log2</SegmentShape>
 										</Point>
 										<Point>
-											<XPos>60</XPos>
+											<XPos>100</XPos>
 											<YPos>-200</YPos>
 											<Flags>37</Flags>
 										</Point>

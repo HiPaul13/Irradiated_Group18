@@ -14,13 +14,6 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{42823C70-6A6E-4D93-9103-F01A7E2991C7}" ShortID="510326253">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Forest_One_Shots_RC" ID="{4003D2BD-2752-4AB1-8C22-1F1BAC8B479D}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Play_Ruin_Ambience" ID="{5A3453A3-7FF5-4965-B22C-7F2DB4D734D5}">
@@ -159,6 +152,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Dumpyard ambience2" ID="{C696838B-160C-476B-9E98-C11C776E8F99}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Forest_One_Shots_RC" ID="{9C5D9A2C-E4A4-48DA-8DE5-FB2D3278D8FD}">
+							<ChildrenList>
+								<Action Name="" ID="{0CC5A64E-DFA7-4E3A-B7D6-DB57567FDA83}" ShortID="996370842">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Forest_One_Shots_RC" ID="{4003D2BD-2752-4AB1-8C22-1F1BAC8B479D}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -466,6 +470,31 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player_Breathing_new" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_FootSteps_Water" ID="{E2575CDF-F188-4240-93B0-E679F88931C5}">
+							<ChildrenList>
+								<Action Name="" ID="{9CC7A06A-29B7-4B06-B00A-0EE3953444B8}" ShortID="1047600625">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="FootSteps_Water" ID="{18DBE0ED-BF10-4BDA-A4B9-A053E9625B7D}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_FootSteps_Water" ID="{58800327-93A6-404B-84B3-E54822868A98}">
+							<ChildrenList>
+								<Action Name="" ID="{261C4C33-CA4C-4EB8-A0D4-A48C4929FC42}" ShortID="754193516">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="FootSteps_Water" ID="{18DBE0ED-BF10-4BDA-A4B9-A053E9625B7D}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

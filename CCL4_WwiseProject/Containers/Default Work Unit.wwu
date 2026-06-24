@@ -134,15 +134,20 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Forest_One_Shots_RC" ID="{4003D2BD-2752-4AB1-8C22-1F1BAC8B479D}" ShortID="785741254">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2.4"/>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-17</Value>
+												<Value>-13</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
@@ -1069,9 +1074,6 @@
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="Medium_Attenuation" ID="{89FEA21C-AFC4-4FAF-8571-F4F68DD3249E}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
-										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
@@ -1098,11 +1100,18 @@
 							<ChildrenList>
 								<Sound Name="Lake_Ambience" ID="{0FA99A7C-AF24-4609-AAD0-895AA64BA052}" ShortID="649501243">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="3"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-20</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="Medium_Attenuation" ID="{89FEA21C-AFC4-4FAF-8571-F4F68DD3249E}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
+											<ObjectRef Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
@@ -1135,16 +1144,17 @@
 							<ChildrenList>
 								<Sound Name="Dumpyard ambience1" ID="{C118DD44-17CD-4148-999F-8EC507F2F952}" ShortID="875042243">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-11</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
+											<ObjectRef Name="Medium_Attenuation" ID="{89FEA21C-AFC4-4FAF-8571-F4F68DD3249E}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
@@ -1168,16 +1178,17 @@
 								</Sound>
 								<Sound Name="Dumpyard ambience2" ID="{C696838B-160C-476B-9E98-C11C776E8F99}" ShortID="399905303">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-11</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
+											<ObjectRef Name="Medium_Attenuation" ID="{89FEA21C-AFC4-4FAF-8571-F4F68DD3249E}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
@@ -1204,6 +1215,11 @@
 						<Sound Name="Radiation" ID="{036C514E-47F5-4399-A2C5-BC7A4C3CB607}" ShortID="259139561">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-24</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -3647,6 +3663,221 @@
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Footsteps_Water" ID="{69FE6F37-1FE1-4D85-AD4B-1CC9A4CECD46}" ShortID="597733383">
+							<ChildrenList>
+								<RandomSequenceContainer Name="FootSteps_Water" ID="{18DBE0ED-BF10-4BDA-A4B9-A053E9625B7D}" ShortID="774465301">
+									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Swimmiing Sound" ID="{2902F00A-9D9C-47A0-8239-C945C30E200A}" ShortID="765933188">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Swimmiing Sound" ID="{F3E6B2D9-B08B-4877-B4A9-685D1686BB1F}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="1.84392"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.17818"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swimmiing Sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="74530386"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Swimmiing Sound" ID="{F3E6B2D9-B08B-4877-B4A9-685D1686BB1F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swimmiing Sound_02" ID="{7A5B5100-CA9A-47AC-BF99-6DB1849DF827}" ShortID="141618992">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Swimmiing Sound" ID="{1F91F5D7-C7CA-41D0-8F48-48D08A2E8B86}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="4.82565"/>
+														<Property Name="TrimEnd" Type="Real64" Value="6.39535"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swimmiing Sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1044338875"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Swimmiing Sound" ID="{1F91F5D7-C7CA-41D0-8F48-48D08A2E8B86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swimmiing Sound_01" ID="{214AE350-4DE8-4C8E-A517-AD48DA28C6E2}" ShortID="254236819">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Swimmiing Sound" ID="{33E8A54A-AC66-4B8B-A0C7-A9D781806404}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="3.21698"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.78678"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swimmiing Sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="622717943"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Swimmiing Sound" ID="{33E8A54A-AC66-4B8B-A0C7-A9D781806404}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swimmiing Sound_03" ID="{CD5C5CE4-3229-4021-8A68-6E3AAB1D0A58}" ShortID="1036742486">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Swimmiing Sound" ID="{5F273D44-2017-4CBE-8049-8556C50A3E9C}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="6.47342"/>
+														<Property Name="TrimEnd" Type="Real64" Value="8.20023"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swimmiing Sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="820935358"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Swimmiing Sound" ID="{5F273D44-2017-4CBE-8049-8556C50A3E9C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swimmiing Sound_04" ID="{AECAAA6B-A0FF-44D9-A9D7-37E32295E167}" ShortID="475871859">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-30</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Swimmiing Sound" ID="{65C1A9FB-4681-4004-A9B0-F823E017717D}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="8.12141"/>
+														<Property Name="TrimEnd" Type="Real64" Value="9.61257"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swimmiing Sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="114654307"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Swimmiing Sound" ID="{65C1A9FB-4681-4004-A9B0-F823E017717D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{27647598-9116-42E3-9E89-9354BA7388F6}" ShortID="185668168">
@@ -3659,6 +3890,11 @@
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -3751,6 +3987,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Explore_Music6" ID="{8D5AEE27-4179-4B60-8EB4-F6CEBB149486}" ShortID="23722538">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>42</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
@@ -3831,6 +4074,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Explore_Music7" ID="{8EE76751-CD6B-4205-83E5-D8042FE64BE5}" ShortID="272196091">
+											<PropertyList>
+												<Property Name="Weight" Type="Real64">
+													<ValueList>
+														<Value>25</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
