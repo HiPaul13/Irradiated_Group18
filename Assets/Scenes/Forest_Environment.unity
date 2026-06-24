@@ -993,7 +993,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 823253074}
-  - {fileID: 833964014}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321454220 stripped
@@ -3879,68 +3878,6 @@ MonoBehaviour:
   maxFilmGrain: 0.7
   minSaturation: -40
   maxContrast: 30
---- !u!1001 &833964013
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 290372253}
-    m_Modifications:
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -513.669
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.323
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -709.809
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9993603
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.03576444
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -4.099
-      objectReference: {fileID: 0}
-    - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3941218568427163607, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-      propertyPath: m_Name
-      value: Toilet Variant Variant 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
---- !u!4 &833964014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
-  m_PrefabInstance: {fileID: 833964013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &852220493
 GameObject:
   m_ObjectHideFlags: 0
