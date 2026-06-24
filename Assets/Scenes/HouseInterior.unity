@@ -971,207 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BookInteractable
   bookText: 
   pages:
-  - text: 'March 15
-
-      Billy has always been a strange child.
-
-      Not strange
-      in a bad way. Curious. Imaginative.
-
-      He refuses to go near the old castle
-      in the center of the forest. He says something watches him from the broken
-      windows. Every time we pass it, he hides behind me and keeps his eyes on the
-      ground.
-
-      He is also terrified of the house we live in. The same house
-      he has lived for 2 years now.
-
-      He claims the walls whisper at night.
-
-      The
-      visitor''s hut is even worse. He refuses to enter it unless I go first.
-
-      And
-      the toilets around the reserve... Billy says they smell so terrible that monsters
-      must live inside them.
-
-      I always laughed at these fears.'
-    image: {fileID: 0}
-  - text: "April 28\r\nMy research is progressing faster than expected.\r\nRadiation
-      levels remain stable according to my calculations.\r\nThe authorities abandoned
-      this region years ago because they believed it was too dangerous. They were
-      wrong.\r\nI know this place better than anyone.\r\nBilly and I can live here
-      safely.\r\r\n\r\n"
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'May 2
-
-      I was wrong.
-
-      God forgive me.
-
-      I was wrong.
-
-      An
-      underground pocket of concentrated radiation ruptured without warning.
-
-      Billy
-      was nearby when it happened.
-
-      The exposure should have killed him instantly.
-
-      Instead,
-      he survived.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'May 10
-
-      The changes have begun.
-
-      His arms are longer.
-
-      His
-      bones are growing at impossible rates.
-
-      His skin feels hard and uneven.
-
-      I
-      tell him everything will be okay.
-
-      He believes me.
-
-      I do not believe
-      it.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'May 22
-
-      Billy asked me today if he was becoming a monster.
-
-      I
-      couldn''t answer.
-
-      What kind of father can answer a question like that?'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'June 4
-
-      I can no longer stay near him.
-
-      The mutations have
-      become unpredictable.
-
-      When frightened, he loses control of his strength.
-
-      Yesterday
-      he shattered a steel door without realizing it.
-
-      He cried afterward.
-
-      He
-      did not mean to do it.
-
-      He is still Billy inside.
-
-      But his body
-      is becoming something else.
-
-      For both our safety, I left him in the forest.
-
-      It
-      was the hardest decision I have ever made.
-
-      Now I monitor him from outside
-      the contaminated zone.
-
-      I watch from a distance.
-
-      A father reduced
-      to a spectator.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'June 19
-
-      Billy has adapted to the forest.
-
-      He avoids places
-      that frightened him before.
-
-      The old castle remains untouched.
-
-      The
-      visitor''s hut remains empty.
-
-      Even now, after everything he has become,
-      he still refuses to approach the toilets scattered around the reserve.
-
-      I
-      watched him smell one from nearly fifty meters away before running in the opposite
-      direction.
-
-      Part of me laughed.
-
-      Part of me cried.
-
-      Because
-      that tiny habit reminded me that somewhere beneath the mutations, my son still
-      exists.
-
-
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'July 2
-
-      The animals are gone.
-
-      Every last one of them.
-
-      The
-      radiation killed the ecosystem days ago.
-
-      Billy has nothing left to hunt.
-
-      His
-      hunger is becoming unbearable.
-
-      I can see him growing weaker.
-
-      More
-      desperate.
-
-      More aggressive.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'July 11
-
-      Today I discovered something remarkable.
-
-      Hidden
-      among old research documents was a formula.
-
-      A serum capable of protecting
-      humans from radiation exposure for a limited time.
-
-      A cure? No.
-
-      But
-      a shield.
-
-      A temporary one.
-
-      Enough for someone to enter the forest
-      unharmed.
-
-      Enough for someone to survive long enough.
-
-
-
-'
-    image: {fileID: 0}
-  - text: "To prepare the mixture, gather the following ingredients...\r\r\n"
+  - text: "To prepare the potion against radiation, gather the following ingredients...\r\r\n"
     image: {fileID: 0}
   - text: 'Aylostera: harmless red rose with no spikes, known for its pure and gentle
       nature.'
@@ -1180,97 +980,67 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: b50d0297f4b184d45b8eef84f4713b6c, type: 3}
   - text: 'Mycena Radii Custos: rare mushroom believed to protect the body from radiation.'
     image: {fileID: 21300000, guid: 8c32b913d07d57c478e7fc3768e54931, type: 3}
-  - text: 'July 23
-
-      Billy attacked a trespasser.
-
-      The man never saw him
-      coming.
-
-      I watched through the cameras.
-
-      I wanted to look away.
-
-      I
-      couldn''t.
-
-      Billy was fed, finally.
-
-      And afterward, he sat alone
-      for hours.
-
-      Motionless.
-
-      As if he understood exactly what he had
-      done.
-
-
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'August 5
-
-      I have begun inviting people into the forest.
-
-      Explorers.
-
-      Treasure
-      hunters.
-
-      Researchers.
-
-      Urban legends attract curious minds.
-
-      The
-      old castle.
-
-      The haunted house.
-
-      The abandoned reserve.
-
-      People
-      come willingly.
-
-      I don''t provide them with the serum.
-
-      I tell
-      them  radiation is close to none and that it is really safe to go in.
-
-      Even
-      if they would knew the truth, radiation is not the greatest danger in these
-      woods.
-
-      My... My son is.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: 'August 27
-
-      The guilt grows heavier with every passing day.
-
-      Every
-      visitor buys Billy more time.
-
-      Every visitor is another stain on my conscience.
-
-      I
-      tell myself I am doing this for my son.
-
-      I tell myself any father would
-      do the same.
-
-      But I no longer know whether I am trying to save Billy...
-
-      ...or
-      simply delay the moment I lose him forever.
-
-'
-    image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
-  - text: "September 3\r\nIf anyone finds this diary, then either I succeeded...\r\nor
-      I failed.\r\nSomewhere deep within this forest lives a creature feared by every
-      soul who enters.\r\nA monster.\r\nA nightmare.\r\nA predator.\r\nBut before
-      any of that, he was a little boy who feared haunted castles, old houses, visitor
-      huts, and smelly toilets.\r\nHis name is Billy.\r\r\n"
+  - text: "Personal Diary of Dr. Arthur Hale\r\nMarch 15\r\nBilly has always been
+      a strange child.\r\nNot strange in a bad way. Curious. Imaginative.\r\nHe refuses
+      to go near the old castle in the center of the forest. He says something watches
+      him from the broken windows. Every time we pass it, he hides behind me and
+      keeps his eyes on the ground.\r\nHe is also terrified of the house we live
+      in. The same house he is afterwards playing in.\r\nHe claims the walls whisper
+      at night.\r\nThe visitor's hut is even worse. He refuses to enter it unless
+      I go first.\r\nAnd the toilets around the reserve... Billy says they smell
+      so terrible that monsters must live inside them.\r\nI always laughed at these
+      fears.\r\n\r\nApril 28\r\nMy research is progressing faster than expected.\r\nRadiation
+      levels remain stable according to my calculations.\r\nThe authorities abandoned
+      this region years ago because they believed it was too dangerous. They were
+      wrong.\r\nI know this place better than anyone.\r\nBilly and I can live here
+      safely.\r\n\r\nMay 2\r\nI was wrong.\r\nGod forgive me.\r\nI was wrong.\r\nAn
+      underground pocket of concentrated radiation ruptured without warning.\r\nBilly
+      was nearby when it happened.\r\nThe exposure should have killed him instantly.\r\nInstead,
+      he survived.\r\n\r\nMay 10\r\nThe changes have begun.\r\nHis arms are longer.\r\nHis
+      bones are growing at impossible rates.\r\nHis skin feels hard and uneven.\r\nI
+      tell him everything will be okay.\r\nHe believes me.\r\nI do not believe in
+      myself.\r\n\r\nMay 22\r\nBilly asked me today if he was becoming a monster.\r\nI
+      couldn't answer.\r\nWhat kind of father can answer a question like that?\r\n\r\nJune
+      4\r\nI can no longer stay near him.\r\nThe mutations have become unpredictable.\r\nWhen
+      frightened, he loses control of his strength.\r\nYesterday he shattered a door
+      without realizing it.\r\nHe cried afterward.\r\nHe did not mean to do it.\r\nHe
+      is still Billy inside.\r\nBut his body is becoming something else.\r\nFor both
+      our safety, I left him in the forest.\r\nIt was the hardest decision I have
+      ever made.\r\nNow I monitor him from outside the contaminated zone.\r\nI watch
+      from a distance.\r\nA father reduced to a spectator.\r\n\r\nJune 19\r\nBilly
+      has adapted to the forest.\r\nHe avoids places that frightened him before.\r\nThe
+      old castle remains untouched.\r\nThe visitor's hut remains empty.\r\nEven now,
+      after everything he has become, he still refuses to approach the toilets scattered
+      around the reserve.\r\nI watched him smell one from nearly fifty meters away
+      before running in the opposite direction.\r\nPart of me laughed.\r\nPart of
+      me cried.\r\nBecause that tiny habit reminded me that somewhere beneath the
+      mutations, my son still exists.\r\n\r\nJuly 2\r\nThe animals are gone.\r\nEvery
+      last one of them.\r\nThe radiation killed the ecosystem days ago.\r\nBilly
+      has nothing left to hunt.\r\nHis hunger is becoming unbearable.\r\nI can see
+      him growing weaker.\r\nMore desperate.\r\nMore aggressive.\r\n\r\nJuly 11\r\nToday
+      I discovered something remarkable.\r\nHidden among old research documents was
+      a formula.\r\nA serum capable of protecting humans from radiation exposure
+      for a limited time.\r\nA cure? No.\r\nBut a shield.\r\nA temporary one.\r\nEnough
+      for someone to enter the forest unharmed.\r\nEnough for someone to survive
+      long enough.\r\n\r\nJuly 23\r\nBilly attacked a trespasser.\r\nThe man never
+      saw him coming.\r\nI watched through the cameras.\r\nI wanted to look away.\r\nI
+      couldn't.\r\nBilly fed.\r\nAnd afterward, he sat alone for hours.\r\nMotionless.\r\nAs
+      if he understood exactly what he had done.\r\n\r\nAugust 5\r\nI have begun
+      inviting people into the forest.\r\nExplorers.\r\nTreasure hunters.\r\nResearchers.\r\nUrban
+      legends attract curious minds.\r\nThe old castle.\r\nThe haunted house.\r\nPeople
+      come willingly.\r\nI don\u2019t provide them with the serum.\r\nI tell them
+      there is no radiation.\r\nThat part is true.\r\nWhat I do not tell them is
+      that radiation is not the greatest danger in these woods.\r\nMy son is.\r\n\r\nAugust
+      27\r\nThe guilt grows heavier with every passing day.\r\nEvery visitor buys
+      Billy more time.\r\nEvery visitor is another stain on my conscience.\r\nI tell
+      myself I am doing this for my son.\r\nI tell myself any father would do the
+      same.\r\nBut I no longer know whether I am trying to save Billy...\r\n...or
+      simply delay the moment I lose him forever.\r\n\r\nSeptember 3\r\nIf anyone
+      finds this diary, then either I succeeded...\r\nor I failed.\r\nSomewhere deep
+      within this forest lives a creature feared by every soul who enters.\r\nA monster.\r\nA
+      nightmare.\r\nA predator.\r\nBut before any of that, he was a little boy who
+      feared haunted castles, old houses, visitor huts, and smelly toilets.\r\nHis
+      name is Billy.\r\nAnd this is all my fault.\r\n\r\n"
     image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
   promptText: Press E to read
   interactionRadius: 2
@@ -2075,7 +1845,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 1.12, z: 0}
 --- !u!114 &728189701
 MonoBehaviour:
@@ -3824,7 +3594,7 @@ Transform:
   m_GameObject: {fileID: 1300000017}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 3.99, z: 4.342}
+  m_LocalPosition: {x: -0.05, y: 3.99, z: 4.32}
   m_LocalScale: {x: 1, y: 1.2361, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
