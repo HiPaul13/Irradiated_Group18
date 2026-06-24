@@ -6,11 +6,8 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
     [Header("Recipes")]
     public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
-    private void Start()
-    {
-        // If the potion was already brewed in a previous session, nothing to do.
-        // Deposited state is stored in GameProgressManager and persists automatically.
-    }
+    // Used when GameProgressManager is not in the scene (e.g. playing HouseInterior directly).
+    private readonly HashSet<string> localDepositedIngredients = new HashSet<string>();
 
     public void Interact(PlayerInteraction playerInteraction)
     {
@@ -26,19 +23,18 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
         {
             if (recipe == null) continue;
 
-            // If all ingredients are already deposited, craft the result.
-            if (AllDeposited(recipe))
+            // Always try to deposit first — one plant per press.
+            if (TryDepositOne(recipe, inventory))
+                return;
+
+            // Craft only when everything is in the cauldron and not still in the bag.
+            if (AllDeposited(recipe) && !PlayerCarriesRecipeIngredient(recipe, inventory))
             {
                 Craft(recipe, inventory);
                 return;
             }
-
-            // Try to deposit one ingredient the player is currently carrying.
-            if (TryDepositOne(recipe, inventory))
-                return;
         }
 
-        // Nothing could be deposited — tell the player what is still needed.
         foreach (CraftingRecipe recipe in recipes)
         {
             if (recipe == null) continue;
@@ -46,60 +42,43 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
         }
     }
 
-    // ── Helpers ──────────────────────────────────────────────────────────────
-
-    /// <summary>Returns true if every required ingredient has been deposited into the cauldron.</summary>
     private bool AllDeposited(CraftingRecipe recipe)
     {
-        if (GameProgressManager.Instance == null) return false;
-
         foreach (ItemData req in recipe.requiredItems)
         {
             if (req == null) continue;
-            if (!GameProgressManager.Instance.DepositedIngredients.Contains(req.itemID))
+            if (!IsIngredientDeposited(req.itemID))
                 return false;
         }
 
         return true;
     }
 
-    /// <summary>
-    /// Looks for the first required ingredient that is in the player's inventory
-    /// but not yet deposited. Removes it from inventory and registers it as deposited.
-    /// Returns true if something was deposited.
-    /// </summary>
     private bool TryDepositOne(CraftingRecipe recipe, HotbarInventory inventory)
     {
-        if (GameProgressManager.Instance == null) return false;
-
         foreach (ItemData req in recipe.requiredItems)
         {
             if (req == null) continue;
 
-            bool alreadyDeposited = GameProgressManager.Instance.DepositedIngredients.Contains(req.itemID);
-            if (alreadyDeposited) continue;
+            if (!inventory.HasItem(req.itemID))
+                continue;
 
-            if (!inventory.HasItem(req.itemID)) continue;
+            // Stale progress: marked deposited but player still carries the plant.
+            if (IsIngredientDeposited(req.itemID))
+                ClearIngredientDeposited(req.itemID);
 
-            // Found one — take it from the player and register it.
             inventory.RemoveItem(req.itemID);
-            GameProgressManager.Instance.NotifyIngredientDeposited(req.itemID);
+            NotifyIngredientDeposited(req.itemID);
 
-            int deposited = GameProgressManager.Instance.DepositedIngredients.Count;
-            int needed    = recipe.requiredItems.Count;
+            int deposited = GetDepositedCount();
+            int needed = recipe.requiredItems.Count;
 
-            Debug.Log($"[Cauldron] Deposited '{req.itemName}'. " +
-                      $"({deposited}/{needed} ingredients in cauldron)");
+            Debug.Log($"[Cauldron] Deposited '{req.itemName}'. ({deposited}/{needed} ingredients in cauldron)");
 
-            // If that was the last one, craft immediately.
-            if (AllDeposited(recipe))
-            {
+            if (AllDeposited(recipe) && !PlayerCarriesRecipeIngredient(recipe, inventory))
                 Craft(recipe, inventory);
-            }
             else
-            {
                 Debug.Log($"[Cauldron] {needed - deposited} more ingredient(s) needed.");
-            }
 
             return true;
         }
@@ -115,36 +94,100 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
             return;
         }
 
+        if (recipe.resultItem != null && inventory.HasItem(recipe.resultItem.itemID))
+        {
+            Debug.Log("[Cauldron] You already have the crafted potion.");
+            return;
+        }
+
         inventory.AddItem(recipe.resultItem);
         Debug.Log($"[Cauldron] Crafted: {recipe.resultItem.itemName}!");
 
-        if (GameProgressManager.Instance != null && recipe.resultItem != null)
-            GameProgressManager.Instance.NotifyPotionBrewed(recipe.resultItem.itemID);
+        if (recipe.resultItem != null)
+            NotifyPotionBrewed(recipe.resultItem.itemID);
+
+        CauldronIngredientDisplay display = GetComponent<CauldronIngredientDisplay>();
+        if (display != null)
+            display.ShowPotionReadyMessage();
+    }
+
+    private static bool PlayerCarriesRecipeIngredient(CraftingRecipe recipe, HotbarInventory inventory)
+    {
+        foreach (ItemData req in recipe.requiredItems)
+        {
+            if (req != null && inventory.HasItem(req.itemID))
+                return true;
+        }
+
+        return false;
     }
 
     private void PrintMissing(CraftingRecipe recipe, HotbarInventory inventory)
     {
-        List<string> notDeposited = new List<string>();
-        List<string> notCarried   = new List<string>();
+        List<string> notCarried = new List<string>();
 
         foreach (ItemData req in recipe.requiredItems)
         {
             if (req == null) continue;
-            if (GameProgressManager.Instance != null &&
-                GameProgressManager.Instance.DepositedIngredients.Contains(req.itemID))
-                continue; // already in cauldron
+            if (IsIngredientDeposited(req.itemID))
+                continue;
 
-            if (inventory.HasItem(req.itemID))
-                notDeposited.Add(req.itemName); // has it but something went wrong
-            else
-                notCarried.Add(req.itemName);   // doesn't have it yet
+            if (!inventory.HasItem(req.itemID))
+                notCarried.Add(req.itemName);
         }
 
         if (notCarried.Count > 0)
             Debug.Log($"[Cauldron] Still need to find: {string.Join(", ", notCarried)}");
-        if (notDeposited.Count > 0)
-            Debug.Log($"[Cauldron] In inventory but not yet deposited: {string.Join(", ", notDeposited)}");
+    }
+
+    private bool IsIngredientDeposited(string itemID)
+    {
+        if (GameProgressManager.Instance != null)
+            return GameProgressManager.Instance.DepositedIngredients.Contains(itemID);
+
+        return localDepositedIngredients.Contains(itemID);
+    }
+
+    private void NotifyIngredientDeposited(string itemID)
+    {
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.NotifyIngredientDeposited(itemID);
+        else
+            localDepositedIngredients.Add(itemID);
+    }
+
+    private void ClearIngredientDeposited(string itemID)
+    {
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.ClearIngredientDeposited(itemID);
+        else
+            localDepositedIngredients.Remove(itemID);
+    }
+
+    private void NotifyPotionBrewed(string resultItemID)
+    {
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.NotifyPotionBrewed(resultItemID);
+    }
+
+    private int GetDepositedCount()
+    {
+        if (GameProgressManager.Instance != null)
+            return GameProgressManager.Instance.DepositedIngredients.Count;
+
+        return localDepositedIngredients.Count;
     }
 
     public string GetInteractionText() => "Press F to use cauldron";
+
+    public CraftingRecipe GetPrimaryRecipe()
+    {
+        foreach (CraftingRecipe recipe in recipes)
+        {
+            if (recipe != null)
+                return recipe;
+        }
+
+        return null;
+    }
 }

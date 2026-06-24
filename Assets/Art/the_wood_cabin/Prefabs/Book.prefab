@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: -6763858364670572316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.0005737768, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -0.9159852, y: 44.218792, z: -31.143742}
+  m_LocalPosition: {x: 1.75, y: 15.95, z: -20.64}
   m_LocalScale: {x: 0.022910407, y: 0.022910409, z: 0.022910407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: -2045257923548263128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.0005737768, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -1.2317287, y: 44.02937, z: -30.587856}
+  m_LocalPosition: {x: 1.4342567, y: 15.760577, z: -20.084114}
   m_LocalScale: {x: 0.022910407, y: 0.022910409, z: 0.022910407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: -8679921383154817045}
   - component: {fileID: 8827467157}
+  - component: {fileID: 6767909091892732827}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -229,7 +230,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookInteractable
   bookText: This text will be defined later.
+  pages: []
   promptText: Press E to read
+  interactionRadius: 0.45
+--- !u!135 &6767909091892732827
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149155446097}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.45
+  m_Center: {x: 1.4592984, y: 15.847376, z: -20.08411}
 --- !u!1 &8009987137999418058
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 8009987137999418058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.0005737768, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -0.86394614, y: 44.202686, z: -30.587437}
+  m_LocalPosition: {x: 1.8020391, y: 15.933894, z: -20.083694}
   m_LocalScale: {x: 0.012151238, y: 0.0121512385, z: 0.012151238}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 8485173162082002552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.00057358295, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -1.2317287, y: 44.11613, z: -30.587856}
+  m_LocalPosition: {x: 1.4342567, y: 15.847339, z: -20.084114}
   m_LocalScale: {x: 0.045144923, y: 0.045144923, z: 0.045144923}
   m_ConstrainProportionsScale: 0
   m_Children: []

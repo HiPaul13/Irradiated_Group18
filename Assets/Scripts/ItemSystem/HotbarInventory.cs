@@ -105,16 +105,18 @@ public class HotbarInventory : MonoBehaviour
 
     private void RefreshUI()
     {
+        if (slotUIs == null)
+            return;
+
         for (int i = 0; i < slotUIs.Length; i++)
         {
+            if (slotUIs[i] == null)
+                continue;
+
             if (i < items.Count)
-            {
                 slotUIs[i].SetItem(items[i]);
-            }
             else
-            {
                 slotUIs[i].ClearSlot();
-            }
         }
     }
 }
