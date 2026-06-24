@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A9E9C482-5518-45FC-B19A-947A61A26A67}" SchemaVersion="133">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{A9E9C482-5518-45FC-B19A-947A61A26A67}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A9E9C482-5518-45FC-B19A-947A61A26A67}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{6F68E3C2-8C02-406C-A474-253CA4E7040F}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Monster" ID="{B0159342-39AD-4102-98D9-B15F8873FB14}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player" ID="{2E55554B-A292-430D-9A84-D912F6D56CEB}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stingers" ID="{EC89ADEB-2C98-4783-B6A5-470B98B864E6}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Ambience" ID="{89136D74-86A9-49CC-9175-F2106569FF21}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Music" ID="{94E0DA49-FD01-4B4D-83F1-85A8DE3EF052}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
