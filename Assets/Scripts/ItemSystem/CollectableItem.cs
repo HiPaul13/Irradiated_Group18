@@ -19,6 +19,11 @@ public class CollectableItem : MonoBehaviour, IInteractable
     [Tooltip("Unique persistent ID for this pickup. Never leave two items with the same saveID.")]
     public string saveID = "";
 
+    [Header("Pickup Message")]
+    [TextArea(2, 4)]
+    [SerializeField] private string pickupMessage;
+    [SerializeField] private float pickupMessageDuration = 3f;
+
     private void Start()
     {
         // Self-destruct if already collected in a previous session or after a load.
@@ -49,6 +54,15 @@ public class CollectableItem : MonoBehaviour, IInteractable
         bool added = inventory.AddItem(itemData);
 
         if (!added) return;
+
+        if (SubtitleManager.Instance != null &&
+        !string.IsNullOrWhiteSpace(pickupMessage))
+        {
+            SubtitleManager.Instance.ShowText(
+                pickupMessage,
+                pickupMessageDuration
+            );
+        }
 
         // Tell the progress tracker about this item.
         if (GameProgressManager.Instance != null)
