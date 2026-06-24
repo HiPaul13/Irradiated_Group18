@@ -7,7 +7,8 @@ public class Monster_Movement : MonoBehaviour
     public enum MonsterState
     {
         Patrol,
-        Investigate,
+        PostTeleportPursuit, // short directed movement after teleport, before player detection
+        Investigate,         // random area roaming inside an AreaSafeZone ONLY
         Chase,
         ReturnToPatrol
     }
@@ -15,7 +16,7 @@ public class Monster_Movement : MonoBehaviour
     /// <summary>What the monster does immediately after a teleport.</summary>
     public enum PostTeleportBehavior
     {
-        Investigate,
+        PursueEntryDirection, // move toward where the player was heading when they entered the zone
         Chase,
         ReturnToPatrol
     }
@@ -94,6 +95,9 @@ public class Monster_Movement : MonoBehaviour
     private float activeEscapeZoneMinDanger;
 
     private bool  isLostPlayerInvestigation;
+
+    // Post-teleport pursuit
+    private Vector3 postTeleportPursuitTarget;
 
     // Area investigation (castle / house / barn roaming)
     private bool     isAreaInvestigating;
@@ -195,10 +199,11 @@ public class Monster_Movement : MonoBehaviour
 
         switch (state)
         {
-            case MonsterState.Patrol:         UpdatePatrol();         break;
-            case MonsterState.Investigate:    UpdateInvestigate();    break;
-            case MonsterState.Chase:          UpdateChase();          break;
-            case MonsterState.ReturnToPatrol: UpdateReturnToPatrol(); break;
+            case MonsterState.Patrol:              UpdatePatrol();              break;
+            case MonsterState.PostTeleportPursuit: UpdatePostTeleportPursuit(); break;
+            case MonsterState.Investigate:         UpdateInvestigate();         break;
+            case MonsterState.Chase:               UpdateChase();               break;
+            case MonsterState.ReturnToPatrol:      UpdateReturnToPatrol();      break;
         }
     }
 
@@ -216,6 +221,25 @@ public class Monster_Movement : MonoBehaviour
         {
             waitTimer += Time.deltaTime;
             if (waitTimer >= patrolWaitTime) { waitTimer = 0f; GoToNextPatrolPoint(); }
+        }
+    }
+
+    private void UpdatePostTeleportPursuit()
+    {
+        // Cabin safe zone overrides everything
+        if (playerInSafeArea) { SetState(MonsterState.ReturnToPatrol); return; }
+        // AreaSafeZone protection: StartAreaInvestigation() will override our state imminently
+        if (playerProtected)  { return; }
+
+        agent.isStopped        = false;
+        agent.speed            = chaseSpeed;
+        agent.stoppingDistance = 1f;
+
+        // Destination was set once in StartPostTeleportPursuit — just wait for arrival
+        if (!agent.pathPending && agent.remainingDistance <= investigateReachedDistance)
+        {
+            Debug.Log("[Monster] Post-teleport pursuit target reached. Returning to patrol.");
+            SetState(MonsterState.ReturnToPatrol);
         }
     }
 
@@ -396,10 +420,9 @@ public class Monster_Movement : MonoBehaviour
 
         switch (behavior)
         {
-            case PostTeleportBehavior.Investigate:
-                Vector3 target = (investigatePoint != default) ? investigatePoint
-                                 : (player != null ? player.position : hit.position);
-                SetInvestigateTarget(target);
+            case PostTeleportBehavior.PursueEntryDirection:
+                // Caller should use TeleportAndPursue() for this — set a neutral state here
+                SetState(MonsterState.ReturnToPatrol);
                 break;
 
             case PostTeleportBehavior.Chase:
@@ -414,6 +437,62 @@ public class Monster_Movement : MonoBehaviour
 
         Debug.Log($"[Monster] Teleported to {hit.position:F1}  behaviour: {behavior}");
         return true;
+    }
+
+    /// <summary>
+    /// Warps the monster to worldPosition and immediately starts pursuit toward pursuitTarget.
+    /// Use this for all trigger-zone and forest-timer teleports.
+    /// </summary>
+    public bool TeleportAndPursue(Vector3 worldPosition, Vector3 pursuitTarget)
+    {
+        if (agent == null || !agent.isOnNavMesh)
+        {
+            Debug.LogWarning("[Monster] TeleportAndPursue: agent not on NavMesh.");
+            return false;
+        }
+
+        if (!NavMesh.SamplePosition(worldPosition, out NavMeshHit hit, 5f, NavMesh.AllAreas))
+        {
+            Debug.LogWarning($"[Monster] TeleportAndPursue: no NavMesh near {worldPosition:F1}.");
+            return false;
+        }
+
+        agent.Warp(hit.position);
+        agent.isStopped = false;
+        isAttacking     = false;
+        StopAreaInvestigation();
+
+        StartPostTeleportPursuit(pursuitTarget);
+
+        Debug.Log($"[Monster] TeleportAndPursue: warped to {hit.position:F1} → pursuing {pursuitTarget:F1}");
+        return true;
+    }
+
+    /// <summary>
+    /// Puts the monster into PostTeleportPursuit state, navigating toward targetPosition
+    /// at chase speed. Automatically transitions to Chase if the player is detected,
+    /// or to ReturnToPatrol when the target is reached.
+    /// </summary>
+    public void StartPostTeleportPursuit(Vector3 targetPosition)
+    {
+        if (playerInSafeArea || playerProtected) return;
+
+        postTeleportPursuitTarget = targetPosition;
+        StopAreaInvestigation();
+        hasInvestigateTarget      = false;
+        isAttacking               = false;
+
+        SetState(MonsterState.PostTeleportPursuit);
+
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.isStopped        = false;
+            agent.speed            = chaseSpeed;
+            agent.stoppingDistance = 1f;
+            agent.SetDestination(targetPosition);
+        }
+
+        Debug.Log($"[Monster] Post-teleport pursuit → {targetPosition:F1}");
     }
 
     // ── Public API — MonsterEscapeZone ───────────────────────────────────────
@@ -632,11 +711,12 @@ public class Monster_Movement : MonoBehaviour
     {
         switch (state)
         {
-            case MonsterState.Patrol:         return patrolDetectionRange;
-            case MonsterState.Investigate:    return investigateDetectionRange;
-            case MonsterState.Chase:          return chaseRange;
-            case MonsterState.ReturnToPatrol: return patrolDetectionRange;
-            default:                          return chaseRange;
+            case MonsterState.Patrol:              return patrolDetectionRange;
+            case MonsterState.PostTeleportPursuit: return chaseRange;
+            case MonsterState.Investigate:         return investigateDetectionRange;
+            case MonsterState.Chase:               return chaseRange;
+            case MonsterState.ReturnToPatrol:      return patrolDetectionRange;
+            default:                               return chaseRange;
         }
     }
 
