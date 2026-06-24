@@ -37,7 +37,8 @@ public class GameProgressManager : MonoBehaviour
 
     // ── Runtime state ────────────────────────────────────────────────────────
 
-    private HashSet<string> collectedIngredientIDs = new HashSet<string>();
+    private HashSet<string> collectedIngredientIDs  = new HashSet<string>();
+    private HashSet<string> depositedIngredientIDs  = new HashSet<string>(); // put into cauldron
     private bool            potionBrewed            = false;
     private HashSet<string> collectedCarPartIDs     = new HashSet<string>();
     private HashSet<string> insertedCarPartIDs      = new HashSet<string>();
@@ -47,12 +48,13 @@ public class GameProgressManager : MonoBehaviour
 
     // ── Public read-only accessors (used by SaveGameManager) ─────────────────
 
-    public GameProgressStage CurrentStage         => currentStage;
-    public bool              IsPotionBrewed       => potionBrewed;
-    public bool              IsCarRepaired        => carRepaired;
-    public HashSet<string>   CollectedIngredients => collectedIngredientIDs;
-    public HashSet<string>   CollectedCarParts    => collectedCarPartIDs;
-    public HashSet<string>   InsertedCarParts     => insertedCarPartIDs;
+    public GameProgressStage CurrentStage          => currentStage;
+    public bool              IsPotionBrewed        => potionBrewed;
+    public bool              IsCarRepaired         => carRepaired;
+    public HashSet<string>   CollectedIngredients  => collectedIngredientIDs;
+    public HashSet<string>   DepositedIngredients  => depositedIngredientIDs;
+    public HashSet<string>   CollectedCarParts     => collectedCarPartIDs;
+    public HashSet<string>   InsertedCarParts      => insertedCarPartIDs;
 
     // ── Lifecycle ────────────────────────────────────────────────────────────
 
@@ -87,6 +89,14 @@ public class GameProgressManager : MonoBehaviour
         RecalculateStage();
     }
 
+    /// <summary>Called by CauldronCraftingStation when one ingredient is deposited into the cauldron.</summary>
+    public void NotifyIngredientDeposited(string itemID)
+    {
+        depositedIngredientIDs.Add(itemID);
+        Debug.Log($"[Progress] Ingredient deposited into cauldron: {itemID}  ({depositedIngredientIDs.Count} in cauldron)");
+        RecalculateStage();
+    }
+
     /// <summary>Called by CauldronCraftingStation after a successful craft.</summary>
     public void NotifyPotionBrewed(string resultItemID)
     {
@@ -118,14 +128,28 @@ public class GameProgressManager : MonoBehaviour
     /// <summary>Restores state from a GameSaveData object loaded by SaveGameManager.</summary>
     public void LoadState(GameSaveData data)
     {
-        collectedIngredientIDs = new HashSet<string>(data.collectedIngredientIDs ?? new List<string>());
+        collectedIngredientIDs = new HashSet<string>(data.collectedIngredientIDs  ?? new List<string>());
+        depositedIngredientIDs = new HashSet<string>(data.depositedIngredientIDs ?? new List<string>());
         potionBrewed           = data.potionBrewed;
-        collectedCarPartIDs    = new HashSet<string>(data.collectedCarPartIDs ?? new List<string>());
-        insertedCarPartIDs     = new HashSet<string>(data.insertedCarPartIDs  ?? new List<string>());
+        collectedCarPartIDs    = new HashSet<string>(data.collectedCarPartIDs    ?? new List<string>());
+        insertedCarPartIDs     = new HashSet<string>(data.insertedCarPartIDs     ?? new List<string>());
         carRepaired            = data.carRepaired;
         currentStage           = (GameProgressStage)data.progressStage;
 
         Debug.Log($"[Progress] State loaded. Stage: {currentStage}");
+        OnStageChanged?.Invoke(currentStage);
+    }
+
+    // ── Debug / Testing ──────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Bypasses normal progression and directly sets the stage.
+    /// Only call from debug/testing code — does not update internal item state.
+    /// </summary>
+    public void ForceSetStage(GameProgressStage stage)
+    {
+        currentStage = stage;
+        Debug.Log($"[Progress] ForceSetStage → {stage}");
         OnStageChanged?.Invoke(currentStage);
     }
 

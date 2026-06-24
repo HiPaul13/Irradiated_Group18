@@ -26,7 +26,8 @@ public class GameSaveData
     /// <summary>Serialized as int so JsonUtility handles it correctly.</summary>
     public int progressStage;
 
-    public List<string> collectedIngredientIDs = new List<string>();
+    public List<string> collectedIngredientIDs  = new List<string>();
+    public List<string> depositedIngredientIDs  = new List<string>(); // ingredients put into cauldron
     public bool         potionBrewed;
     public List<string> collectedCarPartIDs    = new List<string>();
     public List<string> insertedCarPartIDs     = new List<string>();

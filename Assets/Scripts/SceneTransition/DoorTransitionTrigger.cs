@@ -26,6 +26,11 @@ public class DoorTransitionTrigger : MonoBehaviour
 
         SceneTransitionState.NextSpawnPointId = targetSpawnPointId;
         SceneTransitionState.IsTransitioning = true;
+
+        // Snapshot inventory so it survives into the new scene.
+        if (SaveGameManager.Instance != null)
+            SaveGameManager.Instance.SaveInventoryForTransition();
+
         SceneManager.LoadScene(targetSceneName);
     }
 
