@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a60d9ea9d54bb439a5bb269f7c435c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadiationUI
-  minimumAngle: -110
-  maximumAngle: 110
+  minimumAngle: -90
+  maximumAngle: 90
   needleSmoothTime: 0.18
   greenThreshold: 0.5
   orangeThreshold: 0.75

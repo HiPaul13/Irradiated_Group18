@@ -6,10 +6,10 @@ public class RadiationUI : MonoBehaviour
 {
     [Header("Needle Angles")]
     [Tooltip("Nadelwinkel bei 0 Prozent.")]
-    [SerializeField] private float minimumAngle = -110f;
+    [SerializeField] private float minimumAngle = -90f;
 
     [Tooltip("Nadelwinkel bei 100 Prozent.")]
-    [SerializeField] private float maximumAngle = 110f;
+    [SerializeField] private float maximumAngle = 90f;
 
     [Header("Needle Movement")]
     [Tooltip("Wie weich und träge die Nadel reagiert.")]
@@ -148,7 +148,6 @@ public class RadiationUI : MonoBehaviour
     private void ApplyGaugeVisuals(float normalizedValue)
     {
         RotateNeedle(normalizedValue);
-        UpdateNeedleColor(normalizedValue);
         UpdateDangerGlow(normalizedValue);
     }
 
@@ -168,26 +167,6 @@ public class RadiationUI : MonoBehaviour
             );
     }
 
-    private void UpdateNeedleColor(float normalizedValue)
-    {
-        if (needle == null)
-        {
-            return;
-        }
-
-        if (normalizedValue < greenThreshold)
-        {
-            needle.style.backgroundColor = greenColor;
-        }
-        else if (normalizedValue < orangeThreshold)
-        {
-            needle.style.backgroundColor = orangeColor;
-        }
-        else
-        {
-            needle.style.backgroundColor = redColor;
-        }
-    }
 
     private void UpdateDangerGlow(float normalizedValue)
     {
