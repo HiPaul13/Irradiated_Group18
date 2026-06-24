@@ -344,6 +344,9 @@ public class BookUIManager : MonoBehaviour
         bookScrollRect = scrollObject.AddComponent<ScrollRect>();
         bookScrollRect.horizontal = false;
         bookScrollRect.movementType = ScrollRect.MovementType.Clamped;
+        bookScrollRect.scrollSensitivity = 30f;
+        bookScrollRect.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.Permanent;
+        bookScrollRect.verticalScrollbarSpacing = 6f;
 
         GameObject viewportObject = new GameObject("Viewport");
         viewportObject.transform.SetParent(scrollObject.transform, false);
@@ -355,6 +358,9 @@ public class BookUIManager : MonoBehaviour
         viewportRect.offsetMax = Vector2.zero;
 
         viewportObject.AddComponent<RectMask2D>();
+
+        Scrollbar verticalScrollbar = CreateVerticalScrollbar(scrollObject.transform);
+        bookScrollRect.verticalScrollbar = verticalScrollbar;
 
         GameObject contentObject = new GameObject("Content");
         contentObject.transform.SetParent(viewportObject.transform, false);
@@ -381,6 +387,51 @@ public class BookUIManager : MonoBehaviour
 
         bookScrollRect.viewport = viewportRect;
         bookScrollRect.content = bookContentRoot;
+    }
+
+    private static Scrollbar CreateVerticalScrollbar(Transform parent)
+    {
+        GameObject scrollbarObject = new GameObject("Scrollbar Vertical");
+        scrollbarObject.transform.SetParent(parent, false);
+
+        RectTransform scrollbarRect = scrollbarObject.AddComponent<RectTransform>();
+        scrollbarRect.anchorMin = new Vector2(1f, 0f);
+        scrollbarRect.anchorMax = new Vector2(1f, 1f);
+        scrollbarRect.pivot = new Vector2(1f, 1f);
+        scrollbarRect.anchoredPosition = Vector2.zero;
+        scrollbarRect.sizeDelta = new Vector2(18f, 0f);
+
+        Image scrollbarBackground = scrollbarObject.AddComponent<Image>();
+        scrollbarBackground.color = new Color(0.12f, 0.1f, 0.08f, 0.9f);
+
+        Scrollbar scrollbar = scrollbarObject.AddComponent<Scrollbar>();
+        scrollbar.direction = Scrollbar.Direction.BottomToTop;
+
+        GameObject slidingAreaObject = new GameObject("Sliding Area");
+        slidingAreaObject.transform.SetParent(scrollbarObject.transform, false);
+
+        RectTransform slidingAreaRect = slidingAreaObject.AddComponent<RectTransform>();
+        slidingAreaRect.anchorMin = Vector2.zero;
+        slidingAreaRect.anchorMax = Vector2.one;
+        slidingAreaRect.offsetMin = new Vector2(3f, 6f);
+        slidingAreaRect.offsetMax = new Vector2(-3f, -6f);
+
+        GameObject handleObject = new GameObject("Handle");
+        handleObject.transform.SetParent(slidingAreaObject.transform, false);
+
+        RectTransform handleRect = handleObject.AddComponent<RectTransform>();
+        handleRect.anchorMin = Vector2.zero;
+        handleRect.anchorMax = Vector2.one;
+        handleRect.offsetMin = Vector2.zero;
+        handleRect.offsetMax = Vector2.zero;
+
+        Image handleImage = handleObject.AddComponent<Image>();
+        handleImage.color = new Color(0.5f, 0.42f, 0.32f, 1f);
+
+        scrollbar.handleRect = handleRect;
+        scrollbar.targetGraphic = handleImage;
+
+        return scrollbar;
     }
 
     private static void EnsureEventSystem()
