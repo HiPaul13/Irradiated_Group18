@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -221,6 +221,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4529bdda02e06ef49b01a39a546af564, type: 3}
   m_PrefabInstance: {fileID: 1961485495}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &146179688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146179689}
+  m_Layer: 0
+  m_Name: RoamCenter_Green_House
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146179689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146179688}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7094724, z: 0, w: 0.7047333}
+  m_LocalPosition: {x: 2.47, y: 7.78897, z: 7.51}
+  m_LocalScale: {x: 0.49999982, y: 0.5, z: 0.49999982}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1326777347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &151792017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1117672995101942364, guid: ac44ff323f78ad4499bffbc251f48558, type: 3}
@@ -510,10 +541,10 @@ MonoBehaviour:
   spawnSideSpread: 5
   navMeshSampleRadius: 5
   maxSpawnAttempts: 12
-  avoidPlayerFOV: 1
+  avoidPlayerFOV: 0
   playerFOVHalfAngle: 80
   forbiddenZones:
-  - {fileID: 959341830}
+  - {fileID: 675660591}
   - {fileID: 1587847691}
   - {fileID: 711388042}
   forestTeleportTime: 90
@@ -2810,7 +2841,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5831017995559834528, guid: 9a01ab0b4610caf489826c83f0d44b8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1682165818}
+    - targetCorrespondingSourceObject: {fileID: 5831017995559834528, guid: 9a01ab0b4610caf489826c83f0d44b8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 146179689}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5831017995560193924, guid: 9a01ab0b4610caf489826c83f0d44b8b, type: 3}
       insertIndex: -1
@@ -2862,10 +2899,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
   zoneName: Dumpyard
+  chaseIntoZoneDistance: 18
+  minimumEntryVelocity: 0.2
+  entryDirectionOverride: {fileID: 0}
   PostTeleportBehavior: 1
-  investigateForwardDistance: 8
-  investigatePointOverride: {fileID: 0}
-  linkedAreaSafeZone: {fileID: 0}
+  useSafeAreaLineSpawn: 0
+  linkedSafeAreaCollider: {fileID: 0}
+  safeAreaCenterOverride: {fileID: 0}
+  minSafeAreaSpawnDistance: 12
+  maxSafeAreaSpawnDistance: 24
+  safeAreaSideSpread: 4
+  ignoreFOVForThisZone: 1
   onlyFireOnce: 1
 --- !u!65 &711388042
 BoxCollider:
@@ -3322,15 +3366,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.265869
+      value: -360.9
       objectReference: {fileID: 0}
     - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29261017
+      value: 6.32
       objectReference: {fileID: 0}
     - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.756165
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3938255701852203425, guid: 56c056ab88295ff4a958a928066c8cbf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4266,10 +4310,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
   zoneName: Castle
+  chaseIntoZoneDistance: 18
+  minimumEntryVelocity: 0.2
+  entryDirectionOverride: {fileID: 0}
   PostTeleportBehavior: 0
-  investigateForwardDistance: 40
-  investigatePointOverride: {fileID: 0}
-  linkedAreaSafeZone: {fileID: 0}
+  useSafeAreaLineSpawn: 1
+  linkedSafeAreaCollider: {fileID: 1757499562}
+  safeAreaCenterOverride: {fileID: 0}
+  minSafeAreaSpawnDistance: 50
+  maxSafeAreaSpawnDistance: 60
+  safeAreaSideSpread: 10
+  ignoreFOVForThisZone: 0
   onlyFireOnce: 0
 --- !u!65 &959341830
 BoxCollider:
@@ -6435,6 +6486,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &1326777347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5831017995559834528, guid: 9a01ab0b4610caf489826c83f0d44b8b, type: 3}
+  m_PrefabInstance: {fileID: 700714669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328078212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7588002879438041182, guid: 670fce027944f8148a4a77ea30c0eca9, type: 3}
@@ -7322,10 +7378,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleportTriggerZone
   zoneName: Lake
+  chaseIntoZoneDistance: 18
+  minimumEntryVelocity: 0.2
+  entryDirectionOverride: {fileID: 0}
   PostTeleportBehavior: 0
-  investigateForwardDistance: 8
-  investigatePointOverride: {fileID: 0}
-  linkedAreaSafeZone: {fileID: 0}
+  useSafeAreaLineSpawn: 0
+  linkedSafeAreaCollider: {fileID: 0}
+  safeAreaCenterOverride: {fileID: 0}
+  minSafeAreaSpawnDistance: 12
+  maxSafeAreaSpawnDistance: 24
+  safeAreaSideSpread: 4
+  ignoreFOVForThisZone: 1
   onlyFireOnce: 1
 --- !u!65 &1587847691
 BoxCollider:
@@ -7643,6 +7706,84 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 49c0912c38e40ae44a21cbc7a80ad91d, type: 3}
+--- !u!1 &1682165817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682165818}
+  - component: {fileID: 1682165820}
+  - component: {fileID: 1682165819}
+  m_Layer: 0
+  m_Name: House_Green_SafeZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682165818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682165817}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7094724, z: 0, w: 0.7047333}
+  m_LocalPosition: {x: 0.44, y: 4.0999994, z: 1.2}
+  m_LocalScale: {x: 13.4, y: 10.272983, z: 15.939387}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1326777347}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1682165819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682165817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1682165820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682165817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e8cd4573376a042bd6d909479a3d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AreaSafeZone
+  monster: {fileID: 379340026}
+  teleportManager: {fileID: 227800467}
+  safeAreaCollider: {fileID: 1682165819}
+  roamCenter: {fileID: 146179689}
+  roamRadius: 35
+  monsterStayTime: 30
+  randomMoveInterval: 4
+  navMeshSampleRadius: 7
+  reduceRadiation: 1
+  radiationDecreasePerSecond: 1.5
+  resetForestTimerOnEnter: 1
+  showDebugLogs: 1
 --- !u!1 &1716928853 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3971354221846636832, guid: cc70c0709c5e92a4c91cf626182ab5c7, type: 3}
@@ -8785,7 +8926,7 @@ Transform:
   m_GameObject: {fileID: 1957406186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.41, y: 9.225001, z: -0.671463}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 19, y: 19, z: 19}
   m_ConstrainProportionsScale: 0
   m_Children: []
