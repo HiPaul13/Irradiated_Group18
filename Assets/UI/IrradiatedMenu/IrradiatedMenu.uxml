@@ -56,6 +56,11 @@
                         <ui:VisualElement class="control-separator"/>
                         <ui:Label text="OPEN MINIMAP" class="control-action"/>
                     </ui:VisualElement>
+                    <ui:VisualElement class="control-row">
+                        <ui:Label text="Tab" class="control-key"/>
+                        <ui:VisualElement class="control-separator"/>
+                        <ui:Label text="FREELOOK / THIRD-PERSON CAMERA" class="control-action"/>
+                    </ui:VisualElement>
                     <ui:VisualElement class="control-row last-row">
                         <ui:Label text="Esc" class="control-key"/>
                         <ui:VisualElement class="control-separator"/>
