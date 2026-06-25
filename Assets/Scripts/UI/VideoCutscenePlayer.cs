@@ -20,9 +20,15 @@ using UnityEngine.Video;
 public class VideoCutscenePlayer : MonoBehaviour
 {
     [Header("Playback")]
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private string      nextSceneName;
-    [SerializeField] private bool        skipOnAnyKey = true;
+    [SerializeField] private VideoPlayer    videoPlayer;
+    [SerializeField] private string         nextSceneName;
+    [SerializeField] private bool           skipOnAnyKey = true;
+
+    [Header("Audio")]
+    [SerializeField] private AK.Wwise.Event cutsceneAudio;
+    [SerializeField] private AK.Wwise.Event cutsceneAudioStop;
+    [SerializeField] private float          audioDelay      = 3f;
+    [SerializeField] private float          audioLeadTime   = 0.1f;
 
     private bool isLoading;
 
@@ -43,7 +49,7 @@ public class VideoCutscenePlayer : MonoBehaviour
         }
 
         videoPlayer.loopPointReached += _ => LoadNextScene();
-        videoPlayer.Play();
+        StartCoroutine(PlayWithDelay(audioDelay));
     }
 
     private void Update()
@@ -54,10 +60,21 @@ public class VideoCutscenePlayer : MonoBehaviour
         if (skipPressed) LoadNextScene();
     }
 
+    private System.Collections.IEnumerator PlayWithDelay(float delay)
+    {
+        videoPlayer.Prepare();
+        yield return new WaitForSeconds(delay - audioLeadTime);
+        cutsceneAudio?.Post(gameObject);
+        yield return new WaitForSeconds(audioLeadTime);
+        videoPlayer.Play();
+    }
+
     private void LoadNextScene()
     {
         if (isLoading) return;
         isLoading = true;
+
+        cutsceneAudioStop?.Post(gameObject);
 
         if (!string.IsNullOrEmpty(nextSceneName))
             SceneManager.LoadScene(nextSceneName);
