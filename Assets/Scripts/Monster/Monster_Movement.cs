@@ -365,6 +365,10 @@ public class Monster_Movement : MonoBehaviour
         StopMonster();
         FacePlayer();
 
+        // Freeze player immediately so they can't dodge the attack
+        FirstPersonController fpc = player != null ? player.GetComponent<FirstPersonController>() : null;
+        fpc?.SetControlsEnabled(false);
+
         monsterAttackSound?.Post(gameObject);
 
         if (animator != null)
@@ -373,25 +377,22 @@ public class Monster_Movement : MonoBehaviour
             animator.SetTrigger(attackTriggerName);
         }
 
-        Debug.Log("[Monster] Attack started.");
+        Debug.Log("[Monster] Attack started — player movement locked.");
 
         yield return new WaitForSeconds(attackHitDelay);
 
         if (!playerInSafeArea && !playerProtected && player != null)
         {
-            float dist = Vector3.Distance(transform.position, player.position);
-
-            if (dist <= attackDamageRange)
-            {
-                playerHurtSound?.Post(player.gameObject);
-                if (playerDeath == null) playerDeath = player.GetComponent<PlayerDeath>();
-                if (playerDeath != null) playerDeath.KillPlayer();
-                else Debug.LogWarning("[Monster] PlayerDeath script missing on player.");
-            }
-            else
-            {
-                Debug.Log("[Monster] Attack missed — player moved away.");
-            }
+            playerHurtSound?.Post(player.gameObject);
+            if (playerDeath == null) playerDeath = player.GetComponent<PlayerDeath>();
+            if (playerDeath != null) playerDeath.KillPlayer();
+            else Debug.LogWarning("[Monster] PlayerDeath script missing on player.");
+        }
+        else
+        {
+            // Attack was blocked (safe area / protection) — unfreeze player
+            fpc?.SetControlsEnabled(true);
+            Debug.Log("[Monster] Attack blocked by safe zone — player movement restored.");
         }
 
         yield return new WaitForSeconds(afterAttackDelay);
@@ -400,7 +401,7 @@ public class Monster_Movement : MonoBehaviour
 
         if (playerDeath != null && playerDeath.IsDead) { StopMonster(); yield break; }
 
-        if (playerInSafeArea)       SetState(MonsterState.ReturnToPatrol);
+        if (playerInSafeArea)         SetState(MonsterState.ReturnToPatrol);
         else if (isAreaInvestigating) SetState(MonsterState.Investigate);
         else { agent.isStopped = false; SetState(MonsterState.Chase); }
     }
@@ -412,8 +413,41 @@ public class Monster_Movement : MonoBehaviour
     public void SetChaseSpeed(float v)               => chaseSpeed               = v;
     public void SetPatrolDetectionRange(float v)     => patrolDetectionRange     = v;
     public void SetInvestigateDetectionRange(float v)=> investigateDetectionRange = v;
-    public void SetChaseRange(float v)               => chaseRange               = v;
+    public void SetChaseRange(float v)
+    {
+        Debug.Log($"[Monster] SetChaseRange: {chaseRange} → {v}\n{System.Environment.StackTrace}");
+        chaseRange = v;
+    }
     public void SetLosePlayerRange(float v)          => losePlayerRange          = v;
+
+    // ── Public API — DumpyardArea ─────────────────────────────────────────────
+
+    public float         ChaseRange   => chaseRange;
+    public Transform[]   PatrolPoints => patrolPoints;
+
+    /// <summary>
+    /// Ersetzt die Patrol-Points. startIndex gibt den Index des ersten Ziels an
+    /// (das Monster fährt diesen Punkt direkt an). -1 = automatisch nächster.
+    /// </summary>
+    public void SetPatrolPoints(Transform[] points, int startIndex = -1)
+    {
+        patrolPoints = points;
+
+        if (points == null || points.Length == 0)
+        {
+            currentPatrolIndex = 0;
+            return;
+        }
+
+        // GoToNextPatrolPoint macht erst (index+1)%len, daher eins vorher setzen.
+        if (startIndex >= 0 && startIndex < points.Length)
+            currentPatrolIndex = startIndex - 1;
+        else
+            currentPatrolIndex = points.Length - 1; // wrap → Index 0
+
+        if (state == MonsterState.Patrol || state == MonsterState.ReturnToPatrol)
+            GoToNextPatrolPoint();
+    }
 
     // ── Public API — EnemyTeleportManager ────────────────────────────────────
 
