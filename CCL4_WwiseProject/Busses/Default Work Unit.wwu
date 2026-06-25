@@ -9,6 +9,57 @@
 							<ObjectRef Name="System" ID="{79C62EF3-4693-4A65-BB31-34381E763A98}" WorkUnitID="{FA43237A-8B4A-4D9C-8B82-C7209C51D08C}"/>
 						</Reference>
 					</ReferenceList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{08719945-9761-4A32-A7B3-AF13ACEA6A86}" ShortID="875682854">
+								<ReferenceList>
+									<Reference Name="Effect" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+										<ObjectRef Name="New_Guitar_Distortion" ID="{449B0802-1107-48F8-8077-2ECD2AFF3210}" WorkUnitID="{45264C26-78F0-4266-8C1F-426F76B98DF3}"/>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+						</ObjectList>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{E701EC2C-81D2-4F07-B138-4414EF88C511}" ShortID="976016993">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="RadiationLevel" ID="{976281D9-C7C1-4BBC-BBA9-0DD775C48F32}" WorkUnitID="{15356FFE-8DEB-43AE-A24B-26D01A2D3BFF}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{1C742EE4-B0C3-4ADC-8E71-B9B1F876A4E6}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+														<SegmentShape>Exp3</SegmentShape>
+													</Point>
+													<Point>
+														<XPos>42.32165</XPos>
+														<YPos>0</YPos>
+														<Flags>0</Flags>
+														<SegmentShape>Exp3</SegmentShape>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>66</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

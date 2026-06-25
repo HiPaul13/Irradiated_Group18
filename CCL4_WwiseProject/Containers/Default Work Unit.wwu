@@ -135,12 +135,12 @@
 								<RandomSequenceContainer Name="Forest_One_Shots_RC" ID="{4003D2BD-2752-4AB1-8C22-1F1BAC8B479D}" ShortID="785741254">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2.4"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-13</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1243,6 +1243,53 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{8CF38554-6331-4361-9418-004AEE470697}" ShortID="763198155">
+										<ReferenceList/>
+									</EffectSlot>
+								</ObjectList>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{C95ECACF-9DC1-4522-96EE-E6EBE11527C2}" ShortID="761025345">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="RadiationLevel" ID="{976281D9-C7C1-4BBC-BBA9-0DD775C48F32}" WorkUnitID="{15356FFE-8DEB-43AE-A24B-26D01A2D3BFF}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{54814114-114C-4B7C-AABD-A48D2DF0B0AA}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>58.92421</XPos>
+																<YPos>0.06832</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Exp3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>200</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
 							<ActiveSourceList>
 								<ActiveSource Name="Radiation" ID="{549AE5AC-79B0-46DF-924C-7D63972AB54F}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -1638,6 +1685,14 @@
 						<Folder Name="Detection" ID="{589A8E4E-E63B-44F8-BB9B-1E2737152D06}" ShortID="502372178">
 							<ChildrenList>
 								<RandomSequenceContainer Name="Detection_Sound" ID="{F4B1B9CA-231D-46D7-9929-AF74C704BD70}" ShortID="352668781">
+									<PropertyList>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="3"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
 											<ObjectRef Name="Big_Attenuation" ID="{B75C5174-BBAC-4EBD-AEAC-3BF104A37FF0}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
@@ -1746,6 +1801,8 @@
 							<ChildrenList>
 								<Sound Name="Chase Fast Breathing" ID="{5347B445-27B0-4186-9CB5-F8071D2FBFD5}" ShortID="828021775">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.4"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -1779,6 +1836,8 @@
 								</Sound>
 								<RandomSequenceContainer Name="Chase OneShots" ID="{446F6203-DBDB-4D84-90D4-9B0A57887592}" ShortID="364007952">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.4"/>
 										<Property Name="InitialDelay" Type="Real64">
 											<ValueList>
 												<Value>1</Value>
@@ -1789,7 +1848,7 @@
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-6</Value>
+												<Value>-7</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1967,11 +2026,13 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Chase_Steps" ID="{7CC81D8D-09B2-4056-9A30-EB0A21160BE3}" ShortID="115705537">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.4"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-10</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2102,6 +2163,8 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Chase_Steps_2" ID="{52DCC91A-62A3-46CE-BCF3-AE3A0F642A9D}" ShortID="572240794">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.4"/>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
@@ -2241,6 +2304,10 @@
 						<Folder Name="Attack" ID="{AC629A33-E61F-49D6-8A6F-82FEFA6A729A}" ShortID="431510030">
 							<ChildrenList>
 								<RandomSequenceContainer Name="Monster_Attack" ID="{BCAE6446-0272-41A9-B054-968927750D3B}" ShortID="505341556">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
 											<ObjectRef Name="Low Attenuation" ID="{AA3CCD66-9CC2-4D41-8E28-1FDE049F9E6A}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
@@ -3319,11 +3386,12 @@
 						<Folder Name="Footsteps_DumpYard" ID="{5712CD5A-19AF-4232-86A4-23A0E5AE23AB}" ShortID="908920867"/>
 						<Folder Name="Breathing" ID="{511AFD65-438E-45CC-A449-D86767868405}" ShortID="1056285740">
 							<ChildrenList>
-								<Sound Name="Player_Breathing_new" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" ShortID="855080951">
+								<Sound Name="Player_Breathing_Slow" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" ShortID="855080951">
 									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-25</Value>
+												<Value>-12</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -3337,6 +3405,10 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Player_Breathing_new" ID="{A5BD550D-1A09-42BE-91D2-2FC521C5E524}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="65.13217"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>Player_Breathing_new.wav</AudioFile>
 											<MediaIDList>
@@ -3356,6 +3428,11 @@
 									<PropertyList>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-1</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -3892,7 +3969,7 @@
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-15</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -4142,6 +4219,11 @@
 								<Sound Name="Chase_Music" ID="{849E6753-8CAD-4A5B-B85A-1210332861F0}" ShortID="1027564339">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">

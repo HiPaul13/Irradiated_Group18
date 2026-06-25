@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{15356FFE-8DEB-43AE-A24B-26D01A2D3BFF}" SchemaVersion="133">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{15356FFE-8DEB-43AE-A24B-26D01A2D3BFF}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{15356FFE-8DEB-43AE-A24B-26D01A2D3BFF}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="RadiationLevel" ID="{976281D9-C7C1-4BBC-BBA9-0DD775C48F32}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>

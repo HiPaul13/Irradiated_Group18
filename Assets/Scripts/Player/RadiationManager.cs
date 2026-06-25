@@ -118,6 +118,7 @@ public class RadiationManager : MonoBehaviour
         }
 
         currentRadiation = Mathf.Clamp(currentRadiation, 0f, maxRadiation);
+        AkSoundEngine.SetRTPCValue("RadiationLevel", currentRadiation);
     }
 
     /// <summary>Blocks radiation gain for the given number of seconds.</summary>

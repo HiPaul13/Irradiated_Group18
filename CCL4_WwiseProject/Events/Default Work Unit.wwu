@@ -211,13 +211,9 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Monster" ID="{B0159342-39AD-4102-98D9-B15F8873FB14}" ShortID="5999180">
-					<ChildrenList>
-						<Event Name="Play_Chase_Music" ID="{542683C7-CA88-43F1-B2DE-D1428C9949AD}">
+						<Event Name="Play_Chase_Music" ID="{3F0F3E9A-64C1-4F43-AD87-61BE3152C016}">
 							<ChildrenList>
-								<Action Name="" ID="{60EFA690-1FCF-4725-8521-BFA34D6075E1}" ShortID="742874256">
+								<Action Name="" ID="{0C48764E-50BC-414D-A5E8-A23C5A31A9A9}" ShortID="190826121">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Chase_Music" ID="{849E6753-8CAD-4A5B-B85A-1210332861F0}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
@@ -226,6 +222,10 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Monster" ID="{B0159342-39AD-4102-98D9-B15F8873FB14}" ShortID="5999180">
+					<ChildrenList>
 						<Event Name="Play_Chase_Steps_Monster" ID="{1A71E8AB-01E4-47ED-A864-2AB0BFEE34E6}">
 							<ChildrenList>
 								<Action Name="" ID="{61DD8E14-9D6B-4FEF-A3D9-ACD97E069847}" ShortID="905579135">
@@ -450,31 +450,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Play_Player_Breathing_new" ID="{18B055DF-824E-46FD-9D8B-B39C3CA085C2}">
-							<ChildrenList>
-								<Action Name="" ID="{24F7FD4F-6E30-4404-9ED1-2C5589618F31}" ShortID="642464523">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Player_Breathing_new" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Stop_Player_Breathing_new" ID="{AE6EABE4-041B-4974-98C3-AA2993433E15}">
-							<ChildrenList>
-								<Action Name="" ID="{ED69625A-0D97-49FB-8F80-131548ED4F8C}" ShortID="90596263">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Player_Breathing_new" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 						<Event Name="Play_FootSteps_Water" ID="{E2575CDF-F188-4240-93B0-E679F88931C5}">
 							<ChildrenList>
 								<Action Name="" ID="{9CC7A06A-29B7-4B06-B00A-0EE3953444B8}" ShortID="1047600625">
@@ -495,6 +470,31 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="FootSteps_Water" ID="{18DBE0ED-BF10-4BDA-A4B9-A053E9625B7D}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Player_Breathing_Slow" ID="{7B2851FA-8097-4839-8D55-19B82F19B4E9}">
+							<ChildrenList>
+								<Action Name="" ID="{5484942A-F779-4E2B-9198-C138ADC56407}" ShortID="206642165">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Breathing_Slow" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Player_Breathing_Slow" ID="{598542F8-FE49-4BE2-BB5D-1A1DAB15FBC4}">
+							<ChildrenList>
+								<Action Name="" ID="{FF6D1DFC-5C82-4D63-936C-3A2BCEC1976E}" ShortID="254318751">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Breathing_Slow" ID="{43525995-E12E-4CE4-9AD5-4754D9D749E5}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
