@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RadiationManager : MonoBehaviour
 {
+    private const string IndoorSceneName = "HouseInterior";
     [Header("Radiation Values")]
     public float currentRadiation = 0f;
     public float maxRadiation = 100f;
@@ -35,13 +37,47 @@ public class RadiationManager : MonoBehaviour
     private bool  invertRoutineRunning = false;
     private bool  isProtected          = false;
     private float protectionEndTime    = 0f;
+    private bool  isIndoorScene;
 
     private void Awake()
     {
+        isIndoorScene = SceneManager.GetActiveScene().name == IndoorSceneName;
+
         if (playerMovement == null)
         {
             playerMovement = GetComponent<FirstPersonController>();
         }
+
+        if (isIndoorScene)
+        {
+            radiationUI = null;
+            DisableSceneRadiationUI();
+        }
+        else if (radiationUI == null)
+        {
+            radiationUI = FindFirstObjectByType<RadiationUI>();
+        }
+
+        if (GetComponent<PotionProtectionTimerUI>() == null)
+            gameObject.AddComponent<PotionProtectionTimerUI>();
+
+        if (GetComponent<TransitionInventoryRestorer>() == null)
+            gameObject.AddComponent<TransitionInventoryRestorer>();
+    }
+
+    private static void DisableSceneRadiationUI()
+    {
+        RadiationUI[] uiElements = FindObjectsByType<RadiationUI>(FindObjectsSortMode.None);
+        foreach (RadiationUI ui in uiElements)
+        {
+            if (ui != null)
+                ui.gameObject.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        PotionProtectionState.TryRestore(this);
     }
 
     private void Update()
@@ -55,11 +91,20 @@ public class RadiationManager : MonoBehaviour
 
     private void UpdateRadiation()
     {
-        // Check if protection has expired.
         if (isProtected && Time.time >= protectionEndTime)
         {
             isProtected = false;
+            PotionProtectionState.Clear();
             Debug.Log("[Radiation] Potion protection expired — radiation is active again.");
+        }
+
+        if (isIndoorScene)
+        {
+            if (currentRadiation > 0f)
+                currentRadiation -= safeZoneDecreasePerSecond * Time.deltaTime;
+
+            currentRadiation = Mathf.Clamp(currentRadiation, 0f, maxRadiation);
+            return;
         }
 
         if (isInSafeZone)
@@ -80,22 +125,36 @@ public class RadiationManager : MonoBehaviour
     {
         isProtected       = true;
         protectionEndTime = Time.time + duration;
+        PotionProtectionState.SetProtectionEndTime(protectionEndTime);
         Debug.Log($"[Radiation] Protection active for {duration}s. Radiation blocked until {protectionEndTime:F1}s.");
+    }
+
+    public void RestoreProtection(float endTime)
+    {
+        if (Time.time >= endTime)
+            return;
+
+        isProtected       = true;
+        protectionEndTime = endTime;
+        Debug.Log($"[Radiation] Protection restored — {RemainingProtectionSeconds:F0}s remaining.");
     }
 
     public bool IsProtected => isProtected;
 
+    public float RemainingProtectionSeconds =>
+        isProtected ? Mathf.Max(0f, protectionEndTime - Time.time) : 0f;
+
     private void UpdateUI()
     {
-        if (radiationUI != null)
-        {
-            radiationUI.UpdateRadiationUI(currentRadiation, maxRadiation);
-        }
+        if (isIndoorScene || radiationUI == null)
+            return;
+
+        radiationUI.UpdateRadiationUI(currentRadiation, maxRadiation);
     }
 
     private void UpdateVisionEffects()
     {
-        if (visionEffect == null) return;
+        if (isIndoorScene || visionEffect == null) return;
 
         float intensity = 0f;
 
@@ -109,6 +168,8 @@ public class RadiationManager : MonoBehaviour
 
     private void HandleMovementInversion()
     {
+        if (isIndoorScene) return;
+
         if (currentRadiation >= invertMovementStart && !invertRoutineRunning)
         {
             StartCoroutine(InvertMovementRoutine());

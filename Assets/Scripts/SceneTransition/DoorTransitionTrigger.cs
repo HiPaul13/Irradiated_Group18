@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,11 +28,35 @@ public class DoorTransitionTrigger : MonoBehaviour
         SceneTransitionState.NextSpawnPointId = targetSpawnPointId;
         SceneTransitionState.IsTransitioning = true;
 
-        // Snapshot inventory so it survives into the new scene.
-        if (SaveGameManager.Instance != null)
-            SaveGameManager.Instance.SaveInventoryForTransition();
+        HotbarInventory inventory = other.GetComponentInParent<HotbarInventory>();
+        SnapshotInventoryForTransition(inventory);
 
         SceneManager.LoadScene(targetSceneName);
+    }
+
+    private static void SnapshotInventoryForTransition(HotbarInventory inventory)
+    {
+        List<string> itemIDs = new List<string>();
+
+        if (inventory != null)
+        {
+            foreach (ItemData item in inventory.GetItems())
+            {
+                if (item != null)
+                    itemIDs.Add(item.itemID);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[DoorTransition] Could not find HotbarInventory on transitioning player.");
+        }
+
+        SceneTransitionState.SetTransitionInventory(itemIDs);
+
+        if (SaveGameManager.Instance != null)
+            SaveGameManager.Instance.SaveInventoryForTransition(inventory);
+        else
+            Debug.Log($"[DoorTransition] Inventory snapshot stored ({itemIDs.Count} item(s)).");
     }
 
 #if UNITY_EDITOR

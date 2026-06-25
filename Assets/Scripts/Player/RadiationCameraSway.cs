@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RadiationCameraSway : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class RadiationCameraSway : MonoBehaviour
     {
         if (radiationManager == null)
             return;
+
+        if (SceneManager.GetActiveScene().name == "HouseInterior")
+        {
+            transform.localPosition = startLocalPosition;
+            return;
+        }
 
         float intensity = Mathf.InverseLerp(
             startRadiation,

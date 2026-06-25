@@ -971,15 +971,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BookInteractable
   bookText: 
   pages:
-  - text: "To prepare the potion against radiation, gather the following ingredients...\r\r\n"
+  - text: The radiation was coming from the dump yard because scientists had unknowingly
+      been disposing of radioactive material there for years. They thought the waste
+      was ordinary industrial material, so they buried it in sealed containers beneath
+      the ground. Over time, some of the containers began to weaken, allowing radiation
+      to leak into the surrounding soil and air.
+    image: {fileID: 21300000, guid: abe89e832e8c67548b99854fc352f806, type: 3}
+    images: []
+  - text: "To prepare the potion against radiation, here are locations where to find
+      them and gather them:\r\r\n"
     image: {fileID: 0}
+    images: []
   - text: 'Aylostera: harmless red rose with no spikes, known for its pure and gentle
       nature.'
-    image: {fileID: 21300000, guid: af1f6e2d2c3c9c0408718d7ad584b7f4, type: 3}
+    image: {fileID: 0}
+    images:
+    - {fileID: 21300000, guid: af1f6e2d2c3c9c0408718d7ad584b7f4, type: 3}
+    - {fileID: 21300000, guid: 67b8a21d79e8e4742ab27bd63d075b56, type: 3}
   - text: 'Coccineus: pink flower used as a symbol of protection and safety.'
-    image: {fileID: 21300000, guid: b50d0297f4b184d45b8eef84f4713b6c, type: 3}
+    image: {fileID: 0}
+    images:
+    - {fileID: 21300000, guid: b50d0297f4b184d45b8eef84f4713b6c, type: 3}
+    - {fileID: 21300000, guid: fb2e6de1a574fc6448f332b92b49691f, type: 3}
   - text: 'Mycena Radii Custos: rare mushroom believed to protect the body from radiation.'
-    image: {fileID: 21300000, guid: 8c32b913d07d57c478e7fc3768e54931, type: 3}
+    image: {fileID: 0}
+    images:
+    - {fileID: 21300000, guid: 8c32b913d07d57c478e7fc3768e54931, type: 3}
+    - {fileID: 21300000, guid: dce9f8fabc5ae5b409a04330c9e7c284, type: 3}
   - text: "Personal Diary of Dr. Arthur Hale\r\nMarch 15\r\nBilly has always been
       a strange child.\r\nNot strange in a bad way. Curious. Imaginative.\r\nHe refuses
       to go near the old castle in the center of the forest. He says something watches
@@ -1042,6 +1060,7 @@ MonoBehaviour:
       feared haunted castles, old houses, visitor huts, and smelly toilets.\r\nHis
       name is Billy.\r\nAnd this is all my fault.\r\n\r\n"
     image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
+    images: []
   promptText: Press E to read
   interactionRadius: 2
 --- !u!1 &455103658
@@ -4552,9 +4571,9 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 0}
+  m_PanelSettings: {fileID: 11400000, guid: e8f6b3ffad7e8fc49a10c244bfca9473, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 79f5f8fee38ad424b906878aca039528, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
