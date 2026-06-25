@@ -19835,6 +19835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuptitelPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 829860787838926767, guid: 457abaf2456c54147bee7f18e482d783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4839225454943826099, guid: 457abaf2456c54147bee7f18e482d783, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
