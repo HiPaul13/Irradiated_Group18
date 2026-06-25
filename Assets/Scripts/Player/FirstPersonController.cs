@@ -8,6 +8,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("References")]
     public Transform cameraHolder;
     public Camera playerCamera;
+    public Animator animator;
 
     [Header("Look")]
     public float mouseSensitivity = 0.12f;
@@ -65,6 +66,10 @@ public class FirstPersonController : MonoBehaviour
         {
             cameraHolder = playerCamera.transform.parent;
         }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
 
     private void Start()
@@ -96,6 +101,8 @@ public class FirstPersonController : MonoBehaviour
         }
 
         jumpPressed = false;
+
+        UpdateAnimation();
     }
 
     private void FixedUpdate()
@@ -196,6 +203,26 @@ public class FirstPersonController : MonoBehaviour
         velocityChange.y = 0f;
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
+
+    private void UpdateAnimation()
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        Vector3 horizontalVelocity = new Vector3(
+            rb.linearVelocity.x,
+            0f,
+            rb.linearVelocity.z
+        );
+
+        bool isWalking =
+            controlsEnabled &&
+            horizontalVelocity.sqrMagnitude > 0.05f;
+
+        animator.SetBool("IsWalking", isWalking);
     }
 
     private void ClimbStep()

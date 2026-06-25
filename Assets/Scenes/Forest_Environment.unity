@@ -3027,7 +3027,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361451329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6842,15 +6842,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.48
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.48
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.48
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9091,6 +9091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   cameraHolder: {fileID: 1009663363}
   playerCamera: {fileID: 351444559}
+  animator: {fileID: 0}
   mouseSensitivity: 0.12
   maxLookAngle: 80
   lockCursor: 1
@@ -9261,7 +9262,7 @@ Transform:
   m_GameObject: {fileID: 988656518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 819.7, y: 32.9, z: 826.9}
+  m_LocalPosition: {x: 333, y: 32.9, z: 826.9}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10938,6 +10939,10 @@ PrefabInstance:
       value: Character_3_Walk_Neu_Neu
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 30b9dcf4e7dbd894ba80dfe97111bd0c, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 7bdca4f7077a5664584dc650e76693f4, type: 3}
+    - target: {fileID: 5866666021909216657, guid: 30b9dcf4e7dbd894ba80dfe97111bd0c, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fb428f8fd000b2a4bb2cba848d346f88, type: 2}
@@ -12404,7 +12409,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344482824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
