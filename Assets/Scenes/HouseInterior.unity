@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: THE_WOOD_CABIN_02
       objectReference: {fileID: 0}
+    - target: {fileID: 415246, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.519
+      objectReference: {fileID: 0}
     - target: {fileID: 415294, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.041120946
@@ -246,6 +250,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.805
       objectReference: {fileID: 0}
+    - target: {fileID: 2315244, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
+    - target: {fileID: 2315272, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
+    - target: {fileID: 2315274, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
     - target: {fileID: 20515148, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
       propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
       value: 
@@ -273,6 +289,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 349311137}
   m_SourcePrefab: {fileID: 100100000, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+--- !u!1 &81929929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81929931}
+  - component: {fileID: 81929930}
+  m_Layer: 0
+  m_Name: ChairColider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &81929930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81929929}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3, y: 1.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &81929931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81929929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.397, y: 3.589, z: -2.848}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155172274
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +528,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194647497}
   m_CullTransparentMesh: 1
+--- !u!1 &199883122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ef018914dbf5894f88b8b396aea325a, type: 3}
+  m_PrefabInstance: {fileID: 1984901301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &199883124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199883122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &200545277
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,10 +1066,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BookInteractable
   bookText: 
   pages:
-  - text: This text will be defined later.
+  - text: The radiation was coming from the dump yard because scientists had unknowingly
+      been disposing of radioactive material there for years. They thought the waste
+      was ordinary industrial material, so they buried it in sealed containers beneath
+      the ground. Over time, some of the containers began to weaken, allowing radiation
+      to leak into the surrounding soil and air.
+    image: {fileID: 21300000, guid: abe89e832e8c67548b99854fc352f806, type: 3}
+    images: []
+  - text: "To prepare the potion against radiation, here are locations where to find
+      them and gather them:\r\r\n"
+    image: {fileID: 21300000, guid: 7dd012cfadfd05e46bad9b365f3027b5, type: 3}
+    images: []
+  - text: 'Aylostera: harmless red rose with no spikes, known for its pure and gentle
+      nature.'
     image: {fileID: 0}
-  - text: This text will be defined later.
+    images:
+    - {fileID: 21300000, guid: af1f6e2d2c3c9c0408718d7ad584b7f4, type: 3}
+    - {fileID: 21300000, guid: 67b8a21d79e8e4742ab27bd63d075b56, type: 3}
+  - text: 'Coccineus: pink flower used as a symbol of protection and safety.'
+    image: {fileID: 0}
+    images:
+    - {fileID: 21300000, guid: b50d0297f4b184d45b8eef84f4713b6c, type: 3}
+    - {fileID: 21300000, guid: fb2e6de1a574fc6448f332b92b49691f, type: 3}
+  - text: 'Mycena Radii Custos: rare mushroom believed to protect the body from radiation.'
+    image: {fileID: 0}
+    images:
+    - {fileID: 21300000, guid: 8c32b913d07d57c478e7fc3768e54931, type: 3}
+    - {fileID: 21300000, guid: dce9f8fabc5ae5b409a04330c9e7c284, type: 3}
+  - text: "**Personal Diary of Dr. Arthur Hale**\r\n\r\n**March 15**\r\nBilly has
+      always been a strange child.\r\nNot strange in a bad way. Curious. Imaginative.\r\nHe
+      refuses to go near the old castle in the center of the forest. He says something
+      watches him from the broken windows. Every time we pass it, he hides behind
+      me and keeps his eyes on the ground.\r\nHe is also terrified of the house we
+      live in. The same house he is afterwards playing in.\r\nHe claims the walls
+      whisper at night.\r\nThe visitor's hut is even worse. He refuses to enter it
+      unless I go first.\r\nAnd the toilets around the reserve... Billy says they
+      smell so terrible that monsters must live inside them.\r\nI always laughed
+      at these fears.\r\n\r\n**April 28**\r\nMy research is progressing faster than
+      expected.\r\nRadiation levels remain stable according to my calculations.\r\nThe
+      authorities abandoned this region years ago because they believed it was too
+      dangerous. They were wrong.\r\nI know this place better than anyone.\r\nBilly
+      and I can live here safely.\r\n\r\n**May 2**\r\nI was wrong.\r\nGod forgive
+      me.\r\nI was wrong.\r\nAn underground pocket of concentrated radiation ruptured
+      without warning.\r\nBilly was nearby when it happened.\r\nThe exposure should
+      have killed him instantly.\r\nInstead, he survived.\r\n\r\n**May 10**\r\nThe
+      changes have begun.\r\nHis arms are longer.\r\nHis bones are growing at impossible
+      rates.\r\nHis skin feels hard and uneven.\r\nI tell him everything will be
+      okay.\r\nHe believes me.\r\nI do not believe in myself.\r\n\r\n**May 22**\r\nBilly
+      asked me today if he was becoming a monster.\r\nI couldn't answer.\r\nWhat
+      kind of father can answer a question like that?\r\n\r\n**June 4**\r\nI can
+      no longer stay near him.\r\nThe mutations have become unpredictable.\r\nWhen
+      frightened, he loses control of his strength.\r\nYesterday he shattered a door
+      without realizing it.\r\nHe cried afterward.\r\nHe did not mean to do it.\r\nHe
+      is still Billy inside.\r\nBut his body is becoming something else.\r\nFor both
+      our safety, I left him in the forest.\r\nIt was the hardest decision I have
+      ever made.\r\nNow I monitor him from outside the contaminated zone.\r\nI watch
+      from a distance.\r\nA father reduced to a spectator.\r\n\r\n**June 19**\r\nBilly
+      has adapted to the forest.\r\nHe avoids places that frightened him before.\r\nThe
+      old castle remains untouched.\r\nThe visitor's hut remains empty.\r\nEven now,
+      after everything he has become, he still refuses to approach the toilets scattered
+      around the reserve.\r\nI watched him smell one from nearly fifty meters away
+      before running in the opposite direction.\r\nPart of me laughed.\r\nPart of
+      me cried.\r\nBecause that tiny habit reminded me that somewhere beneath the
+      mutations, my son still exists.\r\n\r\n**July 2**\r\nThe animals are gone.\r\nEvery
+      last one of them.\r\nThe radiation killed the ecosystem days ago.\r\nBilly
+      has nothing left to hunt.\r\nHis hunger is becoming unbearable.\r\nI can see
+      him growing weaker.\r\nMore desperate.\r\nMore aggressive.\r\n\r\n**July 11**\r\nToday
+      I discovered something remarkable.\r\nHidden among old research documents was
+      a formula.\r\nA serum capable of protecting humans from radiation exposure
+      forever once it is made.\r\nA cure? No.\r\nBut a shield.\r\nA permanent one.\r\nEnough
+      for someone to enter the forest unharmed.\r\nEnough for someone to survive
+      there for as long as they remain alive.\r\nThe protection does not fade.\r\nIt
+      does not weaken.\r\nOnce created and given, the shield lasts forever.\r\n\r\n**July
+      23**\r\nBilly attacked a trespasser.\r\nThe man never saw him coming.\r\nI
+      watched through the cameras.\r\nI wanted to look away.\r\nI couldn't.\r\nBilly
+      fed.\r\nAnd afterward, he sat alone for hours.\r\nMotionless.\r\nAs if he understood
+      exactly what he had done.\r\n\r\n**August 5**\r\nI have begun inviting people
+      into the forest.\r\nExplorers.\r\nTreasure hunters.\r\nResearchers.\r\nUrban
+      legends attract curious minds.\r\nThe old castle.\r\nThe haunted house.\r\nPeople
+      come willingly.\r\nI don\u2019t provide them with the serum.\r\nI tell them
+      there is no radiation.\r\nEven if I would tell them a truth, there would be
+      a greater danger that they would no know about.\r\nMy son.\r\n\r\n**August
+      27**\r\nThe guilt grows heavier with every passing day.\r\nEvery visitor buys
+      Billy more time.\r\nEvery visitor is another stain on my conscience.\r\nI tell
+      myself I am doing this for my son.\r\nI tell myself any father would do the
+      same.\r\nBut I no longer know whether I am trying to save Billy...\r\n...or
+      simply delay the moment I lose him forever.\r\n\r\n**September 3**\r\nIf anyone
+      finds this diary, then either I succeeded...\r\nor I failed.\r\nSomewhere deep
+      within this forest lives a creature feared by every soul who enters.\r\nA monster.\r\nA
+      nightmare.\r\nA predator.\r\nBut before any of that, he was a little boy who
+      feared haunted castles, old houses, visitor huts, and smelly toilets.\r\nHis
+      name is Billy."
     image: {fileID: 21300000, guid: 9e1fd8157c3e14849b1dc6ae335f7fc0, type: 3}
+    images: []
   promptText: Press E to read
   interactionRadius: 2
 --- !u!1 &455103658
@@ -1114,6 +1298,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455103658}
   m_CullTransparentMesh: 1
+--- !u!1 &487963371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487963373}
+  - component: {fileID: 487963372}
+  m_Layer: 0
+  m_Name: FirePlaceColider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &487963372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487963371}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &487963373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487963371}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.72550213, z: -0, w: 0.68821996}
+  m_LocalPosition: {x: 3.006, y: 3.939, z: -0.293}
+  m_LocalScale: {x: 2.1259847, y: 1.7292598, z: 2.5988448}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 93.021, z: 0}
 --- !u!1 &544612050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1973,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e258b490647109438c85e913af6367c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 728189700}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e258b490647109438c85e913af6367c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 728189701}
   m_SourcePrefab: {fileID: 100100000, guid: 5e258b490647109438c85e913af6367c, type: 3}
 --- !u!1 &728189698 stripped
 GameObject:
@@ -1775,8 +2015,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8, y: 1.8, z: 1.8}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 1.12, z: 0}
+--- !u!114 &728189701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728189698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e8a1f29b3d7654a0c1e2f3a4b5c6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CauldronIngredientDisplay
+  sphereObjectName: Sphere
+  lookDistance: 4
+  lookAtDotThreshold: 0.55
+  protectionDurationSeconds: 60
+  potionMessageDuration: 7
+  potionReadyMessage: "Your radiation potion is ready!\nPress G to drink it \u2014
+    you will have 60 seconds of protection."
 --- !u!1001 &746201610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1965,6 +2224,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754908185}
   m_CullTransparentMesh: 1
+--- !u!1 &949427856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949427858}
+  - component: {fileID: 949427857}
+  m_Layer: 0
+  m_Name: ChairColider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &949427857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949427856}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3, y: 1.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &949427858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949427856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.374, y: 3.589, z: -3.003}
+  m_LocalScale: {x: 1.2011, y: 1.2572, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &954098604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2654,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047512819}
   m_CullTransparentMesh: 1
+--- !u!1 &1084788454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084788456}
+  - component: {fileID: 1084788455}
+  m_Layer: 0
+  m_Name: ChairColider (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1084788455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084788454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1084788456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084788454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.469, y: 3.589, z: -2.749}
+  m_LocalScale: {x: 1.3151, y: 1, z: 1.3127}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164687664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3144,7 +3509,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eaf5154de97bf254c90c3c0f8fcee4bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2059066072}
   m_SourcePrefab: {fileID: 100100000, guid: eaf5154de97bf254c90c3c0f8fcee4bb, type: 3}
 --- !u!1 &1263291129
 GameObject:
@@ -3505,8 +3873,8 @@ Transform:
   m_GameObject: {fileID: 1300000017}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 3.99, z: 4.342}
-  m_LocalScale: {x: 1, y: 1.2361, z: 1}
+  m_LocalPosition: {x: -0.05, y: 3.99, z: 3.862}
+  m_LocalScale: {x: 1, y: 1.2361, z: 0.49416044}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1300000012}
@@ -3567,6 +3935,7 @@ GameObject:
   - component: {fileID: 1307417794}
   - component: {fileID: 1307417793}
   - component: {fileID: 1307417792}
+  - component: {fileID: 1307417804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3891,6 +4260,22 @@ Transform:
   - {fileID: 1894018191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1307417804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307417791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c8d9e0f1a234567890abcd1234ef56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HouseInteriorPlantGiver
+  plantItems:
+  - {fileID: 11400000, guid: bf6debdc2dc5df24e886e4829793d8dd, type: 2}
+  - {fileID: 11400000, guid: a5e80dd9da0a9024f9163e1e9aba5b0c, type: 2}
+  - {fileID: 11400000, guid: 3b997d8ba15208241b00e9e05c6db759, type: 2}
 --- !u!1001 &1320315133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4446,9 +4831,9 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 0}
+  m_PanelSettings: {fileID: 11400000, guid: e8f6b3ffad7e8fc49a10c244bfca9473, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 79f5f8fee38ad424b906878aca039528, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
@@ -4551,7 +4936,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4529bdda02e06ef49b01a39a546af564, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2082757263}
   m_SourcePrefab: {fileID: 100100000, guid: 4529bdda02e06ef49b01a39a546af564, type: 3}
 --- !u!1 &1843260092
 GameObject:
@@ -4783,7 +5171,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ef018914dbf5894f88b8b396aea325a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 199883124}
   m_SourcePrefab: {fileID: 100100000, guid: 2ef018914dbf5894f88b8b396aea325a, type: 3}
 --- !u!1001 &2001642426
 PrefabInstance:
@@ -4942,6 +5333,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044986846}
   m_CullTransparentMesh: 1
+--- !u!1 &2059066070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eaf5154de97bf254c90c3c0f8fcee4bb, type: 3}
+  m_PrefabInstance: {fileID: 1238665112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2059066072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059066070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2082757259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4529bdda02e06ef49b01a39a546af564, type: 3}
+  m_PrefabInstance: {fileID: 1721802416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2082757263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082757259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.3504963, y: 10.092344, z: 2.2395167}
+  m_Center: {x: 0.08810807, y: 2.7603183, z: -0.014796618}
 --- !u!1 &2126785566
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,7 +5413,7 @@ Transform:
   m_GameObject: {fileID: 2126785566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 18.97, z: 0}
   m_LocalScale: {x: 19, y: 19, z: 19}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5076,3 +5519,7 @@ SceneRoots:
   - {fileID: 746201610}
   - {fileID: 1307417803}
   - {fileID: 1164687668}
+  - {fileID: 81929931}
+  - {fileID: 949427858}
+  - {fileID: 1084788456}
+  - {fileID: 487963373}

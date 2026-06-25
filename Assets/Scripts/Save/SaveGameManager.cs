@@ -71,16 +71,18 @@ public class SaveGameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Re-find the player in the newly loaded scene.
         FindSceneReferences();
 
-        // If a scene transition snapshot is waiting, restore it into the new inventory.
-        if (_transitionInventory != null)
+        List<string> pendingInventory = _transitionInventory ?? SceneTransitionState.TransitionInventory;
+        if (pendingInventory != null)
         {
-            RestoreInventory(_transitionInventory);
-            Debug.Log($"[Save] Inventory restored after scene transition: {_transitionInventory.Count} item(s).");
+            RestoreInventory(pendingInventory);
+            Debug.Log($"[Save] Inventory restored after scene transition: {pendingInventory.Count} item(s).");
             _transitionInventory = null;
+            SceneTransitionState.ClearTransitionInventory();
         }
+
+        PotionProtectionState.TryRestore(radiationManager);
     }
 
     /// <summary>
@@ -247,15 +249,27 @@ public class SaveGameManager : MonoBehaviour
     /// Call this just before loading a new scene.
     /// Snapshots the current inventory so it can be restored in the new scene.
     /// </summary>
-    public void SaveInventoryForTransition()
+    public void SaveInventoryForTransition(HotbarInventory sourceInventory = null)
     {
+        if (sourceInventory != null)
+            hotbarInventory = sourceInventory;
+
         _transitionInventory = new List<string>();
 
         if (hotbarInventory != null)
         {
             foreach (ItemData item in hotbarInventory.GetItems())
-                if (item != null) _transitionInventory.Add(item.itemID);
+            {
+                if (item != null)
+                    _transitionInventory.Add(item.itemID);
+            }
         }
+        else
+        {
+            Debug.LogWarning("[Save] No HotbarInventory available for transition snapshot.");
+        }
+
+        SceneTransitionState.SetTransitionInventory(_transitionInventory);
 
         Debug.Log($"[Save] Inventory snapshot for transition: {_transitionInventory.Count} item(s) → " +
                   string.Join(", ", _transitionInventory));

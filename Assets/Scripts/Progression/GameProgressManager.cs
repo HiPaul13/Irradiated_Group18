@@ -97,6 +97,27 @@ public class GameProgressManager : MonoBehaviour
         RecalculateStage();
     }
 
+    /// <summary>Clears a stale cauldron deposit entry (e.g. player re-acquired the item).</summary>
+    public void ClearIngredientDeposited(string itemID)
+    {
+        if (!depositedIngredientIDs.Remove(itemID))
+            return;
+
+        Debug.Log($"[Progress] Cleared stale cauldron deposit: {itemID}");
+        RecalculateStage();
+    }
+
+    public void ClearAllIngredientDeposits()
+    {
+        if (depositedIngredientIDs.Count == 0)
+            return;
+
+        depositedIngredientIDs.Clear();
+        potionBrewed = false;
+        Debug.Log("[Progress] Cleared all cauldron ingredient deposits.");
+        RecalculateStage();
+    }
+
     /// <summary>Called by CauldronCraftingStation after a successful craft.</summary>
     public void NotifyPotionBrewed(string resultItemID)
     {

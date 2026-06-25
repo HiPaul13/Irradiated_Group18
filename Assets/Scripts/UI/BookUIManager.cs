@@ -28,6 +28,11 @@ public class BookUIManager : MonoBehaviour
     private RectTransform bookContentRoot;
     private ScrollRect bookScrollRect;
     private TMP_FontAsset bookFont;
+    private Button prevPageButton;
+    private Button nextPageButton;
+    private TMP_Text pageIndicatorText;
+    private BookPage[] currentPages;
+    private int currentPageIndex;
     private bool isOpen;
 
     public bool IsOpen => isOpen;
@@ -61,6 +66,16 @@ public class BookUIManager : MonoBehaviour
         {
             closeButton.onClick.RemoveListener(CloseBook);
         }
+
+        if (prevPageButton != null)
+        {
+            prevPageButton.onClick.RemoveListener(ShowPreviousPage);
+        }
+
+        if (nextPageButton != null)
+        {
+            nextPageButton.onClick.RemoveListener(ShowNextPage);
+        }
     }
 
     public void OpenBook(string text)
@@ -81,7 +96,9 @@ public class BookUIManager : MonoBehaviour
         }
 
         isOpen = true;
-        PopulateContent(pages);
+        currentPages = pages;
+        currentPageIndex = 0;
+        ShowPage(currentPageIndex);
 
         if (bookPanel != null)
         {
@@ -93,6 +110,7 @@ public class BookUIManager : MonoBehaviour
             bookScrollRect.verticalNormalizedPosition = 1f;
         }
 
+        UpdateNavigationButtons();
         StartCoroutine(RefreshLayoutNextFrame());
         ShowPrompt(false);
         SetGameplayEnabled(false);
@@ -113,7 +131,98 @@ public class BookUIManager : MonoBehaviour
         }
 
         ClearContent();
+        currentPages = null;
+        currentPageIndex = 0;
         SetGameplayEnabled(true);
+    }
+
+    private void ShowPreviousPage()
+    {
+        if (!isOpen || currentPages == null || currentPageIndex <= 0)
+            return;
+
+        currentPageIndex--;
+        ShowPage(currentPageIndex);
+        UpdateNavigationButtons();
+        StartCoroutine(RefreshLayoutNextFrame());
+    }
+
+    private void ShowNextPage()
+    {
+        if (!isOpen || currentPages == null || currentPageIndex >= currentPages.Length - 1)
+            return;
+
+        currentPageIndex++;
+        ShowPage(currentPageIndex);
+        UpdateNavigationButtons();
+        StartCoroutine(RefreshLayoutNextFrame());
+    }
+
+    private void ShowPage(int pageIndex)
+    {
+        ClearContent();
+
+        if (bookContentRoot == null)
+            return;
+
+        BookPage page = GetPageAt(pageIndex);
+        if (page == null)
+        {
+            CreateTextBlock("This text will be defined later.");
+            return;
+        }
+
+        bool hasImages = false;
+        foreach (Sprite sprite in page.GetImages())
+        {
+            CreateImageBlock(sprite);
+            hasImages = true;
+        }
+
+        if (!string.IsNullOrWhiteSpace(page.text))
+            CreateTextBlock(page.text);
+        else if (!hasImages)
+            CreateTextBlock("This text will be defined later.");
+
+        if (bookScrollRect != null)
+            bookScrollRect.verticalNormalizedPosition = 1f;
+    }
+
+    private BookPage GetPageAt(int pageIndex)
+    {
+        if (currentPages == null || currentPages.Length == 0)
+            return null;
+
+        if (pageIndex < 0 || pageIndex >= currentPages.Length)
+            return null;
+
+        return currentPages[pageIndex];
+    }
+
+    private void UpdateNavigationButtons()
+    {
+        int pageCount = currentPages != null ? currentPages.Length : 0;
+        bool hasMultiplePages = pageCount > 1;
+
+        if (prevPageButton != null)
+        {
+            prevPageButton.gameObject.SetActive(hasMultiplePages);
+            prevPageButton.interactable = currentPageIndex > 0;
+        }
+
+        if (nextPageButton != null)
+        {
+            nextPageButton.gameObject.SetActive(hasMultiplePages);
+            nextPageButton.interactable = currentPageIndex < pageCount - 1;
+        }
+
+        if (pageIndicatorText != null)
+        {
+            pageIndicatorText.gameObject.SetActive(hasMultiplePages);
+            pageIndicatorText.text = hasMultiplePages
+                ? $"{currentPageIndex + 1} / {pageCount}"
+                : string.Empty;
+        }
     }
 
     public void ShowPrompt(bool visible, string message = null)
@@ -159,6 +268,9 @@ public class BookUIManager : MonoBehaviour
             bookScrollRect = null;
             bookContentRoot = null;
             closeButton = null;
+            prevPageButton = null;
+            nextPageButton = null;
+            pageIndicatorText = null;
         }
 
         bookPanel = CreatePanel(canvasTransform, "BookPanel");
@@ -170,60 +282,8 @@ public class BookUIManager : MonoBehaviour
         bookPanel.SetActive(false);
 
         CreateScrollArea(bookPanel.transform);
+        CreatePageNavigation(bookPanel.transform);
         closeButton = CreateCloseButton(bookPanel.transform);
-    }
-
-    private void PopulateContent(BookPage[] pages)
-    {
-        ClearContent();
-
-        if (bookContentRoot == null)
-        {
-            if (logDebug)
-            {
-                Debug.LogWarning("BookUIManager: content root is missing.");
-            }
-
-            return;
-        }
-
-        int blockCount = 0;
-
-        if (pages != null)
-        {
-            foreach (BookPage page in pages)
-            {
-                if (page == null)
-                {
-                    continue;
-                }
-
-                if (page.image != null)
-                {
-                    CreateImageBlock(page.image);
-                    blockCount++;
-                }
-
-                if (!string.IsNullOrWhiteSpace(page.text))
-                {
-                    CreateTextBlock(page.text);
-                    blockCount++;
-                }
-            }
-        }
-
-        if (blockCount == 0)
-        {
-            CreateTextBlock("This text will be defined later.");
-        }
-
-        if (logDebug)
-        {
-            Debug.Log($"BookUIManager: created {blockCount} content blocks.");
-        }
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(bookContentRoot);
-        Canvas.ForceUpdateCanvases();
     }
 
     private void CreateTextBlock(string text)
@@ -335,7 +395,7 @@ public class BookUIManager : MonoBehaviour
         RectTransform scrollRectTransform = scrollObject.AddComponent<RectTransform>();
         scrollRectTransform.anchorMin = Vector2.zero;
         scrollRectTransform.anchorMax = Vector2.one;
-        scrollRectTransform.offsetMin = new Vector2(30f, 30f);
+        scrollRectTransform.offsetMin = new Vector2(30f, 80f);
         scrollRectTransform.offsetMax = new Vector2(-30f, -80f);
 
         Image scrollBackground = scrollObject.AddComponent<Image>();
@@ -387,6 +447,63 @@ public class BookUIManager : MonoBehaviour
 
         bookScrollRect.viewport = viewportRect;
         bookScrollRect.content = bookContentRoot;
+    }
+
+    private void CreatePageNavigation(Transform panelTransform)
+    {
+        GameObject navObject = new GameObject("PageNavigation");
+        navObject.transform.SetParent(panelTransform, false);
+
+        RectTransform navRect = navObject.AddComponent<RectTransform>();
+        navRect.anchorMin = new Vector2(0f, 0f);
+        navRect.anchorMax = new Vector2(1f, 0f);
+        navRect.pivot = new Vector2(0.5f, 0f);
+        navRect.anchoredPosition = Vector2.zero;
+        navRect.sizeDelta = new Vector2(0f, 56f);
+
+        prevPageButton = CreateArrowButton(navObject.transform, "PrevPageButton", "\u2190", new Vector2(0.5f, 0.5f), new Vector2(-120f, 0f));
+        prevPageButton.onClick.AddListener(ShowPreviousPage);
+
+        nextPageButton = CreateArrowButton(navObject.transform, "NextPageButton", "\u2192", new Vector2(0.5f, 0.5f), new Vector2(120f, 0f));
+        nextPageButton.onClick.AddListener(ShowNextPage);
+
+        pageIndicatorText = CreateText(navObject.transform, "PageIndicator", 20, TextAlignmentOptions.Center);
+        RectTransform indicatorRect = pageIndicatorText.rectTransform;
+        indicatorRect.anchorMin = new Vector2(0.5f, 0.5f);
+        indicatorRect.anchorMax = new Vector2(0.5f, 0.5f);
+        indicatorRect.pivot = new Vector2(0.5f, 0.5f);
+        indicatorRect.anchoredPosition = Vector2.zero;
+        indicatorRect.sizeDelta = new Vector2(120f, 40f);
+        pageIndicatorText.color = new Color(0.9f, 0.86f, 0.8f, 1f);
+    }
+
+    private Button CreateArrowButton(Transform parent, string objectName, string label, Vector2 anchor, Vector2 position)
+    {
+        GameObject buttonObject = new GameObject(objectName);
+        buttonObject.transform.SetParent(parent, false);
+
+        RectTransform buttonRect = buttonObject.AddComponent<RectTransform>();
+        buttonRect.anchorMin = anchor;
+        buttonRect.anchorMax = anchor;
+        buttonRect.pivot = new Vector2(0.5f, 0.5f);
+        buttonRect.anchoredPosition = position;
+        buttonRect.sizeDelta = new Vector2(56f, 56f);
+
+        Image buttonImage = buttonObject.AddComponent<Image>();
+        buttonImage.color = new Color(0.25f, 0.2f, 0.15f, 1f);
+
+        Button button = buttonObject.AddComponent<Button>();
+
+        TextMeshProUGUI buttonLabel = CreateText(buttonObject.transform, "Label", 32, TextAlignmentOptions.Center);
+        RectTransform labelRect = buttonLabel.rectTransform;
+        labelRect.anchorMin = Vector2.zero;
+        labelRect.anchorMax = Vector2.one;
+        labelRect.offsetMin = Vector2.zero;
+        labelRect.offsetMax = Vector2.zero;
+        buttonLabel.text = label;
+        buttonLabel.raycastTarget = false;
+
+        return button;
     }
 
     private static Scrollbar CreateVerticalScrollbar(Transform parent)
