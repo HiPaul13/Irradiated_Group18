@@ -20,7 +20,7 @@ public class BookUIManager : MonoBehaviour
     public FirstPersonController firstPersonController;
 
     [Header("Prompt")]
-    public string defaultPrompt = "Press E to read";
+    public string defaultPrompt = "Press F to read";
 
     [Header("Debug")]
     public bool logDebug;

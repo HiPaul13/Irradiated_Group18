@@ -10,7 +10,7 @@ public class SubtitleManager : MonoBehaviour
     [SerializeField] private GameObject subtitlePanel;
     [SerializeField] private TMP_Text subtitleText;
 
-    private Coroutine subtitleCoroutine;
+    private Coroutine currentSubtitleCoroutine;
 
     private void Awake()
     {
@@ -21,23 +21,42 @@ public class SubtitleManager : MonoBehaviour
         }
 
         Instance = this;
-
         subtitlePanel.SetActive(false);
     }
 
-    public void ShowText(string text, float duration)
+    public void ShowText(string text, float duration = 3f)
     {
-        if (subtitleCoroutine != null)
-        {
-            StopCoroutine(subtitleCoroutine);
-        }
+        StopCurrentSubtitle();
 
-        subtitleCoroutine = StartCoroutine(
-            ShowTextRoutine(text, duration)
+        currentSubtitleCoroutine = StartCoroutine(
+            ShowSingleTextRoutine(text, duration)
         );
     }
 
-    private IEnumerator ShowTextRoutine(string text, float duration)
+    public void ShowSequence(
+        string[] texts,
+        float durationPerText = 3f,
+        float pauseBetweenTexts = 0.25f)
+    {
+        if (texts == null || texts.Length == 0)
+        {
+            return;
+        }
+
+        StopCurrentSubtitle();
+
+        currentSubtitleCoroutine = StartCoroutine(
+            ShowSequenceRoutine(
+                texts,
+                durationPerText,
+                pauseBetweenTexts
+            )
+        );
+    }
+
+    private IEnumerator ShowSingleTextRoutine(
+        string text,
+        float duration)
     {
         subtitleText.text = text;
         subtitlePanel.SetActive(true);
@@ -45,6 +64,49 @@ public class SubtitleManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         subtitlePanel.SetActive(false);
-        subtitleCoroutine = null;
+        currentSubtitleCoroutine = null;
+    }
+
+    private IEnumerator ShowSequenceRoutine(
+        string[] texts,
+        float durationPerText,
+        float pauseBetweenTexts)
+    {
+        subtitlePanel.SetActive(true);
+
+        foreach (string text in texts)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                continue;
+            }
+
+            subtitleText.text = text;
+
+            yield return new WaitForSeconds(durationPerText);
+
+            if (pauseBetweenTexts > 0f)
+            {
+                subtitlePanel.SetActive(false);
+
+                yield return new WaitForSeconds(pauseBetweenTexts);
+
+                subtitlePanel.SetActive(true);
+            }
+        }
+
+        subtitlePanel.SetActive(false);
+        currentSubtitleCoroutine = null;
+    }
+
+    private void StopCurrentSubtitle()
+    {
+        if (currentSubtitleCoroutine != null)
+        {
+            StopCoroutine(currentSubtitleCoroutine);
+            currentSubtitleCoroutine = null;
+        }
+
+        subtitlePanel.SetActive(false);
     }
 }

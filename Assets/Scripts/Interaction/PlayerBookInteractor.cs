@@ -10,8 +10,10 @@ public class PlayerBookInteractor : MonoBehaviour
     [Header("Interaction")]
     public float interactionDistance = 2.5f;
     public float closeInteractDistance = 1f;
+
     [Range(0.2f, 1f)]
     public float lookAtDotThreshold = 0.65f;
+
     public LayerMask interactionMask = ~0;
 
     [Header("Debug")]
@@ -38,7 +40,12 @@ public class PlayerBookInteractor : MonoBehaviour
             bookUIManager = uiRoot.AddComponent<BookUIManager>();
         }
 
-        interactAction = new InputAction("BookInteract", InputActionType.Button, "<Keyboard>/e");
+        interactAction = new InputAction(
+            "BookInteract",
+            InputActionType.Button,
+            "<Keyboard>/f"
+        );
+
         interactAction.Enable();
     }
 
@@ -74,15 +81,22 @@ public class PlayerBookInteractor : MonoBehaviour
 
         if (targetBook != null)
         {
-            bookUIManager.ShowPrompt(true, targetBook.GetPromptText());
+            bookUIManager.ShowPrompt(
+                true,
+                targetBook.GetPromptText()
+            );
 
             if (WasInteractPressed())
             {
                 if (logDebug)
                 {
-                    Debug.Log($"Opening book: {targetBook.name}", targetBook);
+                    Debug.Log(
+                        $"Opening book: {targetBook.name}",
+                        targetBook
+                    );
                 }
 
+                targetBook.ShowInteractionSubtitle();
                 bookUIManager.OpenBook(targetBook.GetPages());
             }
         }
@@ -95,6 +109,7 @@ public class PlayerBookInteractor : MonoBehaviour
     private BookInteractable FindTargetBook()
     {
         BookInteractable raycastBook = FindBookWithRaycast();
+
         if (raycastBook != null)
         {
             return raycastBook;
@@ -105,11 +120,18 @@ public class PlayerBookInteractor : MonoBehaviour
 
     private BookInteractable FindBookWithRaycast()
     {
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        Ray ray = new Ray(
+            playerCamera.transform.position,
+            playerCamera.transform.forward
+        );
 
         if (drawDebugRay)
         {
-            Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.cyan);
+            Debug.DrawRay(
+                ray.origin,
+                ray.direction * interactionDistance,
+                Color.cyan
+            );
         }
 
         RaycastHit[] hits = Physics.RaycastAll(
@@ -119,11 +141,16 @@ public class PlayerBookInteractor : MonoBehaviour
             QueryTriggerInteraction.Collide
         );
 
-        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+        System.Array.Sort(
+            hits,
+            (a, b) => a.distance.CompareTo(b.distance)
+        );
 
         foreach (RaycastHit hit in hits)
         {
-            BookInteractable book = hit.collider.GetComponentInParent<BookInteractable>();
+            BookInteractable book =
+                hit.collider.GetComponentInParent<BookInteractable>();
+
             if (book != null && IsBookAvailable(book))
             {
                 return book;
@@ -135,7 +162,11 @@ public class PlayerBookInteractor : MonoBehaviour
 
     private BookInteractable FindBookWithProximityAndLook()
     {
-        BookInteractable[] books = FindObjectsByType<BookInteractable>(FindObjectsSortMode.None);
+        BookInteractable[] books =
+            FindObjectsByType<BookInteractable>(
+                FindObjectsSortMode.None
+            );
+
         BookInteractable closestBook = null;
         float closestDistance = float.MaxValue;
 
@@ -146,7 +177,11 @@ public class PlayerBookInteractor : MonoBehaviour
                 continue;
             }
 
-            float distance = Vector3.Distance(playerCamera.transform.position, book.GetInteractionPoint());
+            float distance = Vector3.Distance(
+                playerCamera.transform.position,
+                book.GetInteractionPoint()
+            );
+
             if (distance > interactionDistance)
             {
                 continue;
@@ -163,13 +198,20 @@ public class PlayerBookInteractor : MonoBehaviour
                 continue;
             }
 
-            Vector3 toBook = book.GetInteractionPoint() - playerCamera.transform.position;
+            Vector3 toBook =
+                book.GetInteractionPoint()
+                - playerCamera.transform.position;
+
             if (toBook.sqrMagnitude <= 0.001f)
             {
                 continue;
             }
 
-            float lookDot = Vector3.Dot(playerCamera.transform.forward, toBook.normalized);
+            float lookDot = Vector3.Dot(
+                playerCamera.transform.forward,
+                toBook.normalized
+            );
+
             if (lookDot < lookAtDotThreshold)
             {
                 continue;
@@ -187,21 +229,26 @@ public class PlayerBookInteractor : MonoBehaviour
 
     private bool IsBookAvailable(BookInteractable book)
     {
-        return book != null && book.isActiveAndEnabled && book.gameObject.activeInHierarchy;
+        return book != null
+            && book.isActiveAndEnabled
+            && book.gameObject.activeInHierarchy;
     }
 
     private bool WasInteractPressed()
     {
-        if (interactAction != null && interactAction.WasPressedThisFrame())
+        if (interactAction != null
+            && interactAction.WasPressedThisFrame())
         {
             return true;
         }
 
-        return Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
+        return Keyboard.current != null
+            && Keyboard.current.fKey.wasPressedThisFrame;
     }
 
     private bool WasEscapePressed()
     {
-        return Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
+        return Keyboard.current != null
+            && Keyboard.current.escapeKey.wasPressedThisFrame;
     }
 }

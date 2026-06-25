@@ -10,27 +10,38 @@ public class BookInteractable : MonoBehaviour
     public List<BookPage> pages = new List<BookPage>();
 
     [Header("Prompt")]
-    public string promptText = "Press E to read";
+    public string promptText = "Press F to read";
 
-    [Header("Interaction")]
-    public float interactionRadius = 0.45f;
+    [Header("Subtitle")]
+    [TextArea(2, 5)]
+    public string interactionSubtitle;
 
-    private SphereCollider interactionTrigger;
+    [Min(0.1f)]
+    public float subtitleDuration = 4f;
 
-    private void Reset()
-    {
-        FitColliderToBook();
-    }
+    public bool showSubtitleOnlyOnce;
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (!Application.isPlaying)
+    private bool subtitleWasShown;
+
+        [Header("Interaction")]
+        public float interactionRadius = 0.45f;
+
+        private SphereCollider interactionTrigger;
+
+        private void Reset()
         {
             FitColliderToBook();
         }
-    }
-#endif
+
+    #if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (!Application.isPlaying)
+            {
+                FitColliderToBook();
+            }
+        }
+    #endif
 
     private void Awake()
     {
@@ -127,6 +138,36 @@ public class BookInteractable : MonoBehaviour
         }
 
         return hasBounds;
+    }
+
+    public void ShowInteractionSubtitle()
+    {
+        Debug.Log($"Trying to show subtitle: {interactionSubtitle}", this);
+
+        if (string.IsNullOrWhiteSpace(interactionSubtitle))
+        {
+            Debug.LogWarning("Interaction subtitle is empty.", this);
+            return;
+        }
+
+        if (showSubtitleOnlyOnce && subtitleWasShown)
+        {
+            Debug.Log("Subtitle was already shown.", this);
+            return;
+        }
+
+        if (SubtitleManager.Instance == null)
+        {
+            Debug.LogError("No SubtitleManager instance found.", this);
+            return;
+        }
+
+        SubtitleManager.Instance.ShowText(
+            interactionSubtitle,
+            subtitleDuration
+        );
+
+        subtitleWasShown = true;
     }
 
     private void SetupFallbackSphere(Vector3 localCenter)
