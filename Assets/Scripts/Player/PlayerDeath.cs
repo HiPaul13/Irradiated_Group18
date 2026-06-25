@@ -22,7 +22,7 @@ public class PlayerDeath : MonoBehaviour
         DisablePlayerControl();
 
         if (restartSceneOnDeath)
-            Invoke(nameof(RestartScene), restartDelay);
+            Invoke(nameof(TriggerRespawn), restartDelay);
     }
 
     private void DisablePlayerControl()
@@ -44,8 +44,11 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    private void RestartScene()
+    private void TriggerRespawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (CheckpointManager.Instance != null)
+            CheckpointManager.Instance.RespawnPlayer();
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -68,9 +68,11 @@ public class CollectableItem : MonoBehaviour, IInteractable
         if (GameProgressManager.Instance != null)
             GameProgressManager.Instance.NotifyItemCollected(itemData.itemID);
 
-        // Mark this specific world object as permanently collected.
-        if (SaveGameManager.Instance != null && !string.IsNullOrEmpty(saveID))
-            SaveGameManager.Instance.RegisterCollectedObject(saveID);
+        // Track saveID in the session — NOT as permanently collected yet.
+        // The item is only registered permanently when deposited into the cauldron
+        // or installed on the car. If the player dies before that, the item respawns.
+        if (!string.IsNullOrEmpty(saveID))
+            SessionCollectableTracker.TrackPickup(itemData.itemID, saveID);
 
         Destroy(gameObject);
     }

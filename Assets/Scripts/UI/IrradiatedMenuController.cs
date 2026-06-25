@@ -4,8 +4,8 @@ using UnityEngine.UIElements;
 
 public class IrradiatedMenuController : MonoBehaviour
 {
-    [Header("Scene")]
-    [SerializeField] private string gameSceneName = "GameScene";
+    [Header("Scenes")]
+    [SerializeField] private string introCutsceneSceneName = "Start_Cutscene";
 
     private VisualElement mainPage;
     private VisualElement controlsPage;
@@ -75,7 +75,11 @@ public class IrradiatedMenuController : MonoBehaviour
 
     private void PlayGame()
     {
-        SceneManager.LoadScene(gameSceneName);
+        // Signal that this is a fresh run — CheckpointManager will wipe any previous
+        // checkpoint so a death in the new run can't restore progress from last session.
+        CheckpointManager.IsNewGame = true;
+
+        SceneManager.LoadScene(introCutsceneSceneName);
     }
 
     private void ShowMainPage()

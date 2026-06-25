@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarRepairStation : MonoBehaviour, IInteractable
 {
     [Header("Required Car Parts")]
     public List<ItemData> requiredItems = new List<ItemData>();
+
+    [Header("Ending")]
+    [SerializeField] private string endingCutsceneSceneName = "End_Cutscene";
 
     private List<string> insertedItemIDs = new List<string>();
     private bool         isRepaired      = false;
@@ -48,6 +52,19 @@ public class CarRepairStation : MonoBehaviour, IInteractable
                 if (GameProgressManager.Instance != null)
                     GameProgressManager.Instance.NotifyCarPartInserted(requiredItem.itemID);
 
+                // Permanently register the world object.
+                string saveID = SessionCollectableTracker.GetSaveID(requiredItem.itemID);
+                if (saveID != null)
+                {
+                    if (SaveGameManager.Instance != null)
+                        SaveGameManager.Instance.RegisterCollectedObject(saveID);
+                    SessionCollectableTracker.RemoveTrack(requiredItem.itemID);
+                }
+
+                // Auto-save checkpoint so death won't lose this install.
+                if (CheckpointManager.Instance != null)
+                    CheckpointManager.Instance.SaveCheckpoint();
+
                 break; // insert one part per interaction
             }
         }
@@ -67,6 +84,15 @@ public class CarRepairStation : MonoBehaviour, IInteractable
 
         if (GameProgressManager.Instance != null)
             GameProgressManager.Instance.NotifyCarRepaired();
+
+        if (CheckpointManager.Instance != null)
+            CheckpointManager.Instance.SaveCheckpoint();
+
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        if (!string.IsNullOrEmpty(endingCutsceneSceneName))
+            SceneManager.LoadScene(endingCutsceneSceneName);
     }
 
     private void PrintMissingItems(HotbarInventory inventory)

@@ -275,7 +275,7 @@ public class SaveGameManager : MonoBehaviour
                   string.Join(", ", _transitionInventory));
     }
 
-    // ── Collected-object tracking (called by CollectableItem) ─────────────────
+    // ── Collected-object tracking ─────────────────────────────────────────────
 
     public void RegisterCollectedObject(string saveID)
     {
@@ -285,6 +285,21 @@ public class SaveGameManager : MonoBehaviour
     public bool IsObjectCollected(string saveID)
     {
         return collectedObjectIDs.Contains(saveID);
+    }
+
+    /// <summary>Read-only view of permanently-collected saveIDs (deposited / installed items).</summary>
+    public IReadOnlyCollection<string> PermanentCollectedSaveIDs => collectedObjectIDs;
+
+    /// <summary>
+    /// Replaces the collected-object set with exactly the provided IDs.
+    /// Called by CheckpointManager before CollectableItem.Start() runs on respawn,
+    /// so only truly permanent items are destroyed — session-only pickups respawn.
+    /// </summary>
+    public void RestoreCollectedObjectIDs(IEnumerable<string> ids)
+    {
+        collectedObjectIDs = ids != null
+            ? new HashSet<string>(ids)
+            : new HashSet<string>();
     }
 
     // ── Internal ─────────────────────────────────────────────────────────────

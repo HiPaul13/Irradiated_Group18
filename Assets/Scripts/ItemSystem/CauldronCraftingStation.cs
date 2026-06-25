@@ -70,6 +70,19 @@ public class CauldronCraftingStation : MonoBehaviour, IInteractable
             inventory.RemoveItem(req.itemID);
             NotifyIngredientDeposited(req.itemID);
 
+            // Permanently register the world object — the item is now truly gone.
+            string saveID = SessionCollectableTracker.GetSaveID(req.itemID);
+            if (saveID != null)
+            {
+                if (SaveGameManager.Instance != null)
+                    SaveGameManager.Instance.RegisterCollectedObject(saveID);
+                SessionCollectableTracker.RemoveTrack(req.itemID);
+            }
+
+            // Auto-save checkpoint so death won't lose this deposit.
+            if (CheckpointManager.Instance != null)
+                CheckpointManager.Instance.SaveCheckpoint();
+
             int deposited = GetDepositedCount();
             int needed = recipe.requiredItems.Count;
 

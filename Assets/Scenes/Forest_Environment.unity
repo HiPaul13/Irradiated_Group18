@@ -1613,6 +1613,7 @@ GameObject:
   - component: {fileID: 227800468}
   - component: {fileID: 227800467}
   - component: {fileID: 227800466}
+  - component: {fileID: 227800470}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1706,6 +1707,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &227800470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227800465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c041048b8557c48a215060e88ed9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointManager
+  gameplaySceneName: Forest_Environment
+  cabinRespawnPointId: CabinFront
+  respawnRadiationLevel: 0
 --- !u!43 &235076846
 Mesh:
   m_ObjectHideFlags: 0
@@ -3690,6 +3706,7 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 11400000, guid: 5ddef614fd3fb7e4ea7c6516589e4874, type: 2}
   - {fileID: 11400000, guid: ff4a2fd28d9f12741ad3b147746d9519, type: 2}
+  endingCutsceneSceneName: End_Cutscene
 --- !u!65 &389388334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6862,7 +6879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 659.8
+      value: 880.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9262,7 +9279,7 @@ Transform:
   m_GameObject: {fileID: 988656518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 333, y: 32.9, z: 826.9}
+  m_LocalPosition: {x: 531.45, y: 13.68, z: 625.21}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10937,6 +10954,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 30b9dcf4e7dbd894ba80dfe97111bd0c, type: 3}
       propertyPath: m_Name
       value: Character_3_Walk_Neu_Neu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30b9dcf4e7dbd894ba80dfe97111bd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 30b9dcf4e7dbd894ba80dfe97111bd0c, type: 3}
       propertyPath: m_Avatar
