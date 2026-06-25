@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -9339,7 +9339,7 @@ Transform:
   m_GameObject: {fileID: 988656518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 531.45, y: 13.68, z: 625.21}
+  m_LocalPosition: {x: 531.45, y: 13.68, z: 565}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -17295,6 +17295,7 @@ GameObject:
   - component: {fileID: 1944278737}
   - component: {fileID: 1944278736}
   - component: {fileID: 1944278735}
+  - component: {fileID: 1944278738}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -17420,6 +17421,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1944278738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944278733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fc0ecd99f3caf4687f9ac735c1b972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableFogForCamera
 --- !u!1 &1950824285
 GameObject:
   m_ObjectHideFlags: 0
