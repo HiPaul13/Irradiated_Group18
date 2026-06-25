@@ -172,12 +172,16 @@ public class BookUIManager : MonoBehaviour
             return;
         }
 
-        if (page.image != null)
-            CreateImageBlock(page.image);
+        bool hasImages = false;
+        foreach (Sprite sprite in page.GetImages())
+        {
+            CreateImageBlock(sprite);
+            hasImages = true;
+        }
 
         if (!string.IsNullOrWhiteSpace(page.text))
             CreateTextBlock(page.text);
-        else if (page.image == null)
+        else if (!hasImages)
             CreateTextBlock("This text will be defined later.");
 
         if (bookScrollRect != null)
