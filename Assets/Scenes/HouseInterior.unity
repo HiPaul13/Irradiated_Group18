@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: THE_WOOD_CABIN_02
       objectReference: {fileID: 0}
+    - target: {fileID: 415246, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.519
+      objectReference: {fileID: 0}
     - target: {fileID: 415294, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.041120946
@@ -246,6 +250,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.805
       objectReference: {fileID: 0}
+    - target: {fileID: 2315244, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
+    - target: {fileID: 2315272, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
+    - target: {fileID: 2315274, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b14a4a60965e6da44837b70bc4a571bd, type: 2}
     - target: {fileID: 20515148, guid: 1d8f45db8561d2d40a7cc7263db7b9d1, type: 3}
       propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
       value: 
@@ -1282,6 +1298,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455103658}
   m_CullTransparentMesh: 1
+--- !u!1 &487963371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487963373}
+  - component: {fileID: 487963372}
+  m_Layer: 0
+  m_Name: FirePlaceColider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &487963372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487963371}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &487963373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487963371}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.72550213, z: -0, w: 0.68821996}
+  m_LocalPosition: {x: 3.006, y: 3.939, z: -0.293}
+  m_LocalScale: {x: 2.1259847, y: 1.7292598, z: 2.5988448}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 93.021, z: 0}
 --- !u!1 &544612050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2272,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.374, y: 3.589, z: -3.003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2011, y: 1.2572, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2633,7 +2702,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.469, y: 3.589, z: -2.749}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3151, y: 1, z: 1.3127}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3804,8 +3873,8 @@ Transform:
   m_GameObject: {fileID: 1300000017}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 3.99, z: 4.262}
-  m_LocalScale: {x: 1, y: 1.2361, z: 1}
+  m_LocalPosition: {x: -0.05, y: 3.99, z: 3.862}
+  m_LocalScale: {x: 1, y: 1.2361, z: 0.49416044}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1300000012}
@@ -5453,3 +5522,4 @@ SceneRoots:
   - {fileID: 81929931}
   - {fileID: 949427858}
   - {fileID: 1084788456}
+  - {fileID: 487963373}
