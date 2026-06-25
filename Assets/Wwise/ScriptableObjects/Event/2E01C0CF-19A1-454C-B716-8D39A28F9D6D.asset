@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Stop_Monster_Chase
   id: 3199917805
   guid: 2E01C0CF-19A1-454C-B716-8D39A28F9D6D
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Chase_Steps_Monster
   id: 1953705599
   guid: 1A71E8AB-01E4-47ED-A864-2AB0BFEE34E6
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

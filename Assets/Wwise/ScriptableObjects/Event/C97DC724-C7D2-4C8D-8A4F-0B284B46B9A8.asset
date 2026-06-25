@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Stop_Swimmiing_Sound
   id: 3018045698
   guid: C97DC724-C7D2-4C8D-8A4F-0B284B46B9A8
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

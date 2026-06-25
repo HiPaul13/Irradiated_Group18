@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2311c8b14369154d9434b45a7f9f46f, type: 3}
-  m_Name: 58800327-93A6-404B-84B3-E54822868A98
+  m_Name: 8F86F0CD-828F-47D8-B426-12D98F9FEE5B
   m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
-  objectName: Stop_FootSteps_Water
-  id: 1148977389
-  guid: 58800327-93A6-404B-84B3-E54822868A98
+  objectName: Stop_Chase_Music
+  id: 2247103266
+  guid: 8F86F0CD-828F-47D8-B426-12D98F9FEE5B
   IsInUserDefinedSoundBank: 1

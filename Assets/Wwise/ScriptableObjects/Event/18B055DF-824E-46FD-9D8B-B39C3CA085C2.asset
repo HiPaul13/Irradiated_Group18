@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Player_Breathing_new
   id: 4130558497
   guid: 18B055DF-824E-46FD-9D8B-B39C3CA085C2
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

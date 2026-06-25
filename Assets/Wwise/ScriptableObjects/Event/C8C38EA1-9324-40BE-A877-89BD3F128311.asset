@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Monster_Idle
   id: 406161441
   guid: C8C38EA1-9324-40BE-A877-89BD3F128311
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

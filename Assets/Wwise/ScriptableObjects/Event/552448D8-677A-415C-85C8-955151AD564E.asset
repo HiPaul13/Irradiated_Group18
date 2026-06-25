@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Stop_Monster_Idle
   id: 1070204179
   guid: 552448D8-677A-415C-85C8-955151AD564E
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

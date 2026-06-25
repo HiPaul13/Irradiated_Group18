@@ -3361,6 +3361,47 @@ MonoBehaviour:
   attackCooldown: 2
   attackHitDelay: 0.2
   afterAttackDelay: 0.4
+  playChaseMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4447008b72f0740af9c7d11bf1d501c4, type: 2}
+  stopChaseMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c28dbafa8f2e14a81a1b723ac9ae3ba9, type: 2}
+  playExplorationMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: cb71e408a4e5a4e6da7f469ca867edc8, type: 2}
+  stopExplorationMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 941da6b80f54f427c8a8854562fdaef6, type: 2}
+  monsterDetectionSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 94ceb8a967f2e42e9a7eb7fd276cab35, type: 2}
+  monsterChaseLoopStart:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3adb578ef022745adad5b982e49560cf, type: 2}
+  monsterChaseLoopStop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5a1a865328ff3421e8d4ddebf5726155, type: 2}
+  monsterFootstepSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: dc281a097f16f479eb46019a464e4b84, type: 2}
+  monsterAttackSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 814b65ac7fe424cbe870788e3aa9aec7, type: 2}
+  playerHurtSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  footstepInterval: 0.45
   attackTriggerName: Attack
   useCrawlBool: 1
   crawlBoolName: Idle to crawl
@@ -5414,8 +5455,9 @@ GameObject:
   - component: {fileID: 594237605}
   - component: {fileID: 594237604}
   - component: {fileID: 594237603}
-  - component: {fileID: 594237602}
   - component: {fileID: 594237601}
+  - component: {fileID: 594237609}
+  - component: {fileID: 594237608}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -5444,35 +5486,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ea1df18eb30ec40ec8752f78b3196d21, type: 2}
-  useCallbacks: 0
-  stopSoundOnDestroy: 1
-  Callbacks: []
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
---- !u!114 &594237602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594237600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7162b49e5011b4da3549a17187b444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: cb71e408a4e5a4e6da7f469ca867edc8, type: 2}
   useCallbacks: 0
   stopSoundOnDestroy: 1
   Callbacks: []
@@ -5599,6 +5612,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594237608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594237600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f24fa9dca4b4ce4a2f8fd79af4def3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicStateTester
+--- !u!114 &594237609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594237600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7162b49e5011b4da3549a17187b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 117472784956f4bdc8bbe3ab722204bd, type: 2}
+  useCallbacks: 0
+  stopSoundOnDestroy: 1
+  Callbacks: []
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
 --- !u!4 &597772099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1826384441248096524, guid: bd1e5767322fa3a46b9826f9ae66ce39, type: 3}
@@ -9060,6 +9114,7 @@ GameObject:
   - component: {fileID: 988656532}
   - component: {fileID: 988656531}
   - component: {fileID: 988656530}
+  - component: {fileID: 988656533}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9428,6 +9483,36 @@ MonoBehaviour:
   minSpeed: 0.2
   forestStepInterval: 0.45
   lakeStepInterval: 0.8
+--- !u!114 &988656533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988656518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5194128ea6248b8930d26ff9ba97cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBreathingAudio
+  fpsController: {fileID: 0}
+  playerDeath: {fileID: 0}
+  normalBreathing:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8fb9feabe94c24cca90450ec7b1b9c3d, type: 2}
+  normalBreathingStop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 180a92b0ba6684f5b951ea0dc41323af, type: 2}
+  heavyBreathingStart:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7ef85a5bd18184924a60b03d19fe491f, type: 2}
+  heavyBreathingStop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 9cc2f9adaabb54206818227d00a06422, type: 2}
 --- !u!1001 &1004257378
 PrefabInstance:
   m_ObjectHideFlags: 0

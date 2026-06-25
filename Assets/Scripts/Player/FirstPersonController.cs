@@ -49,6 +49,7 @@ public class FirstPersonController : MonoBehaviour
     private bool controlsEnabled = true;
 
     public bool ControlsEnabled => controlsEnabled;
+    public bool IsSprinting     => sprintHeld && canSprint;
 
     private void Awake()
     {

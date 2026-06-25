@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Swimmiing_Sound
   id: 1830078008
   guid: 49F8825C-6DC5-47CA-BBF7-456820394664
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

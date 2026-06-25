@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Audio.meta
 guid: c2c66fa4dc68d6d438e53c4dd6e6a6a6
-========
-guid: ae68c136ada214e44bf5209cde53f580
->>>>>>>> Milos:Assets/InteriorScenePrefabs.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Monster_Chase
   id: 563051919
   guid: C4E43A6F-70F3-4405-BEC5-97E484EB9E6E
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

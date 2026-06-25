@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Exploration_Music
   id: 3101865577
   guid: B8189651-952D-45BB-8C6E-52A6863E2069
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Detection_Sound
   id: 1796114203
   guid: DFC3FE66-D794-4528-A91A-8A74D39CA1E9
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

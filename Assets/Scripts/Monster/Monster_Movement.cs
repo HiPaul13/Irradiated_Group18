@@ -73,6 +73,21 @@ public class Monster_Movement : MonoBehaviour
     [SerializeField] private float attackHitDelay            = 0.7f;
     [SerializeField] private float afterAttackDelay          = 0.4f;
 
+    [Header("Background Music")]
+    [SerializeField] private AK.Wwise.Event playChaseMusic;
+    [SerializeField] private AK.Wwise.Event stopChaseMusic;
+    [SerializeField] private AK.Wwise.Event playExplorationMusic;
+    [SerializeField] private AK.Wwise.Event stopExplorationMusic;
+
+    [Header("Monster Audio")]
+    [SerializeField] private AK.Wwise.Event monsterDetectionSound;
+    [SerializeField] private AK.Wwise.Event monsterChaseLoopStart;
+    [SerializeField] private AK.Wwise.Event monsterChaseLoopStop;
+    [SerializeField] private AK.Wwise.Event monsterFootstepSound;
+    [SerializeField] private AK.Wwise.Event monsterAttackSound;
+    [SerializeField] private AK.Wwise.Event playerHurtSound;
+    [SerializeField] private float footstepInterval = 0.45f;
+
     [Header("Animator Parameters")]
     [SerializeField] private string attackTriggerName = "Attack";
     [SerializeField] private bool   useCrawlBool      = true;
@@ -111,6 +126,8 @@ public class Monster_Movement : MonoBehaviour
 
     private bool  isAttacking;
     private float nextAttackTime;
+
+    private Coroutine footstepCoroutine;
 
     private PlayerDeath playerDeath;
 
@@ -152,6 +169,8 @@ public class Monster_Movement : MonoBehaviour
         }
 
         agent.stoppingDistance = stopBeforeAttackDistance;
+
+        playExplorationMusic?.Post(gameObject);
 
         SetState(MonsterState.Patrol);
         GoToNextPatrolPoint();
@@ -346,6 +365,8 @@ public class Monster_Movement : MonoBehaviour
         StopMonster();
         FacePlayer();
 
+        monsterAttackSound?.Post(gameObject);
+
         if (animator != null)
         {
             animator.ResetTrigger(attackTriggerName);
@@ -362,6 +383,7 @@ public class Monster_Movement : MonoBehaviour
 
             if (dist <= attackDamageRange)
             {
+                playerHurtSound?.Post(player.gameObject);
                 if (playerDeath == null) playerDeath = player.GetComponent<PlayerDeath>();
                 if (playerDeath != null) playerDeath.KillPlayer();
                 else Debug.LogWarning("[Monster] PlayerDeath script missing on player.");
@@ -762,8 +784,30 @@ public class Monster_Movement : MonoBehaviour
     private void SetState(MonsterState newState)
     {
         if (state == newState) return;
+
+        bool wasChasing = state    == MonsterState.Chase;
+        bool willChase  = newState == MonsterState.Chase;
+
         state     = newState;
         waitTimer = 0f;
+
+        if (!wasChasing && willChase)
+        {
+            stopExplorationMusic?.Post(gameObject);
+            playChaseMusic?.Post(gameObject);
+
+            monsterDetectionSound?.Post(gameObject);
+            monsterChaseLoopStart?.Post(gameObject);
+            footstepCoroutine = StartCoroutine(FootstepLoop());
+        }
+        else if (wasChasing && !willChase)
+        {
+            stopChaseMusic?.Post(gameObject);
+            playExplorationMusic?.Post(gameObject);
+
+            monsterChaseLoopStop?.Post(gameObject);
+            if (footstepCoroutine != null) { StopCoroutine(footstepCoroutine); footstepCoroutine = null; }
+        }
     }
 
     private void UpdateAnimatorMovement()
@@ -771,5 +815,17 @@ public class Monster_Movement : MonoBehaviour
         if (animator == null || !useCrawlBool) return;
         bool isMoving = agent != null && agent.velocity.magnitude > 0.1f && !agent.isStopped;
         animator.SetBool(crawlBoolName, isMoving);
+    }
+
+    private IEnumerator FootstepLoop()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(footstepInterval);
+            bool isMoving = agent != null && agent.isOnNavMesh &&
+                            agent.velocity.magnitude > 0.1f && !agent.isStopped;
+            if (isMoving)
+                monsterFootstepSound?.Post(gameObject);
+        }
     }
 }

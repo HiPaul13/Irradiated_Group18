@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_Monster_Attack
   id: 864033359
   guid: C1E7B269-FD4D-469A-AF14-4C1E749C9CCC
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

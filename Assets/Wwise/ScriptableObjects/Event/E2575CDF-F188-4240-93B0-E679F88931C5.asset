@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Play_FootSteps_Water
   id: 423236179
   guid: E2575CDF-F188-4240-93B0-E679F88931C5
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1
