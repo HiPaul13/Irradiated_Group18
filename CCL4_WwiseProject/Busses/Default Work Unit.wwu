@@ -42,14 +42,20 @@
 														<SegmentShape>Exp3</SegmentShape>
 													</Point>
 													<Point>
-														<XPos>42.32165</XPos>
+														<XPos>56.34825</XPos>
 														<YPos>0</YPos>
 														<Flags>0</Flags>
-														<SegmentShape>Exp3</SegmentShape>
+														<SegmentShape>Exp2</SegmentShape>
+													</Point>
+													<Point>
+														<XPos>89.9637243047158</XPos>
+														<YPos>48</YPos>
+														<Flags>0</Flags>
+														<SegmentShape>Log2</SegmentShape>
 													</Point>
 													<Point>
 														<XPos>100</XPos>
-														<YPos>66</YPos>
+														<YPos>48</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
@@ -60,6 +66,13 @@
 							</RTPC>
 						</ObjectList>
 					</ObjectLists>
+				</Bus>
+				<Bus Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{79C62EF3-4693-4A65-BB31-34381E763A98}" WorkUnitID="{FA43237A-8B4A-4D9C-8B82-C7209C51D08C}"/>
+						</Reference>
+					</ReferenceList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

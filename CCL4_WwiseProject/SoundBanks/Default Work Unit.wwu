@@ -14,6 +14,13 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
+				<SoundBank Name="Indoor_SoundBank" ID="{C1271C33-E3E3-41FA-888D-1E3B89898237}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Indoor" ID="{7BDFCCA3-A0A9-468F-B26A-C2ED48C759B9}" WorkUnitID="{B8588576-011D-4113-BACD-F4A24713F4E7}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

@@ -381,17 +381,6 @@
 				</Folder>
 				<Folder Name="Player" ID="{2E55554B-A292-430D-9A84-D912F6D56CEB}" ShortID="277165086">
 					<ChildrenList>
-						<Event Name="Play_Footsteps_House_RC" ID="{4E642164-3956-4937-8B07-245626A0F8E5}">
-							<ChildrenList>
-								<Action Name="" ID="{1FA614E3-1803-440F-8EEF-D8AFABB0B49D}" ShortID="789180255">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Footsteps_House_RC" ID="{FC3A713B-28B2-4AF3-99F3-15A8DE237473}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 						<Event Name="Play_FootSteps_Ruin_RC" ID="{379A41FD-FB27-4E06-A138-02C1E52CE03B}">
 							<ChildrenList>
 								<Action Name="" ID="{3607180D-C51F-4044-A42E-93772EF4C553}" ShortID="144951547">
@@ -510,6 +499,65 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Jump_Scare" ID="{92610C3B-3B99-4529-A169-167735D3F666}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Indoor" ID="{7BDFCCA3-A0A9-468F-B26A-C2ED48C759B9}" ShortID="350915846">
+					<ChildrenList>
+						<Event Name="Play_Indoor_Fire" ID="{528D725B-735A-4E9C-ACF7-95BD90100B5E}">
+							<ChildrenList>
+								<Action Name="" ID="{649518CF-2490-4190-AD8A-B79094EAFD75}" ShortID="848846106">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Indoor_Fire" ID="{145CFA26-33CD-4E93-B77E-BF0000B28985}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Indoor_Wood_Cracking" ID="{3F77B27A-9839-4F81-8B32-8CE92C008607}">
+							<ChildrenList>
+								<Action Name="" ID="{249965A7-0386-4C47-8277-0A0CF13DD0DA}" ShortID="408976740">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Indoor_Wood_Cracking" ID="{636A622A-ABEF-4594-BA49-C133BF458FCF}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Wind_Indoor" ID="{4985B660-4C73-4B0F-A8DF-2DC4EDD1A746}">
+							<ChildrenList>
+								<Action Name="" ID="{AB97F2EF-5DFE-4040-834B-4034BF85C37E}" ShortID="858217048">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Wind Indoor" ID="{2DF1799F-1791-4B3F-8B1A-87B66ED83963}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Indoor_tone" ID="{80279070-8F0B-470C-93BD-328CD0F2F997}">
+							<ChildrenList>
+								<Action Name="" ID="{C81625D1-237F-40D0-B4B2-F39345C55BBD}" ShortID="14220964">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Indoor tone" ID="{18815E18-EAC6-4F8D-8F5C-962CAA6CB398}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Footsteps_House_RC" ID="{889543D0-7FA0-488C-9616-9A4FDCA89B8F}">
+							<ChildrenList>
+								<Action Name="" ID="{96E895B5-269B-4202-94E6-254411CA19D1}" ShortID="34291024">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Footsteps_House_RC" ID="{FC3A713B-28B2-4AF3-99F3-15A8DE237473}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

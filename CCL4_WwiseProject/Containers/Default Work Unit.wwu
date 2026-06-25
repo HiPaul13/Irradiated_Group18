@@ -1021,7 +1021,20 @@
 						<Folder Name="House_Indoor" ID="{195E9C44-9E68-40BE-8B4F-9B46B5C83CD8}" ShortID="476830002">
 							<ChildrenList>
 								<Sound Name="Indoor_Fire" ID="{145CFA26-33CD-4E93-B77E-BF0000B28985}" ShortID="169544044">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Low Attenuation" ID="{AA3CCD66-9CC2-4D41-8E28-1FDE049F9E6A}" WorkUnitID="{CA236B60-2A57-45A9-8705-1BDC57B9D5B4}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
@@ -1031,6 +1044,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Indoor_Fire" ID="{B395B636-50AF-47E2-88E2-98E41A4E517F}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.61317"/>
+												<Property Name="TrimEnd" Type="Real64" Value="29.75335"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>Indoor_Fire.wav</AudioFile>
 											<MediaIDList>
@@ -1043,6 +1061,14 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Indoor_Wood_Cracking" ID="{636A622A-ABEF-4594-BA49-C133BF458FCF}" ShortID="334153963">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-20</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
@@ -1053,6 +1079,11 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="Indoor_Wood_Cracking" ID="{ABEEBA5C-138C-4EE5-AB42-B421EFD3AC2D}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.20335"/>
+												<Property Name="TrimEnd" Type="Real64" Value="29.63116"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>Indoor_Wood_Cracking.wav</AudioFile>
 											<MediaIDList>
@@ -1062,6 +1093,74 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="Indoor_Wood_Cracking" ID="{ABEEBA5C-138C-4EE5-AB42-B421EFD3AC2D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Indoor tone" ID="{18815E18-EAC6-4F8D-8F5C-962CAA6CB398}" ShortID="401307876">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Indoor tone" ID="{B8351FDF-90F7-4FD9-8CF1-5637B312EADA}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="115.54955"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Indoor tone.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="358322521"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Indoor tone" ID="{B8351FDF-90F7-4FD9-8CF1-5637B312EADA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Wind Indoor" ID="{2DF1799F-1791-4B3F-8B1A-87B66ED83963}" ShortID="971943212">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Wind Indoor" ID="{A1228028-E6C7-4441-8D4C-4A4197F2940F}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="138.92963"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Wind Indoor.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="258544190"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Wind Indoor" ID="{A1228028-E6C7-4441-8D4C-4A4197F2940F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -1226,7 +1325,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+									<ObjectRef Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -1245,9 +1344,7 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{8CF38554-6331-4361-9418-004AEE470697}" ShortID="763198155">
-										<ReferenceList/>
-									</EffectSlot>
+									<EffectSlot Name="" ID="{8CF38554-6331-4361-9418-004AEE470697}" ShortID="763198155"/>
 								</ObjectList>
 								<ObjectList Name="RTPC">
 									<RTPC Name="" ID="{C95ECACF-9DC1-4522-96EE-E6EBE11527C2}" ShortID="761025345">
@@ -1278,8 +1375,14 @@
 																<SegmentShape>Exp3</SegmentShape>
 															</Point>
 															<Point>
+																<XPos>96.57702</XPos>
+																<YPos>7.31767</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Log3</SegmentShape>
+															</Point>
+															<Point>
 																<XPos>100</XPos>
-																<YPos>200</YPos>
+																<YPos>8.13668</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -1701,7 +1804,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+											<ObjectRef Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1818,7 +1921,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+											<ObjectRef Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1860,7 +1963,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+											<ObjectRef Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -2044,7 +2147,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09C619CD-3DF5-46E0-BA37-AFF1F38813BC}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
+											<ObjectRef Name="Radiation Bus" ID="{3AA8AF45-4BA8-429D-AA20-3A90BF42B7B3}" WorkUnitID="{72A48276-73D0-46B1-9B5A-7D494EF5302E}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
