@@ -202,7 +202,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417798942}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: f6bffb39bdecbe14fa8c7b637db01ab4, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 0faf63b9c3c5251428d92f1c9b2e9a6f, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1146119242}
@@ -245,6 +245,16 @@ MonoBehaviour:
   videoPlayer: {fileID: 417798943}
   nextSceneName: Menu_Scene
   skipOnAnyKey: 1
+  cutsceneAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  cutsceneAudioStop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  audioDelay: 3
+  audioLeadTime: 0.1
 --- !u!4 &417798945
 Transform:
   m_ObjectHideFlags: 0

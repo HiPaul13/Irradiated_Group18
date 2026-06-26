@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles two teleport conditions:
@@ -83,24 +84,12 @@ public class EnemyTeleportManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
-        if (player == null)
-        {
-            GameObject obj = GameObject.FindGameObjectWithTag("Player");
-            if (obj != null) player = obj.transform;
-        }
-
-        if (playerCamera == null && player != null)
-        {
-            Camera cam = player.GetComponentInChildren<Camera>();
-            if (cam != null) playerCamera = cam.transform;
-        }
-
-        if (monster == null)
-            monster = FindObjectOfType<Monster_Movement>();
+        FindSceneReferences();
 
         if (GameProgressManager.Instance != null)
             GameProgressManager.Instance.OnStageChanged += OnStageChanged;
@@ -108,8 +97,38 @@ public class EnemyTeleportManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         if (GameProgressManager.Instance != null)
             GameProgressManager.Instance.OnStageChanged -= OnStageChanged;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Re-acquire all references to scene objects that were destroyed on reload.
+        FindSceneReferences();
+
+        // Reset runtime state so respawn starts fresh.
+        playerInSafeZone  = false;
+        playerInMajorZone = false;
+        forestTimer       = 0f;
+        lastTeleportTime  = -9999f;
+    }
+
+    private void FindSceneReferences()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            Camera cam = playerObj.GetComponentInChildren<Camera>();
+            if (cam != null) playerCamera = cam.transform;
+        }
+
+        if (monster == null || !monster)
+            monster = FindObjectOfType<Monster_Movement>();
+
+        if (difficultyController == null || !difficultyController)
+            difficultyController = FindObjectOfType<EnemyDifficultyController>();
     }
 
     private void Update()
@@ -121,6 +140,8 @@ public class EnemyTeleportManager : MonoBehaviour
 
     private void TickForestTimer()
     {
+        if (player == null || !player) return;
+
         if (playerInSafeZone || playerInMajorZone)
         {
             forestTimer = 0f;
