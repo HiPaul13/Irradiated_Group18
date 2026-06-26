@@ -3519,6 +3519,14 @@ MonoBehaviour:
   - {fileID: 2094868609}
   - {fileID: 670789098}
   - {fileID: 947102191}
+  exitSpawnDelay: 5
+  minSpawnDistance: 8
+  maxSpawnDistance: 16
+  spawnSideSpread: 4
+  navMeshSampleRadius: 5
+  maxSpawnAttempts: 10
+  radiationMultiplier: 5
+  playerCamera: {fileID: 0}
   showDebugLogs: 1
 --- !u!65 &378146111
 BoxCollider:
@@ -3646,7 +3654,7 @@ MonoBehaviour:
   playerHurtSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: eec95fbc4a13b405f8b4c77b07258272, type: 2}
   footstepInterval: 0.45
   attackTriggerName: Attack
   useCrawlBool: 1
@@ -9623,6 +9631,7 @@ MonoBehaviour:
   minTimeBetweenInverts: 2
   maxTimeBetweenInverts: 10
   invertDuration: 1.5
+  timeAtMaxRadiationBeforeDeath: 5
   playerMovement: {fileID: 988656520}
   radiationUI: {fileID: 95845323}
   visionEffect: {fileID: 832575520}
