@@ -3693,67 +3693,67 @@ MonoBehaviour:
   monster: {fileID: 379340026}
   stageSettings:
   - stage: 0
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 4.8
-    chaseSpeed: 9.2
-    patrolDetectionRange: 55
+    chaseSpeed: 10.5
+    patrolDetectionRange: 100
     investigateDetectionRange: 80
-    chaseRange: 105
-    losePlayerRange: 150
-    forestTeleportTime: 180
+    chaseRange: 100
+    losePlayerRange: 120
+    forestTeleportTime: 60
     teleportCooldown: 60
   - stage: 1
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 5.3
-    chaseSpeed: 9.8
-    patrolDetectionRange: 65
-    investigateDetectionRange: 95
-    chaseRange: 125
-    losePlayerRange: 175
-    forestTeleportTime: 150
+    chaseSpeed: 11
+    patrolDetectionRange: 110
+    investigateDetectionRange: 80
+    chaseRange: 110
+    losePlayerRange: 130
+    forestTeleportTime: 60
     teleportCooldown: 60
   - stage: 2
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 5.8
     chaseSpeed: 10.3
-    patrolDetectionRange: 75
-    investigateDetectionRange: 110
-    chaseRange: 145
-    losePlayerRange: 200
-    forestTeleportTime: 120
-    teleportCooldown: 55
+    patrolDetectionRange: 120
+    investigateDetectionRange: 80
+    chaseRange: 120
+    losePlayerRange: 140
+    forestTeleportTime: 60
+    teleportCooldown: 60
   - stage: 3
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 6.3
-    chaseSpeed: 10.8
-    patrolDetectionRange: 85
-    investigateDetectionRange: 120
-    chaseRange: 160
+    chaseSpeed: 11.5
+    patrolDetectionRange: 120
+    investigateDetectionRange: 80
+    chaseRange: 120
     losePlayerRange: 220
-    forestTeleportTime: 95
-    teleportCooldown: 50
+    forestTeleportTime: 60
+    teleportCooldown: 60
   - stage: 4
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 6.7
     chaseSpeed: 11.2
-    patrolDetectionRange: 95
-    investigateDetectionRange: 130
-    chaseRange: 175
-    losePlayerRange: 235
-    forestTeleportTime: 75
-    teleportCooldown: 45
+    patrolDetectionRange: 125
+    investigateDetectionRange: 80
+    chaseRange: 125
+    losePlayerRange: 150
+    forestTeleportTime: 60
+    teleportCooldown: 60
   - stage: 5
-    patrolSpeed: 10
+    patrolSpeed: 18
     investigateSpeed: 7.1
     chaseSpeed: 11.5
-    patrolDetectionRange: 105
-    investigateDetectionRange: 140
-    chaseRange: 185
-    losePlayerRange: 245
+    patrolDetectionRange: 125
+    investigateDetectionRange: 80
+    chaseRange: 125
+    losePlayerRange: 150
     forestTeleportTime: 60
-    teleportCooldown: 40
+    teleportCooldown: 60
   - stage: 6
-    patrolSpeed: 10
+    patrolSpeed: 15
     investigateSpeed: 7.5
     chaseSpeed: 11.8
     patrolDetectionRange: 115
@@ -7233,15 +7233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 547.2
+      value: 376.85303
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.59
+      value: 14.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 725.4
+      value: 659.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea0717a418116de4ebc876e3c4661118, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9811,7 +9811,7 @@ Transform:
   m_GameObject: {fileID: 988656518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 267.99, y: 19.74, z: 432.7}
+  m_LocalPosition: {x: 531.45, y: 13.68, z: 625.21}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16550,15 +16550,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611078752809296076, guid: 1037f45b9978e254a9342df15e265103, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 543.378
+      value: 523.79
       objectReference: {fileID: 0}
     - target: {fileID: 8611078752809296076, guid: 1037f45b9978e254a9342df15e265103, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.716224
+      value: 14.81
       objectReference: {fileID: 0}
     - target: {fileID: 8611078752809296076, guid: 1037f45b9978e254a9342df15e265103, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 293.8
+      value: 497.1
       objectReference: {fileID: 0}
     - target: {fileID: 8611078752809296076, guid: 1037f45b9978e254a9342df15e265103, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20772,8 +20772,8 @@ SceneRoots:
   - {fileID: 1344482826}
   - {fileID: 2033560010}
   - {fileID: 1223892923}
-  - {fileID: 764166450}
   - {fileID: 675660592}
+  - {fileID: 764166450}
   - {fileID: 640309123}
   - {fileID: 1004457485}
   - {fileID: 824519664}

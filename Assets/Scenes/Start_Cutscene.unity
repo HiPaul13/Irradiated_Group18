@@ -857,6 +857,16 @@ MonoBehaviour:
   videoPlayer: {fileID: 1521776176}
   nextSceneName: Forest_Environment
   skipOnAnyKey: 1
+  cutsceneAudio:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 93d9ccbf4555245739778fe8cbd14e0b, type: 2}
+  cutsceneAudioStop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  audioDelay: 0
+  audioLeadTime: 0.1
 --- !u!328 &1521776176
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -884,7 +894,7 @@ VideoPlayer:
   m_DirectAudioVolumes:
   - 1
   m_Url: 
-  m_EnabledAudioTracks: 01
+  m_EnabledAudioTracks: 00
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
@@ -1356,6 +1366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010173898}
   - component: {fileID: 2010173897}
+  - component: {fileID: 2010173899}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -1403,6 +1414,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010173899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010173896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472c3dcac39b3b44388d440433eb09aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkBank
+  triggerList: ae8d9d44f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 146fb835e57f84569b5ddfd78bf0a0c9, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1001 &2013483013
 PrefabInstance:
   m_ObjectHideFlags: 0

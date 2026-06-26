@@ -22,7 +22,7 @@ public class CauldronIngredientDisplay : MonoBehaviour
     [SerializeField] private float potionMessageDuration = 7f;
     [TextArea(2, 4)]
     [SerializeField] private string potionReadyMessage =
-        "Your radiation potion is ready!\nPress G to drink it — you will have 60 seconds of protection.";
+        "Your radiation potion is ready!\nPress F to drink it — you will have 60 seconds of protection.";
 
     private CauldronCraftingStation craftingStation;
     private Transform sphereTarget;
