@@ -85,6 +85,7 @@ public class Monster_Movement : MonoBehaviour
     [SerializeField] private AK.Wwise.Event monsterChaseLoopStop;
     [SerializeField] private AK.Wwise.Event monsterFootstepSound;
     [SerializeField] private AK.Wwise.Event monsterAttackSound;
+    [SerializeField] private AK.Wwise.Event playerJumpscareSound;
     [SerializeField] private AK.Wwise.Event playerHurtSound;
     [SerializeField] private float footstepInterval = 0.45f;
 
@@ -370,6 +371,7 @@ public class Monster_Movement : MonoBehaviour
         fpc?.SetControlsEnabled(false);
 
         monsterAttackSound?.Post(gameObject);
+        playerJumpscareSound?.Post(player.gameObject);
 
         if (animator != null)
         {

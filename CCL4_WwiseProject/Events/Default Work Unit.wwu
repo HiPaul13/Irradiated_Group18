@@ -565,6 +565,17 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Play_CCL4_Intro_Audio" ID="{828F6A60-2E53-4F2C-9ABA-88699EAEE470}">
+					<ChildrenList>
+						<Action Name="" ID="{88DA6AA7-70D5-4008-8151-105233EAF23F}" ShortID="509080756">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CCL4_Intro_Audio" ID="{48C0BD65-3074-4DC2-8D74-74205804C47E}" WorkUnitID="{07CA1333-C2EC-404E-B4FC-725F3BF2FC91}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
