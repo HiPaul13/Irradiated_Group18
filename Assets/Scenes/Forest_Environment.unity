@@ -3852,7 +3852,7 @@ MonoBehaviour:
   - stage: 4
     patrolSpeed: 8
     investigateSpeed: 6.7
-    chaseSpeed: 11.2
+    chaseSpeed: 11
     patrolDetectionRange: 125
     investigateDetectionRange: 80
     chaseRange: 125
@@ -3862,7 +3862,7 @@ MonoBehaviour:
   - stage: 5
     patrolSpeed: 8
     investigateSpeed: 7.1
-    chaseSpeed: 11.5
+    chaseSpeed: 11
     patrolDetectionRange: 125
     investigateDetectionRange: 80
     chaseRange: 20
