@@ -29,6 +29,11 @@ public class RadiationManager : MonoBehaviour
     public float maxTimeBetweenInverts = 10f;
     public float invertDuration = 1.5f;
 
+    [Header("Death at Max Radiation")]
+    [Tooltip("Wie viele Sekunden der Player bei 100% Radiation überleben kann bevor er stirbt. " +
+             "0 = sofortiger Tod.")]
+    public float timeAtMaxRadiationBeforeDeath = 5f;
+
     [Header("References")]
     public FirstPersonController playerMovement;
     public RadiationUI radiationUI;
@@ -38,6 +43,10 @@ public class RadiationManager : MonoBehaviour
     private bool  isProtected          = false;
     private float protectionEndTime    = 0f;
     private bool  isIndoorScene;
+
+    private float   timeAtMaxRadiation = 0f;
+    private bool    deathTriggered     = false;
+    private PlayerDeath playerDeath;
 
     private void Awake()
     {
@@ -77,6 +86,7 @@ public class RadiationManager : MonoBehaviour
 
     private void Start()
     {
+        playerDeath = GetComponent<PlayerDeath>();
         PotionProtectionState.TryRestore(this);
     }
 
@@ -119,15 +129,43 @@ public class RadiationManager : MonoBehaviour
 
         currentRadiation = Mathf.Clamp(currentRadiation, 0f, maxRadiation);
         AkSoundEngine.SetRTPCValue("RadiationLevel", currentRadiation);
+
+        CheckRadiationDeath();
     }
 
-    /// <summary>Blocks radiation gain for the given number of seconds.</summary>
+    private void CheckRadiationDeath()
+    {
+        if (deathTriggered || isIndoorScene || isProtected) return;
+
+        if (currentRadiation >= maxRadiation)
+        {
+            timeAtMaxRadiation += Time.deltaTime;
+
+            if (timeAtMaxRadiation >= timeAtMaxRadiationBeforeDeath)
+            {
+                deathTriggered = true;
+                Debug.Log($"[Radiation] Player bei 100% Radiation für {timeAtMaxRadiation:F1}s — Tod.");
+                if (playerDeath == null) playerDeath = GetComponent<PlayerDeath>();
+                if (playerDeath != null) playerDeath.KillPlayer();
+                else Debug.LogWarning("[Radiation] Kein PlayerDeath Script gefunden.");
+            }
+        }
+        else
+        {
+            timeAtMaxRadiation = 0f;
+        }
+    }
+
+    /// <summary>Blocks radiation gain for the given number of seconds and resets current radiation to 0.</summary>
     public void ActivateProtection(float duration)
     {
-        isProtected       = true;
-        protectionEndTime = Time.time + duration;
+        isProtected        = true;
+        protectionEndTime  = Time.time + duration;
+        currentRadiation   = 0f;
+        timeAtMaxRadiation = 0f;
+        deathTriggered     = false;
         PotionProtectionState.SetProtectionEndTime(protectionEndTime);
-        Debug.Log($"[Radiation] Protection active for {duration}s. Radiation blocked until {protectionEndTime:F1}s.");
+        Debug.Log($"[Radiation] Protection active for {duration}s — radiation reset to 0.");
     }
 
     public void RestoreProtection(float endTime)
