@@ -1261,7 +1261,7 @@ MonoBehaviour:
     images: []
   promptText: Press F to read
   interactionSubtitle: Maybe I can find something useful on the dumpyard to repair
-    my car and get outa here
+    my car and get outa here. (Two Car Parts)
   subtitleDuration: 4
   showSubtitleOnlyOnce: 0
   interactionRadius: 2
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   lookAtDotThreshold: 0.55
   protectionDurationSeconds: 60
   potionMessageDuration: 7
-  potionReadyMessage: "Your radiation potion is ready!\nPress G to drink it \u2014
+  potionReadyMessage: "Your radiation potion is ready!\nPress F to drink it \u2014
     you will have 60 seconds of protection."
 --- !u!114 &728189703
 MonoBehaviour:
@@ -4354,7 +4354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RadiationPotionUser
   potionItemID: radiationpotion
   protectionDuration: 999
-  useKey: 21
+  useKey: 20
 --- !u!114 &1307417794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4379,6 +4379,7 @@ MonoBehaviour:
   minTimeBetweenInverts: 2
   maxTimeBetweenInverts: 10
   invertDuration: 1.5
+  timeAtMaxRadiationBeforeDeath: 5
   playerMovement: {fileID: 1307417795}
   radiationUI: {fileID: 0}
   visionEffect: {fileID: 0}
@@ -4427,7 +4428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
   restartDelay: 2
-  restartSceneOnDeath: 1
+  deathScreenCanvas: {fileID: 0}
+  deathScreenDuration: 3
+  fadeInDuration: 0.5
 --- !u!114 &1307417797
 MonoBehaviour:
   m_ObjectHideFlags: 0
