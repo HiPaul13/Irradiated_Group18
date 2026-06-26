@@ -72,8 +72,9 @@ public class EnemyTeleportManager : MonoBehaviour
 
     // ── Runtime ──────────────────────────────────────────────────────────────
 
-    private bool  playerInSafeZone  = false;
-    private bool  playerInMajorZone = false;
+    private bool  playerInSafeZone       = false;
+    private bool  playerInMajorZone      = false;
+    private bool  forestTeleportDisabled = false;
 
     private float forestTimer      = 0f;
     private float lastTeleportTime = -9999f;
@@ -112,6 +113,10 @@ public class EnemyTeleportManager : MonoBehaviour
         playerInMajorZone = false;
         forestTimer       = 0f;
         lastTeleportTime  = -9999f;
+
+        // GameProgressManager persists across scene loads — re-check the disable flag.
+        if (GameProgressManager.Instance != null)
+            forestTeleportDisabled = GameProgressManager.Instance.CurrentStage >= GameProgressStage.CollectingCarParts;
     }
 
     private void FindSceneReferences()
@@ -141,6 +146,7 @@ public class EnemyTeleportManager : MonoBehaviour
     private void TickForestTimer()
     {
         if (player == null || !player) return;
+        if (forestTeleportDisabled) return;
 
         if (playerInSafeZone || playerInMajorZone)
         {
@@ -599,6 +605,7 @@ public class EnemyTeleportManager : MonoBehaviour
 
     private void OnStageChanged(GameProgressStage stage)
     {
-        Debug.Log($"[Teleport] Stage → {stage}. Timer thresholds update via difficulty controller.");
+        forestTeleportDisabled = stage >= GameProgressStage.CollectingCarParts;
+        Debug.Log($"[Teleport] Stage → {stage}. Forest teleport disabled: {forestTeleportDisabled}.");
     }
 }

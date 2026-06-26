@@ -81,6 +81,36 @@ public class DumpyardArea : MonoBehaviour
             Camera cam = player.GetComponentInChildren<Camera>();
             if (cam != null) playerCamera = cam.transform;
         }
+
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.OnStageChanged += OnStageChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (GameProgressManager.Instance != null)
+            GameProgressManager.Instance.OnStageChanged -= OnStageChanged;
+    }
+
+    private void OnStageChanged(GameProgressStage newStage)
+    {
+        // EnemyDifficultyController resets ChaseRange on stage change.
+        // If the player is in the dumpyard we need to re-apply the reduction.
+        // Defer one frame so the difficulty controller finishes applying first.
+        if (isActive && monster != null)
+            StartCoroutine(ReapplyReducedRangeNextFrame());
+    }
+
+    private System.Collections.IEnumerator ReapplyReducedRangeNextFrame()
+    {
+        yield return null;
+        if (!isActive || monster == null) yield break;
+        // monster.ChaseRange is now the new difficulty value — store it as the base to restore on exit.
+        originalChaseRange = monster.ChaseRange;
+        monster.SetChaseRange(reducedChaseRange);
+        if (showDebugLogs)
+            Debug.Log($"[DumpyardArea] Stage changed while active — base range updated to {originalChaseRange}, " +
+                      $"reduced range re-applied ({reducedChaseRange}).");
     }
 
     private void OnTriggerEnter(Collider other)

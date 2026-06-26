@@ -1123,7 +1123,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 4.6449537
-  m_Center: {x: -1.2066859, y: 44.11617, z: -30.587866}
+  m_Center: {x: -1.2066858, y: 44.116165, z: -30.587864}
 --- !u!65 &405180544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2145,10 +2145,11 @@ MonoBehaviour:
   sphereObjectName: Sphere
   lookDistance: 4
   lookAtDotThreshold: 0.55
-  protectionDurationSeconds: 60
+  protectionDurationSeconds: 999
   potionMessageDuration: 7
-  potionReadyMessage: "Your radiation potion is ready!\nPress F to drink it \u2014
-    you will have 60 seconds of protection."
+  potionReadyMessage: 'Your radiation potion is ready!
+
+    Press F to drink it.'
 --- !u!114 &728189703
 MonoBehaviour:
   m_ObjectHideFlags: 0
